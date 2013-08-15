@@ -1,5 +1,8 @@
 char fragmentShaderCode[] = R"(
 
+// GLSL code from Menger Journey by Syntopia
+// https://shadertoy.com/view/Mdf3z7
+
 uniform vec3      iResolution;           // viewport resolution (in pixels)
 uniform float     iGlobalTime;           // shader playback time (in seconds)
 //uniform float     iChannelTime[4];       // channel playback time (in seconds)
