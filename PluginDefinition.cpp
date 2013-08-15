@@ -32,7 +32,7 @@ static CFFGLPluginInfo PluginInfo (
 	000,									// Plugin minor version number
 	FF_SOURCE,						// Plugin type
 	"Grainy fractal raymarching",	// Plugin description
-	"by Michael Dewberry, based on Shadertoy shaders by Syntopia and " // About
+	"by Michael Dewberry, based on Shadertoy shaders by Syntopia and Kali" // About
 );
 
 
@@ -57,6 +57,10 @@ ShaderPlugin::ShaderPlugin()
     m_resolution[2] = 0;
     m_resolutionLocation = -1;
 
+    // To FFGLize an arbitrary shader, replace shader_frag.glsl and the parameters below.
+    // Parameter(uniform name, minimum value, maximum value, default value)
+    // Standard parameters/float uniforms only for now.
+    
     m_parameters.push_back(Parameter("FieldOfView", 0.1, 10.0, 1.0));
     m_parameters.push_back(Parameter("Iterations", 1, 30.0, 7));
     m_parameters.push_back(Parameter("Scale", 1.0, 10.0, 3.0));
