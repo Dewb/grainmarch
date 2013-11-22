@@ -44,7 +44,7 @@ void main(void)
 	vec2 fxCoord = vec2(xprime, yprime) + nudge;
     vec4 fxColor = texture2D(inputTexture, fxCoord);
 
-    vec2 origCoord = vec2(x, y);
+    vec2 origCoord = vec2(xprime, y);
     vec4 origColor = texture2D(inputTexture, origCoord);
     
 	gl_FragColor = mix(fxColor, origColor, Mix);
