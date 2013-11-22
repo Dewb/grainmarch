@@ -20,22 +20,22 @@ void main(void)
 	float y = mod(gl_TexCoord[0].t + OffsetY, 1.0);
 	float x = mod(gl_TexCoord[0].s + OffsetX, 1.0);
 	
-	float band = floor(y / StripeHeight);
-	float m = mod(y, StripeHeight);
+	float band = floor((1.0 - y) / StripeHeight);
+	float m = mod((1.0 - y), StripeHeight);
 	if (m / StripeHeight < NotchHeight && x < mod(Advance * band, 1.0)) {
 		band -= 1.0;
 	}
 	
 	vec2 nudge = vec2(0.0, 0.0);
 	if (RepeatY > 0.0) {
-		nudge += mod(y, RepeatY * 0.05);
+		nudge -= mod(y, RepeatY * 0.05);
 	}
 	if (RepeatX > 0.0) {
 		nudge += mod(x, RepeatX * 0.1);
 	}
     
     float xprime = 0.5 + (1.0 - StretchX) * (x - 0.5);
-    float yprime = band * StripeHeight;
+    float yprime = 1.0 - band * StripeHeight;
 
     if (SlideStripes > 0.0) {
         xprime += band * Advance;
