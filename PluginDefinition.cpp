@@ -105,11 +105,14 @@ DWORD ShaderPlugin::ProcessOpenGL(ProcessOpenGLStruct *pGL) {
     
     m_shader.BindShader();
     
-    FFGLTextureStruct &Texture = *(pGL->inputTextures[0]);
-    glBindTexture(GL_TEXTURE_2D, Texture.Handle);
-    FFGLTexCoords maxCoords = GetMaxGLTexCoords(Texture);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+    FFGLTexCoords maxCoords;
+    if (shaderType == Effect) {
+        FFGLTextureStruct &Texture = *(pGL->inputTextures[0]);
+        glBindTexture(GL_TEXTURE_2D, Texture.Handle);
+        maxCoords = GetMaxGLTexCoords(Texture);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+    }
     
     for (auto& p : m_parameters) {
         m_extensions.glUniform1fARB(p.UniformLocation, p.GetScaledValue());
