@@ -5,9 +5,9 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>English</string>
 	<key>CFBundleExecutable</key>
-	<string>GrainmarchFFGL</string>
+	<string>TanlineFFGL</string>
 	<key>CFBundleIdentifier</key>
-	<string>org.dewb.ffgl.grainmarch</string>
+	<string>org.dewb.ffgl.tanline</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundlePackageType</key>

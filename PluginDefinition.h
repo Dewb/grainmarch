@@ -10,11 +10,12 @@ using namespace std;
 
 class Parameter {
 public:
-    Parameter(string name, float min, float max, float value);
+    Parameter(string name, float min, float max, float value, int type = FF_TYPE_STANDARD);
     float GetScaledValue() const;
     
     string Name;
     float Value;
+    int Type;
     GLint UniformLocation;
     float RangeMin;
     float RangeMax;
@@ -53,6 +54,8 @@ protected:
 
     double m_startTime;
     double m_time;
+    
+    GLint m_inputTextureLocation;
     GLint m_timeLocation;
     float m_resolution[3];
     GLint m_resolutionLocation;
@@ -60,7 +63,13 @@ protected:
     bool m_HostSupportsSetTime;
 };
 
+typedef enum {
+    Source = 0,
+    Effect
+} ShaderType;
+
 extern char vertexShaderCode[];
+extern ShaderType shaderType;
 
 void update_time(double *t, const double t0);
 

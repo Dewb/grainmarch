@@ -10,8 +10,9 @@
 #include "shader_vert.glsl"
 
 
-Parameter::Parameter(string name, float min, float max, float value)
+Parameter::Parameter(string name, float min, float max, float value, int type)
 : Name(name)
+, Type(type)
 , RangeMin(min)
 , RangeMax(max)
 , UniformLocation(-1)
@@ -26,9 +27,16 @@ float Parameter::GetScaledValue() const {
 ShaderPlugin::ShaderPlugin()
 : CFreeFrameGLPlugin()
 , m_initResources(1)
+, m_inputTextureLocation(-1)
 {
-	SetMinInputs(0);
-	SetMaxInputs(0);
+    if (shaderType == Source) {
+        SetMinInputs(0);
+        SetMaxInputs(0);
+    } else if (shaderType == Effect) {
+        SetMinInputs(1);
+        SetMaxInputs(1);
+    }
+        
     SetTimeSupported(true);
     m_HostSupportsSetTime = false;
     
@@ -44,7 +52,7 @@ ShaderPlugin::ShaderPlugin()
 
     for (int ii = 0; ii < m_parameters.size(); ii++) {
         auto p = m_parameters[ii];
-        SetParamInfo(ii, p.Name.c_str(), FF_TYPE_STANDARD, p.Value);
+        SetParamInfo(ii, p.Name.c_str(), p.Type, p.Value);
     }
 }
 
@@ -66,16 +74,18 @@ DWORD ShaderPlugin::InitGL(const FFGLViewportStruct *vp)
         }
     }
     
+    if (shaderType == Effect) {
+        m_inputTextureLocation = m_shader.FindUniform("inputTexture");
+        m_extensions.glUniform1iARB(m_inputTextureLocation, 0);
+    }
+        
     m_timeLocation = m_shader.FindUniform("iGlobalTime");
     m_resolutionLocation = m_shader.FindUniform("iResolution");
     m_resolution[0] = vp->width;
     m_resolution[1] = vp->height;
     
     m_shader.UnbindShader();
-    
-    glTexParameteri(GL_TEXTURE_1D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-    glTexParameteri(GL_TEXTURE_1D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-   
+       
     return FF_SUCCESS;
 }
 
@@ -88,7 +98,18 @@ DWORD ShaderPlugin::DeInitGL()
 
 DWORD ShaderPlugin::ProcessOpenGL(ProcessOpenGLStruct *pGL) {
     
+    if (shaderType == Effect) {
+        if (pGL->numInputTextures<1) return FF_FAIL;
+        if (pGL->inputTextures[0]==NULL) return FF_FAIL;
+    }
+    
     m_shader.BindShader();
+    
+    FFGLTextureStruct &Texture = *(pGL->inputTextures[0]);
+    glBindTexture(GL_TEXTURE_2D, Texture.Handle);
+    FFGLTexCoords maxCoords = GetMaxGLTexCoords(Texture);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
     
     for (auto& p : m_parameters) {
         m_extensions.glUniform1fARB(p.UniformLocation, p.GetScaledValue());
@@ -103,16 +124,17 @@ DWORD ShaderPlugin::ProcessOpenGL(ProcessOpenGLStruct *pGL) {
     m_extensions.glUniform3fvARB(m_resolutionLocation, 3, m_resolution);
         
 	glBegin(GL_QUADS);
-    //m_extensions.glMultiTexCoord2f(GL_TEXTURE0, 0, 0);
-	glVertex4f(-1, -1, 0, 1);
-    //m_extensions.glMultiTexCoord2f(GL_TEXTURE0, 0, m_resolution[1]);
-	glVertex4f(-1, 1, 0, 1);
-    //m_extensions.glMultiTexCoord2f(GL_TEXTURE0, m_resolution[0], m_resolution[1]);
-	glVertex4f(1, 1, 0, 1);
-    //m_extensions.glMultiTexCoord2f(GL_TEXTURE0, m_resolution[0], 0);
-	glVertex4f(1, -1, 0, 1);
+    glTexCoord2f(0, 0);
+	glVertex2f(-1, -1);
+    glTexCoord2f(0, maxCoords.t);
+	glVertex2f(-1, 1);
+    glTexCoord2f(maxCoords.s, maxCoords.t);
+	glVertex2f(1, 1);
+    glTexCoord2f(maxCoords.s, 0);
+	glVertex2f(1, -1);
 	glEnd();
   
+    glBindTexture(GL_TEXTURE_2D, 0);
     m_shader.UnbindShader();
     
     return FF_SUCCESS;

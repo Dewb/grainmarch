@@ -22,13 +22,15 @@ static CFFGLPluginInfo PluginInfo (
                                    );
 
 
-#include "grainmarch_frag.glsl"
+#include "Grainmarch.glsl"
 
 void ShaderPlugin::CompileShader() {
     m_shader.Compile(vertexShaderCode, fragmentShaderCode);
 }
 
-// To FFGLize an arbitrary shader, replace shader_frag.glsl and the parameters below.
+ShaderType shaderType = Source;
+
+// To FFGLize an arbitrary shader, replace <shader>_frag.glsl and the parameters below.
 // Parameter(uniform name, minimum value, maximum value, default value)
 // Standard parameters/float uniforms only for now.
 
