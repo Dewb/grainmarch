@@ -5,6 +5,7 @@
 #include <string>
 #include <vector>
 
+
 using namespace std;
 
 class Parameter {
@@ -25,6 +26,8 @@ public CFreeFrameGLPlugin
 public:
     ShaderPlugin();
     virtual ~ShaderPlugin() {}
+    void InitParameters();
+    void CompileShader();
 
 	DWORD SetParameter(const SetParameterStruct* pParam);
 	DWORD GetParameter(DWORD dwIndex);
@@ -57,4 +60,8 @@ protected:
     bool m_HostSupportsSetTime;
 };
 
+extern char vertexShaderCode[];
+
 void update_time(double *t, const double t0);
+
+
