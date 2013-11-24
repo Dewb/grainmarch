@@ -7,32 +7,11 @@
 //
 
 #include "PluginDefinition.h"
-
-static CFFGLPluginInfo PluginInfo (
-                                   ShaderPlugin::CreateInstance,	// Create method
-                                   "GMAR",								// Plugin unique ID
-                                   "Grainmarch",					// Plugin name
-                                   1,						   			// API major version number
-                                   500,								  // API minor version number
-                                   1,										// Plugin major version number
-                                   000,									// Plugin minor version number
-                                   FF_SOURCE,						// Plugin type
-                                   "Grainy fractal raymarching",	// Plugin description
-                                   "by Michael Dewberry, based on Shadertoy shaders by Syntopia and Kali" // About
-                                   );
-
-
 #include "Grainmarch.glsl"
 
-void ShaderPlugin::CompileShader() {
-    m_shader.Compile(vertexShaderCode, fragmentShaderCode);
-}
+DECLARE_PLUGIN(SourcePlugin, "GMAR", "Grainmarch", "Grainy fractal raymarching", "by Michael Dewberry - dewb.org\nBased on Shadertoy shaders by Syntopia and Kali")
 
-ShaderType shaderType = Source;
-
-// To FFGLize an arbitrary shader, replace <shader>_frag.glsl and the parameters below.
-// Parameter(uniform name, minimum value, maximum value, default value)
-// Standard parameters/float uniforms only for now.
+// Parameter(uniform name, minimum value, maximum value, default value, optional type (default standard/float.))
 
 void ShaderPlugin::InitParameters()
 {

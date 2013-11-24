@@ -6,32 +6,11 @@
 //
 
 #include "PluginDefinition.h"
-
-static CFFGLPluginInfo PluginInfo (
-                                   ShaderPlugin::CreateInstance,	// Create method
-                                   "DBTN",								// Plugin unique ID
-                                   "Tanline",					// Plugin name
-                                   1,						   			// API major version number
-                                   500,								  // API minor version number
-                                   1,										// Plugin major version number
-                                   000,									// Plugin minor version number
-                                   FF_EFFECT,						// Plugin type
-                                   "Platonic scanline glitcher",	// Plugin description
-                                   "by Michael Dewberry - dewb.org" // About
-                                   );
-
-
 #include "Tanline.glsl"
 
-void ShaderPlugin::CompileShader() {
-    m_shader.Compile(vertexShaderCode, fragmentShaderCode);
-}
+DECLARE_PLUGIN(EffectPlugin, "DBTN", "Tanline", "Platonic scaline glitcher", "by Michael Dewberry - dewb.org")
 
-ShaderType shaderType = Effect;
-
-// To FFGLize an arbitrary shader, replace <shader>_frag.glsl and the parameters below.
-// Parameter(uniform name, minimum value, maximum value, default value)
-// Standard parameters/float uniforms only for now.
+// Parameter(uniform name, minimum value, maximum value, default value, optional type (default standard/float.))
 
 void ShaderPlugin::InitParameters()
 {

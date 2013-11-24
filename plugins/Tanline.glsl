@@ -2,7 +2,7 @@ char fragmentShaderCode[] = R"(
 
 uniform vec3      iResolution;           // viewport resolution (in pixels)
 uniform float     iGlobalTime;           // shader playback time (in seconds)
-uniform sampler2D inputTexture;
+uniform sampler2D inputTexture0;
 
 uniform float StripeHeight;
 uniform float NotchHeight;
@@ -42,10 +42,10 @@ void main(void)
     }
     
 	vec2 fxCoord = vec2(xprime, yprime) + nudge;
-    vec4 fxColor = texture2D(inputTexture, fxCoord);
+    vec4 fxColor = texture2D(inputTexture0, fxCoord);
 
     vec2 origCoord = vec2(xprime, y);
-    vec4 origColor = texture2D(inputTexture, origCoord);
+    vec4 origColor = texture2D(inputTexture0, origCoord);
     
 	gl_FragColor = mix(fxColor, origColor, Mix);
 }

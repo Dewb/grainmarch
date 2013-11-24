@@ -4,7 +4,9 @@
 #include "PluginDefinition.h"
 
 #include <fstream>
+#include <sstream>
 #include <cmath>
+
 #include <sys/time.h>
 
 #include "shader_vert.glsl"
@@ -24,17 +26,20 @@ float Parameter::GetScaledValue() const {
     return RangeMin + Value * (RangeMax - RangeMin);
 }
 
-ShaderPlugin::ShaderPlugin()
+ShaderPlugin::ShaderPlugin(int nInputs)
 : CFreeFrameGLPlugin()
 , m_initResources(1)
-, m_inputTextureLocation(-1)
+, m_inputTextureLocationArray(nullptr)
+, m_nInputs(nInputs)
 {
-    if (shaderType == Source) {
-        SetMinInputs(0);
-        SetMaxInputs(0);
-    } else if (shaderType == Effect) {
-        SetMinInputs(1);
-        SetMaxInputs(1);
+    SetMinInputs(m_nInputs);
+    SetMaxInputs(m_nInputs);
+    
+    if (m_nInputs > 0) {
+        m_inputTextureLocationArray = (GLint*)malloc(sizeof(GLint) * m_nInputs);
+        for (int ii = 0; ii < m_nInputs; ii++) {
+            m_inputTextureLocationArray[ii] = -1;
+        }
     }
         
     SetTimeSupported(true);
@@ -56,6 +61,20 @@ ShaderPlugin::ShaderPlugin()
     }
 }
 
+SourcePlugin::SourcePlugin()
+: ShaderPlugin(0)
+{
+}
+int SourcePlugin::Type = FF_SOURCE;
+
+
+EffectPlugin::EffectPlugin()
+: ShaderPlugin(1)
+{
+}
+int EffectPlugin::Type = FF_EFFECT;
+
+
 DWORD ShaderPlugin::InitGL(const FFGLViewportStruct *vp)
 {
     m_extensions.Initialize();
@@ -63,7 +82,7 @@ DWORD ShaderPlugin::InitGL(const FFGLViewportStruct *vp)
         return FF_FAIL;
     
     m_shader.SetExtensions(&m_extensions);
-    CompileShader();
+    m_shader.Compile(vertexShaderCode, fragmentShaderCode);
  
     m_shader.BindShader();
     
@@ -74,9 +93,11 @@ DWORD ShaderPlugin::InitGL(const FFGLViewportStruct *vp)
         }
     }
     
-    if (shaderType == Effect) {
-        m_inputTextureLocation = m_shader.FindUniform("inputTexture");
-        m_extensions.glUniform1iARB(m_inputTextureLocation, 0);
+    for (int ii = 0; ii < m_nInputs; ii++) {
+        stringstream uniformName;
+        uniformName << "inputTexture" << ii;
+        m_inputTextureLocationArray[ii] = m_shader.FindUniform(uniformName.str().c_str());
+        m_extensions.glUniform1iARB(m_inputTextureLocationArray[ii], 0);
     }
         
     m_timeLocation = m_shader.FindUniform("iGlobalTime");
@@ -98,18 +119,19 @@ DWORD ShaderPlugin::DeInitGL()
 
 DWORD ShaderPlugin::ProcessOpenGL(ProcessOpenGLStruct *pGL) {
     
-    if (shaderType == Effect) {
-        if (pGL->numInputTextures<1) return FF_FAIL;
-        if (pGL->inputTextures[0]==NULL) return FF_FAIL;
+    if (pGL->numInputTextures < m_nInputs)
+        return FF_FAIL;
+    for (int ii = 0; ii < m_nInputs; ii++) {
+        if (pGL->inputTextures[ii] == nullptr)
+            return FF_FAIL;
     }
     
     m_shader.BindShader();
     
-    FFGLTexCoords maxCoords;
-    if (shaderType == Effect) {
-        FFGLTextureStruct &Texture = *(pGL->inputTextures[0]);
+    for (int ii = 0; ii < m_nInputs; ii++) {
+        FFGLTextureStruct &Texture = *(pGL->inputTextures[ii]);
+        m_extensions.glActiveTexture(GL_TEXTURE0 + ii);
         glBindTexture(GL_TEXTURE_2D, Texture.Handle);
-        maxCoords = GetMaxGLTexCoords(Texture);
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
     }
@@ -126,21 +148,29 @@ DWORD ShaderPlugin::ProcessOpenGL(ProcessOpenGLStruct *pGL) {
     m_extensions.glUniform1fARB(m_timeLocation, m_time);
     m_extensions.glUniform3fvARB(m_resolutionLocation, 3, m_resolution);
         
-	glBegin(GL_QUADS);
-    glTexCoord2f(0, 0);
-	glVertex2f(-1, -1);
-    glTexCoord2f(0, maxCoords.t);
-	glVertex2f(-1, 1);
-    glTexCoord2f(maxCoords.s, maxCoords.t);
-	glVertex2f(1, 1);
-    glTexCoord2f(maxCoords.s, 0);
-	glVertex2f(1, -1);
-	glEnd();
+    EmitGeometry();
   
-    glBindTexture(GL_TEXTURE_2D, 0);
+    for (int ii = 0; ii < m_nInputs; ii++) {
+        m_extensions.glActiveTexture(GL_TEXTURE0 + ii);
+        glBindTexture(GL_TEXTURE_2D, 0);
+    }
     m_shader.UnbindShader();
     
     return FF_SUCCESS;
+}
+
+void ShaderPlugin::EmitGeometry()
+{
+    glBegin(GL_QUADS);
+    glTexCoord2f(0, 0);
+	glVertex2f(-1, -1);
+    glTexCoord2f(0, 1);
+	glVertex2f(-1, 1);
+    glTexCoord2f(1, 1);
+	glVertex2f(1, 1);
+    glTexCoord2f(1, 0);
+	glVertex2f(1, -1);
+	glEnd();
 }
 
 DWORD ShaderPlugin::GetParameter(DWORD dwIndex)
