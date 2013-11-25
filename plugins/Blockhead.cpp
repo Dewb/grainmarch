@@ -64,12 +64,16 @@ public:
         glPopMatrix();
     }
     
-    void drawColumn(int count, float cubeSize, float spacing) {
+    void drawColumn(int rows, float cubeSize, float spacing, float pitch, float pitchIncrement, float yaw) {
         float d = cubeSize + spacing;
-        glTranslatef(0, -count/2 * d, 0);
-        while (count--) {
+        glTranslatef(0, (d * (rows - 1)) / 2.0, 0);
+        for (int ii = 0; ii < rows; ii++) {
+            glPushMatrix();
+            glRotatef(pitch + pitchIncrement * ii, 1, 0, 0);
+            glRotatef(yaw, 0, 1, 0);
             drawCube(cubeSize);
-            glTranslatef(0, d, 0);
+            glPopMatrix();
+            glTranslatef(0, -d, 0);
         }
     }
 
@@ -94,18 +98,17 @@ public:
         int cols = (int)floor(m_parameters[3].GetScaledValue());
         float pitch = m_parameters[4].GetScaledValue();
         float yaw = m_parameters[5].GetScaledValue();
-        
-        glPushMatrix();
-        
+        float pitchIncrement = m_parameters[6].GetScaledValue();
+        float yawIncrement = m_parameters[7].GetScaledValue();
+
         float d = blockSize + spacing;
-        
-        glTranslatef(-(d * (cols - 1) - spacing)/ 2.0, 0, 0);
+
+        glPushMatrix();
+        glTranslatef(-(d * (cols - 1)) / 2.0, 0, 0);
         
         for (int ii=0; ii < cols; ii++) {
             glPushMatrix();
-            glRotatef(pitch, 1, 0, 0);
-            glRotatef(yaw, 0, 1, 0);
-            drawColumn(rows, blockSize, spacing);
+            drawColumn(rows, blockSize, spacing, pitch, pitchIncrement, yaw + yawIncrement * ii);
             glPopMatrix();
             glTranslatef(d, 0, 0);
         }
@@ -124,8 +127,10 @@ BEGIN_SHADER_PARAMETERS()
     PARAM("Spacing", 0.0, 1.0, 0.02)
     PARAM("Rows", 0.0, 30.0, 5.0)
     PARAM("Columns", 0.0, 40.0, 11.0)
-    PARAM("Pitch", -90.0, 90.0, 45.0)
-    PARAM("Yaw", -90.0, 90.0, 45.0)
+    PARAM("Pitch", -180.0, 180.0, 45.0)
+    PARAM("Yaw", -180.0, 180.0, 45.0)
+    PARAM("PitchIncrement", -90.0, 90.0, 0.0)
+    PARAM("YawIncrement", -90.0, 90.0, 0.0)
     PARAM("Border", 0.0, 0.5, 0.05)
 END_SHADER_PARAMETERS()
 
