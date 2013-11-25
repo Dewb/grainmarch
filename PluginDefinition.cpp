@@ -54,10 +54,10 @@ ShaderPlugin::ShaderPlugin(int nInputs)
     m_time = 0;
     m_timeLocation = -1;
     
-    m_resolution[0] = 0;
-    m_resolution[1] = 0;
-    m_resolution[2] = 0;
-    m_resolutionLocation = -1;
+    m_resolutionX = 0;
+    m_resolutionY = 0;
+    m_resolutionXLocation = -1;
+    m_resolutionYLocation = -1;
 
     InitParameters();
 
@@ -125,9 +125,10 @@ DWORD ShaderPlugin::InitGL(const FFGLViewportStruct *vp)
     }
         
     m_timeLocation = m_shader.FindUniform("iGlobalTime");
-    m_resolutionLocation = m_shader.FindUniform("iResolution");
-    m_resolution[0] = vp->width;
-    m_resolution[1] = vp->height;
+    m_resolutionXLocation = m_shader.FindUniform("iResolutionX");
+    m_resolutionYLocation = m_shader.FindUniform("iResolutionY");
+    m_resolutionX = vp->width;
+    m_resolutionY = vp->height;
     
     m_shader.UnbindShader();
        
@@ -172,8 +173,9 @@ DWORD ShaderPlugin::ProcessOpenGL(ProcessOpenGLStruct *pGL) {
     }
     
     m_extensions.glUniform1fARB(m_timeLocation, m_time);
-    m_extensions.glUniform3fvARB(m_resolutionLocation, 3, m_resolution);
-        
+    m_extensions.glUniform1fARB(m_resolutionXLocation, m_resolutionX);
+    m_extensions.glUniform1fARB(m_resolutionYLocation, m_resolutionY);
+    
     EmitGeometry();
   
     for (int ii = 0; ii < m_nInputs; ii++) {

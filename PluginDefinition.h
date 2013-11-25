@@ -59,8 +59,10 @@ protected:
     double m_time;
     
     GLint m_timeLocation;
-    float m_resolution[3];
-    GLint m_resolutionLocation;
+    float m_resolutionX;
+    float m_resolutionY;
+    GLint m_resolutionXLocation;
+    GLint m_resolutionYLocation;
     
     bool m_HostSupportsSetTime;
     

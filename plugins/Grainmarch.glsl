@@ -3,7 +3,8 @@ char fragmentShaderCode[] = R"(
 // GLSL code from Menger Journey by Syntopia
 // https://shadertoy.com/view/Mdf3z7
 
-uniform vec3      iResolution;           // viewport resolution (in pixels)
+uniform float      iResolutionX;           // viewport resolution (in pixels)
+uniform float      iResolutionY;           // viewport resolution (in pixels)
 uniform float     iGlobalTime;           // shader playback time (in seconds)
 //uniform float     iChannelTime[4];       // channel playback time (in seconds)
 //uniform vec3      iChannelResolution[4]; // channel resolution (in pixels)
@@ -183,9 +184,8 @@ void main(void)
 	camUp = normalize(camUp-dot(camDir,camUp)*camDir); // orthogonalize
 	vec3 camRight = normalize(cross(camDir,camUp));
 	
-    //vec2 res = vec2(iResolution.x, iResolution.y);
-    vec2 res = vec2(800.0, 600.0);
-
+    vec2 res = vec2(iResolutionX, iResolutionY);
+    
 	vec2 coord =-1.0+2.0*gl_FragCoord.xy/res.xy;
 	coord.x *= res.x/res.y;
 	
