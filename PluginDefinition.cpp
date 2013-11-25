@@ -74,6 +74,10 @@ EffectPlugin::EffectPlugin()
 }
 int EffectPlugin::Type = FF_EFFECT;
 
+void ShaderPlugin::InitParameters()
+{
+    m_parameters.assign(shaderParameters.begin(), shaderParameters.end());    
+}
 
 DWORD ShaderPlugin::InitGL(const FFGLViewportStruct *vp)
 {

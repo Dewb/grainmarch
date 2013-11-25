@@ -86,9 +86,13 @@ DWORD __stdcall CreateInstance(CFreeFrameGLPlugin **ppOutInstance)
 static CFFGLPluginInfo PluginInfo ( \
 CreateInstance<class>, id, name, 1, 500, 1, 100, class::Type, description, about);
 
+#define BEGIN_SHADER_PARAMETERS() std::vector<Parameter> shaderParameters = {
+#define PARAM(...) Parameter(__VA_ARGS__),
+#define END_SHADER_PARAMETERS() };
 
 extern char vertexShaderCode[];
 extern char fragmentShaderCode[];
+extern std::vector<Parameter> shaderParameters;
 
 void update_time(double *t, const double t0);
 
