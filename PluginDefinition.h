@@ -4,19 +4,28 @@
 #include <FFGLPluginSDK.h>
 #include <string>
 #include <vector>
+#include <functional>
 
 
 using namespace std;
 
+class Parameter;
+typedef std::vector<Parameter> ParamList;
+typedef std::function<void(Parameter&, float, ParamList&)> ParamAction;
+
 class Parameter {
 public:
-    Parameter(string name, float min, float max, float value, int type = FF_TYPE_STANDARD);
+    Parameter(string name, float min, float max, float value, int type = FF_TYPE_STANDARD, bool isShader = true, ParamAction action = nullptr);
     float GetScaledValue() const;
     
     string Name;
     float Value;
     int Type;
+
+    bool IsShaderUniform;
     GLint UniformLocation;
+    ParamAction Action;
+    
     float RangeMin;
     float RangeMax;
 };
@@ -44,7 +53,7 @@ protected:
 	FFGLExtensions m_extensions;
     FFGLShader m_shader;
     
-    vector<Parameter> m_parameters;
+    ParamList m_parameters;
 
     double m_startTime;
     double m_time;
@@ -86,13 +95,13 @@ DWORD __stdcall CreateInstance(CFreeFrameGLPlugin **ppOutInstance)
 static CFFGLPluginInfo PluginInfo ( \
 CreateInstance<class>, id, name, 1, 500, 1, 100, class::Type, description, about);
 
-#define BEGIN_SHADER_PARAMETERS() std::vector<Parameter> shaderParameters = {
+#define BEGIN_SHADER_PARAMETERS() ParamList shaderParameters = {
 #define PARAM(...) Parameter(__VA_ARGS__),
 #define END_SHADER_PARAMETERS() };
 
 extern char vertexShaderCode[];
 extern char fragmentShaderCode[];
-extern std::vector<Parameter> shaderParameters;
+extern ParamList shaderParameters;
 
 void update_time(double *t, const double t0);
 

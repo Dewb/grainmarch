@@ -6,18 +6,24 @@
 #include <fstream>
 #include <sstream>
 #include <cmath>
+#include <random>
 
 #include <sys/time.h>
 
 #include "shader_vert.glsl"
 
+std::default_random_engine generator;
+std::uniform_real_distribution<float> distribution(0.0, 1.0);
+auto dice = std::bind(distribution, generator);
 
-Parameter::Parameter(string name, float min, float max, float value, int type)
+Parameter::Parameter(string name, float min, float max, float value, int type, bool isShader, ParamAction action)
 : Name(name)
 , Type(type)
 , RangeMin(min)
 , RangeMax(max)
+, IsShaderUniform(isShader)
 , UniformLocation(-1)
+, Action(action)
 {
     Value = (value - min) / (max - min);
 }
@@ -76,7 +82,19 @@ int EffectPlugin::Type = FF_EFFECT;
 
 void ShaderPlugin::InitParameters()
 {
-    m_parameters.assign(shaderParameters.begin(), shaderParameters.end());    
+    // Parameters from user shader macro block
+    m_parameters.assign(shaderParameters.begin(), shaderParameters.end());
+
+    // Built-in parameters provided by the framework
+    m_parameters.push_back(Parameter("Randomize", 0.0, 1.0, 0.0, FF_TYPE_EVENT, false,
+        [](Parameter& randomp, float newValue, ParamList& list) {
+            if (newValue != 1.0) return;
+            for (auto& p : list) {
+                if (p.Name != randomp.Name)
+                    p.Value = dice();
+            }
+        }
+    ));
 }
 
 DWORD ShaderPlugin::InitGL(const FFGLViewportStruct *vp)
@@ -91,6 +109,8 @@ DWORD ShaderPlugin::InitGL(const FFGLViewportStruct *vp)
     m_shader.BindShader();
     
     for (auto& p : m_parameters) {
+        if (!p.IsShaderUniform)
+            continue;
         p.UniformLocation = m_shader.FindUniform(p.Name.c_str());
         if (p.UniformLocation < 0) {
             fprintf(stderr, "Could not locate uniform %s in shader!", p.Name.c_str());
@@ -141,6 +161,8 @@ DWORD ShaderPlugin::ProcessOpenGL(ProcessOpenGLStruct *pGL) {
     }
     
     for (auto& p : m_parameters) {
+        if (!p.IsShaderUniform)
+            continue;
         m_extensions.glUniform1fARB(p.UniformLocation, p.GetScaledValue());
     }
     
@@ -194,7 +216,11 @@ DWORD ShaderPlugin::SetParameter(const SetParameterStruct* pParam)
 {
     if (pParam != NULL && pParam->ParameterNumber < m_parameters.size()) {
         auto& p = m_parameters[pParam->ParameterNumber];
-        p.Value = *((float *)(unsigned)&(pParam->NewParameterValue));
+        float newValue = *((float *)(unsigned)&(pParam->NewParameterValue));
+        if (p.Action != nullptr)
+            p.Action(p, newValue, m_parameters);
+        else
+            p.Value = newValue;
         return FF_SUCCESS;
     } else {
         return FF_FAIL;
