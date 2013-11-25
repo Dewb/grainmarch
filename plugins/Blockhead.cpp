@@ -33,13 +33,17 @@ public:
         fSize /= 2.0;
         glBegin(GL_QUADS);
         glNormal3f(0, 0, 1);
-        glTexCoord2f(x, 0);
+        glMultiTexCoord2f(0, x, 0);
+        glMultiTexCoord2f(1, 0, 0);
         glVertex3f(-fSize, -fSize, fSize);
-        glTexCoord2f(x + width, 0);
+        glMultiTexCoord2f(0, x + width, 0);
+        glMultiTexCoord2f(1, 1, 0);
         glVertex3f(fSize, -fSize, fSize);
-        glTexCoord2f(x + width, height);
+        glMultiTexCoord2f(0, x + width, height);
+        glMultiTexCoord2f(1, 1, 1);
         glVertex3f(fSize, fSize, fSize);
-        glTexCoord2f(x, height);
+        glMultiTexCoord2f(0, x, height);
+        glMultiTexCoord2f(1, 0, 1);
         glVertex3f(-fSize, fSize, fSize);
         glEnd();
     }
@@ -122,18 +126,7 @@ BEGIN_SHADER_PARAMETERS()
     PARAM("Columns", 0.0, 40.0, 11.0)
     PARAM("Pitch", -90.0, 90.0, 45.0)
     PARAM("Yaw", -90.0, 90.0, 45.0)
-    PARAM("Tower1Pos", 0.0, 1.0, 0.0)
-    PARAM("Tower1Height", 0.0, 1.0, 0.0)
-    PARAM("Tower1Width", 0.0, 1.0, 0.0)
-    PARAM("Tower2Pos", 0.0, 1.0, 0.0)
-    PARAM("Tower2Height", 0.0, 1.0, 0.0)
-    PARAM("Tower2Width", 0.0, 1.0, 0.0)
-    PARAM("Tower3Pos", 0.0, 1.0, 0.0)
-    PARAM("Tower3Height", 0.0, 1.0, 0.0)
-    PARAM("Tower3Width", 0.0, 1.0, 0.0)
-    PARAM("Tower4Pos", 0.0, 1.0, 0.0)
-    PARAM("Tower4Height", 0.0, 1.0, 0.0)
-    PARAM("Tower4Width", 0.0, 1.0, 0.0)
+    PARAM("Border", 0.0, 0.5, 0.05)
 END_SHADER_PARAMETERS()
 
 
