@@ -1,7 +1,9 @@
 #pragma once
 
-#include <FFGLShader.h>
 #include <FFGLPluginSDK.h>
+#include <FFGLLib.h>
+#include <FFGLShader.h>
+
 #include <string>
 #include <vector>
 #include <functional>
@@ -68,6 +70,8 @@ protected:
     
     int m_nInputs;
     GLint* m_inputTextureLocationArray;
+    FFGLTexCoords m_texDimensions;
+    float m_aspectRatio;
 };
 
 class SourcePlugin : public ShaderPlugin

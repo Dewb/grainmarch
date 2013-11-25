@@ -10,7 +10,6 @@
 
 #include <sys/time.h>
 
-#include "shader_vert.glsl"
 
 std::default_random_engine generator;
 std::uniform_real_distribution<float> distribution(0.0, 1.0);
@@ -113,7 +112,7 @@ DWORD ShaderPlugin::InitGL(const FFGLViewportStruct *vp)
             continue;
         p.UniformLocation = m_shader.FindUniform(p.Name.c_str());
         if (p.UniformLocation < 0) {
-            fprintf(stderr, "Could not locate uniform %s in shader!", p.Name.c_str());
+            fprintf(stderr, "Could not locate uniform %s in shader!\n", p.Name.c_str());
         }
     }
     
@@ -150,13 +149,18 @@ DWORD ShaderPlugin::ProcessOpenGL(ProcessOpenGLStruct *pGL) {
         if (pGL->inputTextures[ii] == nullptr)
             return FF_FAIL;
     }
-    
+        
     m_shader.BindShader();
+    
+    m_texDimensions.s = 1;
+    m_texDimensions.t = 1;
     
     for (int ii = 0; ii < m_nInputs; ii++) {
         FFGLTextureStruct &Texture = *(pGL->inputTextures[ii]);
         m_extensions.glActiveTexture(GL_TEXTURE0 + ii);
         glBindTexture(GL_TEXTURE_2D, Texture.Handle);
+        m_texDimensions = GetMaxGLTexCoords(Texture);
+        m_aspectRatio = Texture.Width / Texture.Height;
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
     }
@@ -183,7 +187,7 @@ DWORD ShaderPlugin::ProcessOpenGL(ProcessOpenGLStruct *pGL) {
         glBindTexture(GL_TEXTURE_2D, 0);
     }
     m_shader.UnbindShader();
-    
+        
     return FF_SUCCESS;
 }
 
@@ -192,11 +196,11 @@ void ShaderPlugin::EmitGeometry()
     glBegin(GL_QUADS);
     glTexCoord2f(0, 0);
 	glVertex2f(-1, -1);
-    glTexCoord2f(0, 1);
+    glTexCoord2f(0, m_texDimensions.t);
 	glVertex2f(-1, 1);
-    glTexCoord2f(1, 1);
+    glTexCoord2f(m_texDimensions.s, m_texDimensions.t);
 	glVertex2f(1, 1);
-    glTexCoord2f(1, 0);
+    glTexCoord2f(m_texDimensions.s, 0);
 	glVertex2f(1, -1);
 	glEnd();
 }

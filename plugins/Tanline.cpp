@@ -7,6 +7,7 @@
 
 #include "PluginDefinition.h"
 #include "Tanline.glsl"
+#include "default_vertex_shader.glsl"
 
 DECLARE_PLUGIN(EffectPlugin, "DBTN", "Tanline", "Platonic scanline glitcher", "by Michael Dewberry - dewb.org")
 
