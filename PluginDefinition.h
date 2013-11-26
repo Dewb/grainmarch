@@ -109,6 +109,8 @@ extern char vertexShaderCode[];
 extern char fragmentShaderCode[];
 extern ParamList shaderParameters;
 
+extern float dice();
+
 void update_time(double *t, const double t0);
 
 

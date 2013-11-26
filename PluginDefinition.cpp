@@ -10,10 +10,11 @@
 
 #include <sys/time.h>
 
-
-std::default_random_engine generator;
-std::uniform_real_distribution<float> distribution(0.0, 1.0);
-auto dice = std::bind(distribution, generator);
+float dice() {
+    static std::default_random_engine generator;
+    static std::uniform_real_distribution<float> distribution(0.0, 1.0);
+    return distribution(generator);
+}
 
 Parameter::Parameter(string name, float min, float max, float value, int type, bool isShader, ParamAction action)
 : Name(name)
