@@ -477,7 +477,7 @@
 					"-framework",
 					OpenGL,
 				);
-				PRODUCT_NAME = Blockhead;
+				PRODUCT_NAME = BlockheadFFGL;
 				SDKROOT = macosx;
 				WRAPPER_EXTENSION = bundle;
 				ZERO_LINK = NO;
@@ -510,7 +510,7 @@
 					"-framework",
 					OpenGL,
 				);
-				PRODUCT_NAME = Blockhead;
+				PRODUCT_NAME = BlockheadFFGL;
 				SDKROOT = macosx;
 				WRAPPER_EXTENSION = bundle;
 				ZERO_LINK = NO;
