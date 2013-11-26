@@ -26,7 +26,18 @@
 		5B8123B41842EA9A0076EB97 /* FFGLPluginSDK.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5B07B5EF16F2ED7800AD1A46 /* FFGLPluginSDK.cpp */; };
 		5B8123B51842EA9A0076EB97 /* PluginDefinition.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5B0FCE891793D806004E2E35 /* PluginDefinition.cpp */; };
 		5B8123BF1842EAE90076EB97 /* Blockhead.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5B8123BD1842EAE90076EB97 /* Blockhead.cpp */; };
-		5BBDA4EC183F132C0058C89C /* Grainmarch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5BBDA4EA183F132C0058C89C /* Grainmarch.cpp */; };
+		5B8123C5184459F20076EB97 /* FFGLExtensions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5B07B5A516F2ED7800AD1A46 /* FFGLExtensions.cpp */; };
+		5B8123C6184459F20076EB97 /* FFGLFBO.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5B07B5A616F2ED7800AD1A46 /* FFGLFBO.cpp */; };
+		5B8123C7184459F20076EB97 /* FFGLShader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5B07B5A716F2ED7800AD1A46 /* FFGLShader.cpp */; };
+		5B8123C8184459F20076EB97 /* FFGL.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5B07B5D916F2ED7800AD1A46 /* FFGL.cpp */; };
+		5B8123C9184459F20076EB97 /* FFGLPluginInfo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5B07B5E916F2ED7800AD1A46 /* FFGLPluginInfo.cpp */; };
+		5B8123CA184459F20076EB97 /* FFGLPluginInfoData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5B07B5EB16F2ED7800AD1A46 /* FFGLPluginInfoData.cpp */; };
+		5B8123CB184459F20076EB97 /* FFGLPluginManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5B07B5EC16F2ED7800AD1A46 /* FFGLPluginManager.cpp */; };
+		5B8123CC184459F20076EB97 /* FFGLPluginSDK.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5B07B5EF16F2ED7800AD1A46 /* FFGLPluginSDK.cpp */; };
+		5B8123CD184459F20076EB97 /* PluginDefinition.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5B0FCE891793D806004E2E35 /* PluginDefinition.cpp */; };
+		5B8123D718445AF20076EB97 /* NDots.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5B8123D518445AF20076EB97 /* NDots.cpp */; };
+		5B8123D918445CA30076EB97 /* Grainmarch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5BBDA4EA183F132C0058C89C /* Grainmarch.cpp */; };
+		5B8123DA18445CDF0076EB97 /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B8123C01842F2E60076EB97 /* GLUT.framework */; };
 		5BBDA4F1183F2ACF0058C89C /* FFGLExtensions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5B07B5A516F2ED7800AD1A46 /* FFGLExtensions.cpp */; };
 		5BBDA4F2183F2ACF0058C89C /* FFGLFBO.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5B07B5A616F2ED7800AD1A46 /* FFGLFBO.cpp */; };
 		5BBDA4F3183F2ACF0058C89C /* FFGLShader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5B07B5A716F2ED7800AD1A46 /* FFGLShader.cpp */; };
@@ -70,6 +81,10 @@
 		5B8123BD1842EAE90076EB97 /* Blockhead.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Blockhead.cpp; path = plugins/Blockhead.cpp; sourceTree = "<group>"; };
 		5B8123BE1842EAE90076EB97 /* Blockhead.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Blockhead.glsl; path = plugins/Blockhead.glsl; sourceTree = "<group>"; };
 		5B8123C01842F2E60076EB97 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = /System/Library/Frameworks/GLUT.framework; sourceTree = "<absolute>"; };
+		5B8123D3184459F20076EB97 /* NDots.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NDots.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		5B8123D4184459F20076EB97 /* NDots-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "NDots-Info.plist"; path = "/Users/dewb/dev/grainmarch/NDots-Info.plist"; sourceTree = "<absolute>"; };
+		5B8123D518445AF20076EB97 /* NDots.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = NDots.cpp; path = plugins/NDots.cpp; sourceTree = "<group>"; };
+		5B8123D618445AF20076EB97 /* NDots.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = NDots.glsl; path = plugins/NDots.glsl; sourceTree = "<group>"; };
 		5BBDA4EA183F132C0058C89C /* Grainmarch.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Grainmarch.cpp; path = plugins/Grainmarch.cpp; sourceTree = "<group>"; };
 		5BBDA500183F2ACF0058C89C /* TanlineFFGL-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "TanlineFFGL-Info.plist"; path = "/Users/dewb/dev/grainmarch/TanlineFFGL-Info.plist"; sourceTree = "<absolute>"; };
 		5BBDA502183F2B430058C89C /* Tanline.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Tanline.cpp; path = plugins/Tanline.cpp; sourceTree = "<group>"; };
@@ -89,6 +104,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5B8123CF184459F20076EB97 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5B8123DA18445CDF0076EB97 /* GLUT.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -117,6 +140,8 @@
 				5B8123A91842AD7C0076EB97 /* GrainmarchFFGL_debug.bundle */,
 				5B8123BB1842EA9A0076EB97 /* Blockhead.bundle */,
 				5B8123BC1842EA9A0076EB97 /* Blockhead-Info.plist */,
+				5B8123D3184459F20076EB97 /* NDots.bundle */,
+				5B8123D4184459F20076EB97 /* NDots-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -180,6 +205,8 @@
 		5BBDA4ED183F13350058C89C /* plugins */ = {
 			isa = PBXGroup;
 			children = (
+				5B8123D518445AF20076EB97 /* NDots.cpp */,
+				5B8123D618445AF20076EB97 /* NDots.glsl */,
 				5B0FCE8D1793DCEC004E2E35 /* default_vertex_shader.glsl */,
 				5BBDA502183F2B430058C89C /* Tanline.cpp */,
 				5BBDA503183F2B430058C89C /* Tanline.glsl */,
@@ -228,6 +255,23 @@
 			productReference = 5B8123BB1842EA9A0076EB97 /* Blockhead.bundle */;
 			productType = "com.apple.product-type.bundle";
 		};
+		5B8123C2184459F20076EB97 /* NDots */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5B8123D0184459F20076EB97 /* Build configuration list for PBXNativeTarget "NDots" */;
+			buildPhases = (
+				5B8123C3184459F20076EB97 /* Resources */,
+				5B8123C4184459F20076EB97 /* Sources */,
+				5B8123CF184459F20076EB97 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = NDots;
+			productName = FFGLBrightness;
+			productReference = 5B8123D3184459F20076EB97 /* NDots.bundle */;
+			productType = "com.apple.product-type.bundle";
+		};
 		5BBDA4EE183F2ACF0058C89C /* Tanline */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5BBDA4FC183F2ACF0058C89C /* Build configuration list for PBXNativeTarget "Tanline" */;
@@ -268,6 +312,7 @@
 				2D2190890AF02BD1007154B7 /* Grainmarch */,
 				5BBDA4EE183F2ACF0058C89C /* Tanline */,
 				5B8123AA1842EA9A0076EB97 /* Blockhead */,
+				5B8123C2184459F20076EB97 /* NDots */,
 			);
 		};
 /* End PBXProject section */
@@ -281,6 +326,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		5B8123AB1842EA9A0076EB97 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5B8123C3184459F20076EB97 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -310,7 +362,7 @@
 				5B07B66016F2ED7900AD1A46 /* FFGLPluginManager.cpp in Sources */,
 				5B07B66116F2ED7900AD1A46 /* FFGLPluginSDK.cpp in Sources */,
 				5B0FCE8B1793D806004E2E35 /* PluginDefinition.cpp in Sources */,
-				5BBDA4EC183F132C0058C89C /* Grainmarch.cpp in Sources */,
+				5B8123D918445CA30076EB97 /* Grainmarch.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -328,6 +380,23 @@
 				5B8123B41842EA9A0076EB97 /* FFGLPluginSDK.cpp in Sources */,
 				5B8123B51842EA9A0076EB97 /* PluginDefinition.cpp in Sources */,
 				5B8123BF1842EAE90076EB97 /* Blockhead.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5B8123C4184459F20076EB97 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5B8123C5184459F20076EB97 /* FFGLExtensions.cpp in Sources */,
+				5B8123C6184459F20076EB97 /* FFGLFBO.cpp in Sources */,
+				5B8123C7184459F20076EB97 /* FFGLShader.cpp in Sources */,
+				5B8123C8184459F20076EB97 /* FFGL.cpp in Sources */,
+				5B8123C9184459F20076EB97 /* FFGLPluginInfo.cpp in Sources */,
+				5B8123CA184459F20076EB97 /* FFGLPluginInfoData.cpp in Sources */,
+				5B8123CB184459F20076EB97 /* FFGLPluginManager.cpp in Sources */,
+				5B8123CC184459F20076EB97 /* FFGLPluginSDK.cpp in Sources */,
+				5B8123CD184459F20076EB97 /* PluginDefinition.cpp in Sources */,
+				5B8123D718445AF20076EB97 /* NDots.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -517,6 +586,76 @@
 			};
 			name = Release;
 		};
+		5B8123D1184459F20076EB97 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				COMBINE_HIDPI_IMAGES = YES;
+				CONFIGURATION_BUILD_DIR = bin;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"TARGET_OS_MAC=1",
+					"_DEBUG=1",
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(SRCROOT)/FFGLSDK_1_5/Source/FFGLPlugins",
+					"$(SRCROOT)/FFGLSDK_1_5/Include",
+				);
+				INFOPLIST_FILE = "NDots-Info.plist";
+				INSTALL_PATH = "$(HOME)/Library/Bundles";
+				MACOSX_DEPLOYMENT_TARGET = "";
+				OTHER_LDFLAGS = (
+					"-framework",
+					OpenGL,
+				);
+				PRODUCT_NAME = NDotsFFGL;
+				SDKROOT = macosx;
+				WRAPPER_EXTENSION = bundle;
+				ZERO_LINK = NO;
+			};
+			name = Debug;
+		};
+		5B8123D2184459F20076EB97 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				COMBINE_HIDPI_IMAGES = YES;
+				CONFIGURATION_BUILD_DIR = bin;
+				COPY_PHASE_STRIP = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "";
+				GCC_PREPROCESSOR_DEFINITIONS = "TARGET_OS_MAC=1";
+				HEADER_SEARCH_PATHS = (
+					"$(SRCROOT)/FFGLSDK_1_5/Source/FFGLPlugins",
+					"$(SRCROOT)/FFGLSDK_1_5/Include",
+					"$(SRCROOT)/gl-matrix",
+				);
+				INFOPLIST_FILE = "NDots-Info.plist";
+				INSTALL_PATH = "$(HOME)/Library/Bundles";
+				MACOSX_DEPLOYMENT_TARGET = "";
+				OTHER_LDFLAGS = (
+					"-framework",
+					OpenGL,
+				);
+				PRODUCT_NAME = NDotsFFGL;
+				SDKROOT = macosx;
+				WRAPPER_EXTENSION = bundle;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
 		5BBDA4FD183F2ACF0058C89C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -613,6 +752,15 @@
 			buildConfigurations = (
 				5B8123B91842EA9A0076EB97 /* Debug */,
 				5B8123BA1842EA9A0076EB97 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5B8123D0184459F20076EB97 /* Build configuration list for PBXNativeTarget "NDots" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5B8123D1184459F20076EB97 /* Debug */,
+				5B8123D2184459F20076EB97 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

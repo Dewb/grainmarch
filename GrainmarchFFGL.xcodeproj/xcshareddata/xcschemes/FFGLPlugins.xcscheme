@@ -43,8 +43,22 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "5B8123AA1842EA9A0076EB97"
-               BuildableName = "Blockhead.bundle"
+               BuildableName = "BlockheadFFGL.bundle"
                BlueprintName = "Blockhead"
+               ReferencedContainer = "container:GrainmarchFFGL.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "5B8123C2184459F20076EB97"
+               BuildableName = "NDots.bundle"
+               BlueprintName = "NDots"
                ReferencedContainer = "container:GrainmarchFFGL.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
