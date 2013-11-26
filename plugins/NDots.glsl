@@ -21,7 +21,7 @@ uniform float Border;
 void main()
 {
     vec2 texCoords = gl_TexCoord[0].st;
-    gl_FragColor = texture2D(inputTexture0, texCoords);
+    gl_FragColor = vec4(1.0, 1.0, 1.0, 1.0);
 }
 
 )";
