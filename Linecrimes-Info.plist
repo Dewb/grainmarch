@@ -5,9 +5,9 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>English</string>
 	<key>CFBundleExecutable</key>
-	<string>NDotsFFGL</string>
+	<string>LinecrimesFFGL</string>
 	<key>CFBundleIdentifier</key>
-	<string>org.dewb.ffgl.ndots</string>
+	<string>org.dewb.ffgl.linecrimes</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundlePackageType</key>

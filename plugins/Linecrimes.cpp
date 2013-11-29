@@ -11,15 +11,15 @@
 #include <GLUT/GLUT.h>
 #include <cmath>
 
-#include "NDots.glsl"
+#include "Linecrimes.glsl"
 
 #define PI 3.14159262
 
 
-class NDotsPlugin : public SourcePlugin
+class LinecrimesPlugin : public SourcePlugin
 {
 public:
-    NDotsPlugin() {}
+    LinecrimesPlugin() {}
 
     void drawLine(float x1, float y1, float x2, float y2) {
         float stretch = m_parameters[4].GetScaledValue();
@@ -141,7 +141,7 @@ public:
     }
 };
 
-DECLARE_PLUGIN(NDotsPlugin, "DBND", "DotLineCrimes", "Dots and lines", "by Michael Dewberry - dewb.org")
+DECLARE_PLUGIN(LinecrimesPlugin, "DBLC", "Linecrimes", "'Two Dots'-inspired sketchy geometry", "by Michael Dewberry - dewb.org")
 
 // Parameter(uniform name, minimum value, maximum value, default value, optional type (default standard/float.))
 

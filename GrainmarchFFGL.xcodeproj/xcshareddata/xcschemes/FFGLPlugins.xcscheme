@@ -57,8 +57,22 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "5B8123C2184459F20076EB97"
-               BuildableName = "NDots.bundle"
-               BlueprintName = "NDots"
+               BuildableName = "NDotsFFGL.bundle"
+               BlueprintName = "Linecrimes"
+               ReferencedContainer = "container:GrainmarchFFGL.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "5B3022B118485D6A005C75A8"
+               BuildableName = "Average.bundle"
+               BlueprintName = "Average"
                ReferencedContainer = "container:GrainmarchFFGL.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
