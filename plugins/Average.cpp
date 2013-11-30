@@ -7,7 +7,6 @@
 
 #include "PluginDefinition.h"
 #include "Average.glsl"
-#include "default_vertex_shader.glsl"
 
 DECLARE_PLUGIN(EffectPlugin, "DBAV", "Average", "Average hue using hardware mipmap", "by Michael Dewberry - dewb.org")
 
