@@ -1,8 +1,5 @@
 char vertexShaderCode[] = R"(
 
-uniform float Columns;
-uniform float Rows;
-
 void main()
 {    
     gl_Position = gl_ProjectionMatrix * gl_ModelViewMatrix * gl_Vertex;

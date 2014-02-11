@@ -17,7 +17,7 @@ typedef std::function<void(Parameter&, float, ParamList&)> ParamAction;
 
 class Parameter {
 public:
-    Parameter(string name, float min, float max, float value, int type = FF_TYPE_STANDARD, bool isShader = true, ParamAction action = nullptr);
+    Parameter(string name, float min, float max, float value, int type = FF_TYPE_STANDARD, bool isShader = true, bool shouldRandomize = true, ParamAction action = nullptr);
     float GetScaledValue() const;
     
     string Name;
@@ -25,6 +25,7 @@ public:
     int Type;
 
     bool IsShaderUniform;
+    bool ShouldRandomize;
     GLint UniformLocation;
     ParamAction Action;
     

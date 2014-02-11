@@ -16,12 +16,13 @@ float dice() {
     return distribution(generator);
 }
 
-Parameter::Parameter(string name, float min, float max, float value, int type, bool isShader, ParamAction action)
+Parameter::Parameter(string name, float min, float max, float value, int type, bool isShader, bool shouldRandomize, ParamAction action)
 : Name(name)
 , Type(type)
 , RangeMin(min)
 , RangeMax(max)
 , IsShaderUniform(isShader)
+, ShouldRandomize(shouldRandomize)
 , UniformLocation(-1)
 , Action(action)
 {
@@ -86,11 +87,11 @@ void ShaderPlugin::InitParameters()
     m_parameters.assign(shaderParameters.begin(), shaderParameters.end());
 
     // Built-in parameters provided by the framework
-    m_parameters.push_back(Parameter("Randomize", 0.0, 1.0, 0.0, FF_TYPE_EVENT, false,
+    m_parameters.push_back(Parameter("Randomize", 0.0, 1.0, 0.0, FF_TYPE_EVENT, false, false,
         [](Parameter& randomp, float newValue, ParamList& list) {
             if (newValue != 1.0) return;
             for (auto& p : list) {
-                if (p.Name != randomp.Name) {
+                if (p.ShouldRandomize) {
                     if (p.Type == FF_TYPE_BOOLEAN) {
                         p.Value = dice() >= 0.5;
                     } else {

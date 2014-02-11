@@ -57,7 +57,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "5B8123C2184459F20076EB97"
-               BuildableName = "NDotsFFGL.bundle"
+               BuildableName = "LinecrimesFFGL.bundle"
                BlueprintName = "Linecrimes"
                ReferencedContainer = "container:GrainmarchFFGL.xcodeproj">
             </BuildableReference>
