@@ -102,13 +102,27 @@ DWORD __stdcall CreateInstance(CFreeFrameGLPlugin **ppOutInstance)
 static CFFGLPluginInfo PluginInfo ( \
 CreateInstance<class>, id, name, 1, 500, 1, 100, class::Type, description, about);
 
-#define BEGIN_SHADER_PARAMETERS() ParamList shaderParameters = {
-#define PARAM(...) Parameter(__VA_ARGS__),
-#define END_SHADER_PARAMETERS() };
+class ParameterListAdder {
+public:
+    ParameterListAdder(ParamList& list, Parameter param) {
+        list.push_back(param);
+    }
+};
+
+#define BEGIN_SHADER_PARAMETERS() namespace Param { \
+ParamList macroParameters;
+#define PARAM(paramID, ...) const unsigned int paramID = macroParameters.size(); \
+ParameterListAdder adder##paramID(macroParameters, Parameter(#paramID, __VA_ARGS__));
+#define END_SHADER_PARAMETERS() }
+
+#define GetScaled(paramID) m_parameters[paramID].GetScaledValue()
+
+namespace Param {
+    extern ParamList macroParameters;
+};
 
 extern char vertexShaderCode[];
 extern char fragmentShaderCode[];
-extern ParamList shaderParameters;
 
 extern float dice();
 

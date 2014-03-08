@@ -15,6 +15,21 @@
 
 #define PI 3.14159262
 
+// Parameter(uniform name, minimum value, maximum value, default value, optional type (default standard/float.))
+BEGIN_SHADER_PARAMETERS()
+    PARAM(NumDots, 0.0, 12.0, 2.0, FF_TYPE_STANDARD, false)
+    PARAM(DotRadius, 0.0, 0.5, 0.1, FF_TYPE_STANDARD, false)
+    PARAM(NgonRadius, 0.0, 2.0, 0.5, FF_TYPE_STANDARD, false)
+    PARAM(LineWidth, 0.0, 0.4, 0.05, FF_TYPE_STANDARD, false)
+    PARAM(LineStretch, 0.0, 1.0, 0.7, FF_TYPE_STANDARD, false)
+    PARAM(JitterAmount, 0.0, 1.0, 0.0, FF_TYPE_STANDARD, false, false)
+    PARAM(JitterSegments, 2.0, 10.0, 4.0, FF_TYPE_STANDARD, false, false)
+    PARAM(SolidDots, 0.0, 1.0, 1.0, FF_TYPE_BOOLEAN, false)
+    PARAM(SolidLines, 0.0, 1.0, 1.0, FF_TYPE_BOOLEAN, false)
+    PARAM(DotSmoothness, 0.0, 36.0, 36.0, FF_TYPE_STANDARD, false)
+    PARAM(Rotation, -180.0, 180.0, 0.0, FF_TYPE_STANDARD, false)
+END_SHADER_PARAMETERS()
+
 
 class LinecrimesPlugin : public SourcePlugin
 {
@@ -22,7 +37,7 @@ public:
     LinecrimesPlugin() {}
 
     void drawLine(float x1, float y1, float x2, float y2) {
-        float stretch = m_parameters[4].GetScaledValue();
+        float stretch = GetScaled(Param::LineStretch);
         float length = sqrt(pow(x2 - x1, 2) + pow(y2 - y1, 2));
         float dx = (x2 - x1) / length;
         float dy = (y2 - y1) / length;
@@ -34,8 +49,8 @@ public:
         y2 -= sy;
         length *= stretch;
         
-        float jitterAmount = m_parameters[5].GetScaledValue();
-        float jitterSegments = m_parameters[6].GetScaledValue();
+        float jitterAmount = GetScaled(Param::JitterAmount);
+        float jitterSegments = GetScaled(Param::JitterSegments);
         if (jitterAmount > 0) {
             for (int ii = 0; ii < jitterSegments - 1; ii++) {
                 float a = (dice() - 0.5) * jitterAmount;
@@ -52,8 +67,8 @@ public:
     
     void drawSingleLineSegment(float x1, float y1, float x2, float y2) {
         
-        float lineWidth = m_parameters[3].GetScaledValue();
-        bool solidLines = (bool)m_parameters[8].GetScaledValue();
+        float lineWidth = GetScaled(Param::LineWidth);
+        bool solidLines = (bool)GetScaled(Param::SolidLines);
         
         float length = sqrt(pow(x2 - x1, 2) + pow(y2 - y1, 2));
         float dx = (x2 - x1) / length;
@@ -103,12 +118,12 @@ public:
         glMatrixMode(GL_MODELVIEW);
         glLoadIdentity();
         
-        int numDots = (int)floor(m_parameters[0].GetScaledValue());
-        float dotRadius = m_parameters[1].GetScaledValue();
-        float ngonRadius = m_parameters[2].GetScaledValue();
-        bool solidDots = (bool)m_parameters[7].GetScaledValue();
-        float facets = m_parameters[9].GetScaledValue();
-        float rotation = m_parameters[10].GetScaledValue();
+        int numDots = (int)floor(GetScaled(Param::NumDots));
+        float dotRadius = GetScaled(Param::DotRadius);
+        float ngonRadius = GetScaled(Param::NgonRadius);
+        bool solidDots = (bool)GetScaled(Param::SolidDots);
+        float facets = GetScaled(Param::DotSmoothness);
+        float rotation = GetScaled(Param::Rotation);
         
         glRotatef(rotation, 0, 0, 1);
         
@@ -143,20 +158,5 @@ public:
 
 DECLARE_PLUGIN(LinecrimesPlugin, "DBLC", "Linecrimes", "'Two Dots'-inspired sketchy geometry", "by Michael Dewberry - dewb.org")
 
-// Parameter(uniform name, minimum value, maximum value, default value, optional type (default standard/float.))
-
-BEGIN_SHADER_PARAMETERS()
-    PARAM("NumDots", 0.0, 12.0, 2.0, FF_TYPE_STANDARD, false)
-    PARAM("DotRadius", 0.0, 0.5, 0.1, FF_TYPE_STANDARD, false)
-    PARAM("NgonRadius", 0.0, 2.0, 0.5, FF_TYPE_STANDARD, false)
-    PARAM("LineWidth", 0.0, 0.4, 0.05, FF_TYPE_STANDARD, false)
-    PARAM("LineStretch", 0.0, 1.0, 0.7, FF_TYPE_STANDARD, false)
-    PARAM("JitterAmount", 0.0, 1.0, 0.0, FF_TYPE_STANDARD, false, false)
-    PARAM("JitterSegments", 2.0, 10.0, 4.0, FF_TYPE_STANDARD, false, false)
-    PARAM("SolidDots", 0.0, 1.0, 1.0, FF_TYPE_BOOLEAN, false)
-    PARAM("SolidLines", 0.0, 1.0, 1.0, FF_TYPE_BOOLEAN, false)
-    PARAM("DotSmoothness", 0.0, 36.0, 36.0, FF_TYPE_STANDARD, false)
-    PARAM("Rotation", -180.0, 180.0, 0.0, FF_TYPE_STANDARD, false)
-END_SHADER_PARAMETERS()
 
 

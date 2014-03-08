@@ -84,7 +84,7 @@ int EffectPlugin::Type = FF_EFFECT;
 void ShaderPlugin::InitParameters()
 {
     // Parameters from user shader macro block
-    m_parameters.assign(shaderParameters.begin(), shaderParameters.end());
+    m_parameters.assign(Param::macroParameters.begin(), Param::macroParameters.end());
 
     // Built-in parameters provided by the framework
     m_parameters.push_back(Parameter("Randomize", 0.0, 1.0, 0.0, FF_TYPE_EVENT, false, false,
