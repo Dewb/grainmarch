@@ -96,7 +96,7 @@
       debugDocumentVersioning = "YES"
       allowLocationSimulation = "YES">
       <PathRunnable
-         FilePath = "/Applications/Resolume Arena 4.1.7/Arena.app">
+         FilePath = "/Applications/Resolume Arena 4.1.8/Arena.app">
       </PathRunnable>
       <AdditionalOptions>
       </AdditionalOptions>
