@@ -65,8 +65,8 @@ public:
         return fmod(t, linePeriod) / linePeriod;
     }
     
-    double verticalBeamFunction(double t, double linePeriod) {
-        return floor(t / linePeriod) * linePeriod; // this is wrong, but it looks cool
+    double verticalBeamFunction(double t, double linePeriod, double lines) {
+        return floor(t / linePeriod) / lines;
     }
     
     virtual void EmitGeometry() {
@@ -100,12 +100,14 @@ public:
         
         double t = 0;
         glBegin(GL_LINES);
+        glLineWidth(3.0);
         Point lastPoint(0, 0);
         Point currentPoint = lastPoint;
         while (t < framePeriod)
         {
             lastPoint = currentPoint;
-            currentPoint = Point(horizontalBeamFunction(t, linePeriod), verticalBeamFunction(t, linePeriod));
+            currentPoint = Point(horizontalBeamFunction(t, linePeriod),
+                                 verticalBeamFunction(t, linePeriod, GetScaled(Param::Scanlines)));
             drawLine(lastPoint.x, lastPoint.y, currentPoint.x, currentPoint.y, 2.0);
             t += advance;
         }
