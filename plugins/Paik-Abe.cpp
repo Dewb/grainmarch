@@ -18,8 +18,10 @@
 // Parameter(uniform name, minimum value, maximum value, default value, optional type (default standard/float.))
 
 BEGIN_SHADER_PARAMETERS()
-PARAM(Quality, 0.0, 100000.0, 20000.0, FF_TYPE_STANDARD, false, false)
-PARAM(Scanlines, 0.0, 1000.0, 525.0, FF_TYPE_STANDARD, false)
+PARAM(Quality, 0.0, 20000.0, 10000.0, FF_TYPE_STANDARD, false, false)
+PARAM(Scanlines, 0.0, 2000.0, 525.0, FF_TYPE_STANDARD, false)
+PARAM(ScanlineWidth, 0.0002, 0.04, 0.002, FF_TYPE_STANDARD, false)
+PARAM(Intensity, 0.0, 1.0, 0.3, FF_TYPE_STANDARD, true)
 PARAM(S_Angle, 0.0, 2 * PI, 0.0, FF_TYPE_STANDARD, false)
 PARAM(SineFreq, 0.0, 1000.0, 1.0, FF_TYPE_STANDARD, false)
 PARAM(CosFreq, 0.0, 1000.0, 1.0, FF_TYPE_STANDARD, false)
@@ -55,6 +57,7 @@ class PaikAbePlugin : public EffectPlugin
 {
 public:
     PaikAbePlugin() {}
+    
     class Point {
     public:
         Point() : x(0), y(0) {};
@@ -63,26 +66,23 @@ public:
         float y;
     };
     
-    vector<Point> beamPath;
-    
-    /*
-     void drawLine(float x1, float y1, float x2, float y2, float lineWidth) {
+    void drawLineQuad(Point a, Point b, Point ta, Point tb, float lineWidth) {
+        float length = sqrt(pow(b.x - a.x, 2) + pow(b.y - a.y, 2));
+        float dx = (b.x - a.x) / length;
+        float dy = (b.y - a.y) / length;
+        float wx = dy * lineWidth * -0.5;
+        float wy = dx * lineWidth * 0.5;
         
-        float length = sqrt(pow(x2 - x1, 2) + pow(y2 - y1, 2));
-        float dx = (x2 - x1) / length;
-        float dy = (y2 - y1) / length;
+        glTexCoord3f((ta.x + 1) / 2, (ta.y + 1) / 2, 0.0);
+        glVertex2f(a.x + wx, a.y + wy);
+        glTexCoord3f((ta.x + 1) / 2, (ta.y + 1) / 2, 1.0);
+        glVertex2f(a.x - wx, a.y - wy);
         
-            float wx = dy * lineWidth * -0.5;
-            float wy = dx * lineWidth * 0.5;
-        
-            glVertex2f(x1 + wx, y1 + wy);
-            glVertex2f(x1 - wx, y1 - wy);
-            glVertex2f(x2 - wx, y2 - wy);
-            glVertex2f(x2 + wx, y2 + wy);
-        
-
+        glTexCoord3f((tb.x + 1) / 2, (tb.y + 1) / 2, 1.0);
+        glVertex2f(b.x - wx, b.y - wy);
+        glTexCoord3f((tb.x + 1) / 2, (tb.y + 1) / 2, 0.0);
+        glVertex2f(b.x + wx, b.y + wy);
     }
-     */
     
     void drawLine(Point a, Point b, Point ta, Point tb, float lineWidth) {
         glMultiTexCoord2f(0, (ta.x + 1) / 2, (ta.y + 1) / 2);
@@ -119,6 +119,11 @@ public:
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         glEnable(GL_CULL_FACE);
         glCullFace(GL_BACK);
+
+        glDisable(GL_DEPTH_TEST);
+        glEnable(GL_BLEND);
+        glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+        glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
         
         glPushMatrix();
         
@@ -134,11 +139,6 @@ public:
         double linePeriod = 1.0 / linesPerSecond;
         double framePeriod = 1.0 / frameRate;
         double advance = framePeriod / GetScaled(Param::Quality); // e.g. samples per frame
-        
-        double t = 0;
-        glBegin(GL_LINES);
-        glLineWidth(3.0);
-        Point lastPoint, currentPoint, lastSourcePoint, currentSourcePoint;
         
         double mix = GetScaled(Param::Mix);
         double hFactor = lerp(1.0, GetScaled(Param::H), mix);
@@ -168,6 +168,14 @@ public:
         double sTriFreq = GetScaled(Param::TriFreq) * pow(2.0, GetScaled(Param::S_TriFreq));
         double sDamping = GetScaled(Param::S_Damping);
         
+        double lineWidth = GetScaled(Param::ScanlineWidth);
+        
+        double t = 0;
+        Point lastPoint, currentPoint, lastSourcePoint, currentSourcePoint;
+
+        glBegin(GL_QUADS);
+        //drawLineQuad(Point(-1,-1), Point(1,1), Point(-1,-1), Point(1,1), lineWidth);
+        
         while (t < framePeriod)
         {
             double h = horizontalBeamFunction(t, linePeriod);
@@ -194,13 +202,14 @@ public:
             currentSourcePoint = Point(h, v);
             
             if (t != 0.0)
-                drawLine(lastPoint, currentPoint, lastSourcePoint, currentSourcePoint, 2.0);
+                drawLineQuad(lastPoint, currentPoint, lastSourcePoint, currentSourcePoint, lineWidth);
 
             lastPoint = currentPoint;
             lastSourcePoint = currentSourcePoint;
 
             t += advance;
         }
+        
         glEnd();
 
         glPopMatrix();

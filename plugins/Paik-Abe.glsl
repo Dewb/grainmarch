@@ -12,12 +12,19 @@ void main()
 char fragmentShaderCode[] = R"(
 
 uniform sampler2D inputTexture0;
+uniform float Intensity;
 
 void main()
 {
     vec2 texCoords = gl_TexCoord[0].st;
     gl_FragColor = texture2D(inputTexture0, texCoords);
-    gl_FragColor.a = 1.0;
+    float d = 1.0 - 2.0 * abs(0.5 - gl_TexCoord[0].z);
+    float dd = pow(d, 2.8);
+
+    gl_FragColor.r += Intensity * 0.27 * dd;
+    gl_FragColor.g += Intensity * 0.33 * dd;
+    gl_FragColor.b += Intensity * 0.24 * dd;
+    gl_FragColor.a = Intensity * pow(d, 2.5 - 2.0 * Intensity);
 }
 
 )";
