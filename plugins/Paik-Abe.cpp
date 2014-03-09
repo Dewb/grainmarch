@@ -18,37 +18,40 @@
 // Parameter(uniform name, minimum value, maximum value, default value, optional type (default standard/float.))
 
 BEGIN_SHADER_PARAMETERS()
-PARAM(Quality, 0.0, 20000.0, 10000.0, FF_TYPE_STANDARD, false, false)
+PARAM(Quality, 0.0, 30000.0, 15000.0, FF_TYPE_STANDARD, false, false)
 PARAM(Scanlines, 0.0, 2000.0, 525.0, FF_TYPE_STANDARD, false)
-PARAM(ScanlineWidth, 0.0002, 0.04, 0.002, FF_TYPE_STANDARD, false)
+PARAM(BeamWidth, 0.0002, 0.04, 0.002, FF_TYPE_STANDARD, false)
 PARAM(Intensity, 0.0, 1.0, 0.3, FF_TYPE_STANDARD, true)
 PARAM(S_Angle, 0.0, 2 * PI, 0.0, FF_TYPE_STANDARD, false)
 PARAM(SineFreq, 0.0, 1000.0, 1.0, FF_TYPE_STANDARD, false)
 PARAM(CosFreq, 0.0, 1000.0, 1.0, FF_TYPE_STANDARD, false)
 PARAM(TriFreq, 0.0, 1000.0, 1.0, FF_TYPE_STANDARD, false)
+PARAM(SinePhase, -2 * PI, 2 * PI, 0.0, FF_TYPE_STANDARD, false)
+PARAM(CosPhase, -2 * PI, 2 * PI, 0.0, FF_TYPE_STANDARD, false)
+PARAM(TriPhase, -2 * PI, 2 * PI, 0.0, FF_TYPE_STANDARD, false)
 PARAM(Mix, 0.0, 1.0, 1.0, FF_TYPE_STANDARD, false, false)
 PARAM(H, -2.0, 2.0, 1.0, FF_TYPE_STANDARD, false)
 PARAM(V, -2.0, 2.0, 1.0, FF_TYPE_STANDARD, false)
-PARAM(H_SineAmp, -2.0, 2.0, 0.0, FF_TYPE_STANDARD, false)
-PARAM(H_SineFreq, -3.0, 3.0, 0.0, FF_TYPE_STANDARD, false)
-PARAM(H_CosAmp, -2.0, 2.0, 0.0, FF_TYPE_STANDARD, false)
-PARAM(H_CosFreq, -3.0, 3.0, 0.0, FF_TYPE_STANDARD, false)
-PARAM(H_TriAmp, -2.0, 2.0, 0.0, FF_TYPE_STANDARD, false)
-PARAM(H_TriFreq, -3.0, 3.0, 0.0, FF_TYPE_STANDARD, false)
+PARAM(H_SineAmp, -1.0, 1.0, 0.0, FF_TYPE_STANDARD, false)
+PARAM(H_SineFreq, -2.0, 2.0, 0.0, FF_TYPE_STANDARD, false)
+PARAM(H_CosAmp, -1.0, 1.0, 0.0, FF_TYPE_STANDARD, false)
+PARAM(H_CosFreq, -2.0, 2.0, 0.0, FF_TYPE_STANDARD, false)
+PARAM(H_TriAmp, -1.0, 1.0, 0.0, FF_TYPE_STANDARD, false)
+PARAM(H_TriFreq, -2.0, 2.0, 0.0, FF_TYPE_STANDARD, false)
 PARAM(H_Damping, 0.0, 100.0, 0.0, FF_TYPE_STANDARD, false)
-PARAM(V_SineAmp, -2.0, 2.0, 0.0, FF_TYPE_STANDARD, false)
-PARAM(V_SineFreq, -3.0, 3.0, 0.0, FF_TYPE_STANDARD, false)
-PARAM(V_CosAmp, -2.0, 2.0, 0.0, FF_TYPE_STANDARD, false)
-PARAM(V_CosFreq, -3.0, 3.0, 0.0, FF_TYPE_STANDARD, false)
-PARAM(V_TriAmp, -2.0, 2.0, 0.0, FF_TYPE_STANDARD, false)
-PARAM(V_TriFreq, -3.0, 3.0, 0.0, FF_TYPE_STANDARD, false)
+PARAM(V_SineAmp, -1.0, 1.0, 0.0, FF_TYPE_STANDARD, false)
+PARAM(V_SineFreq, -2.0, 2.0, 0.0, FF_TYPE_STANDARD, false)
+PARAM(V_CosAmp, -1.0, 1.0, 0.0, FF_TYPE_STANDARD, false)
+PARAM(V_CosFreq, -2.0, 2.0, 0.0, FF_TYPE_STANDARD, false)
+PARAM(V_TriAmp, -1.0, 1.0, 0.0, FF_TYPE_STANDARD, false)
+PARAM(V_TriFreq, -2.0, 2.0, 0.0, FF_TYPE_STANDARD, false)
 PARAM(V_Damping, 0.0, 100.0, 0.0, FF_TYPE_STANDARD, false)
-PARAM(S_SineAmp, -2.0, 2.0, 0.0, FF_TYPE_STANDARD, false)
-PARAM(S_SineFreq, -3.0, 3.0, 0.0, FF_TYPE_STANDARD, false)
-PARAM(S_CosAmp, -2.0, 2.0, 0.0, FF_TYPE_STANDARD, false)
-PARAM(S_CosFreq, -3.0, 3.0, 0.0, FF_TYPE_STANDARD, false)
-PARAM(S_TriAmp, -2.0, 2.0, 0.0, FF_TYPE_STANDARD, false)
-PARAM(S_TriFreq, -3.0, 3.0, 0.0, FF_TYPE_STANDARD, false)
+PARAM(S_SineAmp, -1.0, 1.0, 0.0, FF_TYPE_STANDARD, false)
+PARAM(S_SineFreq, -2.0, 2.0, 0.0, FF_TYPE_STANDARD, false)
+PARAM(S_CosAmp, -1.0, 1.0, 0.0, FF_TYPE_STANDARD, false)
+PARAM(S_CosFreq, -2.0, 2.0, 0.0, FF_TYPE_STANDARD, false)
+PARAM(S_TriAmp, -1.0, 1.0, 0.0, FF_TYPE_STANDARD, false)
+PARAM(S_TriFreq, -2.0, 2.0, 0.0, FF_TYPE_STANDARD, false)
 PARAM(S_Damping, 0.0, 100.0, 0.0, FF_TYPE_STANDARD, false)
 
 END_SHADER_PARAMETERS()
@@ -122,7 +125,7 @@ public:
 
         glDisable(GL_DEPTH_TEST);
         glEnable(GL_BLEND);
-        glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+        glBlendFunc(GL_SRC_ALPHA_SATURATE, GL_ONE);
         glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
         
         glPushMatrix();
@@ -141,6 +144,10 @@ public:
         double advance = framePeriod / GetScaled(Param::Quality); // e.g. samples per frame
         
         double mix = GetScaled(Param::Mix);
+        double sinePhase = GetScaled(Param::SinePhase);
+        double cosPhase = GetScaled(Param::CosPhase);
+        double triPhase = GetScaled(Param::TriPhase);
+        
         double hFactor = lerp(1.0, GetScaled(Param::H), mix);
         double hSine = GetScaled(Param::H_SineAmp) * mix;
         double hCos = GetScaled(Param::H_CosAmp) * mix;
@@ -168,7 +175,7 @@ public:
         double sTriFreq = GetScaled(Param::TriFreq) * pow(2.0, GetScaled(Param::S_TriFreq));
         double sDamping = GetScaled(Param::S_Damping);
         
-        double lineWidth = GetScaled(Param::ScanlineWidth);
+        double lineWidth = GetScaled(Param::BeamWidth);
         
         double t = 0;
         Point lastPoint, currentPoint, lastSourcePoint, currentSourcePoint;
@@ -182,20 +189,20 @@ public:
             double v = verticalBeamFunction(t, linePeriod, GetScaled(Param::Scanlines));
             
             double x = (hFactor * h +
-                        hSine * sin(t * hSineFreq) +
-                        hCos * cos(t * hCosFreq) +
-                        hTri * tri(t * hTriFreq)) *
+                        hSine * sin(t * hSineFreq + sinePhase) +
+                        hCos * cos(t * hCosFreq + cosPhase) +
+                        hTri * tri(t * hTriFreq + triPhase)) *
                         lerp(1.0, exp(-1.0 * hDamping * t), mix);
             
             double y = (vFactor * v +
-                        vSine * sin(t * vSineFreq) +
-                        vCos * cos(t * vCosFreq) +
-                        vTri * tri(t * vTriFreq)) *
+                        vSine * sin(t * vSineFreq + sinePhase) +
+                        vCos * cos(t * vCosFreq + cosPhase) +
+                        vTri * tri(t * vTriFreq + triPhase)) *
                         lerp(1.0, exp(-1.0 * vDamping * t), mix);
 
-            double s = (sSine * sin(t * sSineFreq) +
-                        sCos * cos(t * sCosFreq) +
-                        sTri * tri(t * sTriFreq)) *
+            double s = (sSine * sin(t * sSineFreq + sinePhase) +
+                        sCos * cos(t * sCosFreq + cosPhase) +
+                        sTri * tri(t * sTriFreq + triPhase)) *
                         lerp(1.0, exp(-1.0 * sDamping * t), mix);
             
             currentPoint = Point(x + s * cos(sAngle), y + s * sin(sAngle));
