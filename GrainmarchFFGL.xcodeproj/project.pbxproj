@@ -585,7 +585,7 @@
 					OpenGL,
 				);
 				PRODUCT_NAME = GrainmarchFFGL;
-				SDKROOT = macosx;
+				SDKROOT = macosx10.8;
 				WRAPPER_EXTENSION = bundle;
 				ZERO_LINK = NO;
 			};
@@ -618,7 +618,7 @@
 					OpenGL,
 				);
 				PRODUCT_NAME = GrainmarchFFGL;
-				SDKROOT = macosx;
+				SDKROOT = macosx10.8;
 				WRAPPER_EXTENSION = bundle;
 				ZERO_LINK = NO;
 			};
@@ -633,6 +633,7 @@
 				COPY_PHASE_STRIP = NO;
 				GCC_PREPROCESSOR_DEFINITIONS = "";
 				HEADER_SEARCH_PATHS = "../../../../FFGLSDK_1_5/Include/**";
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				SDKROOT = macosx;
 			};
 			name = Debug;
@@ -646,6 +647,7 @@
 				COPY_PHASE_STRIP = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = "";
 				HEADER_SEARCH_PATHS = "../../../../FFGLSDK_1_5/Include/**";
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				SDKROOT = macosx;
 			};
 			name = Release;
@@ -681,7 +683,7 @@
 					OpenGL,
 				);
 				PRODUCT_NAME = "Paik-Abe";
-				SDKROOT = macosx;
+				SDKROOT = macosx10.8;
 				WRAPPER_EXTENSION = bundle;
 				ZERO_LINK = NO;
 			};
@@ -714,7 +716,7 @@
 					OpenGL,
 				);
 				PRODUCT_NAME = "Paik-Abe";
-				SDKROOT = macosx;
+				SDKROOT = macosx10.8;
 				WRAPPER_EXTENSION = bundle;
 				ZERO_LINK = NO;
 			};
@@ -751,7 +753,7 @@
 					OpenGL,
 				);
 				PRODUCT_NAME = Average;
-				SDKROOT = macosx;
+				SDKROOT = macosx10.8;
 				WRAPPER_EXTENSION = bundle;
 				ZERO_LINK = NO;
 			};
@@ -784,7 +786,7 @@
 					OpenGL,
 				);
 				PRODUCT_NAME = Average;
-				SDKROOT = macosx;
+				SDKROOT = macosx10.8;
 				WRAPPER_EXTENSION = bundle;
 				ZERO_LINK = NO;
 			};
@@ -821,7 +823,7 @@
 					OpenGL,
 				);
 				PRODUCT_NAME = BlockheadFFGL;
-				SDKROOT = macosx;
+				SDKROOT = macosx10.8;
 				WRAPPER_EXTENSION = bundle;
 				ZERO_LINK = NO;
 			};
@@ -854,7 +856,7 @@
 					OpenGL,
 				);
 				PRODUCT_NAME = BlockheadFFGL;
-				SDKROOT = macosx;
+				SDKROOT = macosx10.8;
 				WRAPPER_EXTENSION = bundle;
 				ZERO_LINK = NO;
 			};
@@ -891,7 +893,7 @@
 					OpenGL,
 				);
 				PRODUCT_NAME = LinecrimesFFGL;
-				SDKROOT = macosx;
+				SDKROOT = macosx10.8;
 				WRAPPER_EXTENSION = bundle;
 				ZERO_LINK = NO;
 			};
@@ -924,7 +926,7 @@
 					OpenGL,
 				);
 				PRODUCT_NAME = LinecrimesFFGL;
-				SDKROOT = macosx;
+				SDKROOT = macosx10.8;
 				WRAPPER_EXTENSION = bundle;
 				ZERO_LINK = NO;
 			};
@@ -961,7 +963,7 @@
 					OpenGL,
 				);
 				PRODUCT_NAME = TanlineFFGL;
-				SDKROOT = macosx;
+				SDKROOT = macosx10.8;
 				WRAPPER_EXTENSION = bundle;
 				ZERO_LINK = NO;
 			};
@@ -994,7 +996,7 @@
 					OpenGL,
 				);
 				PRODUCT_NAME = TanlineFFGL;
-				SDKROOT = macosx;
+				SDKROOT = macosx10.8;
 				WRAPPER_EXTENSION = bundle;
 				ZERO_LINK = NO;
 			};
