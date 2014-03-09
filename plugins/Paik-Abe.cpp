@@ -18,39 +18,40 @@
 // Parameter(uniform name, minimum value, maximum value, default value, optional type (default standard/float.))
 
 BEGIN_SHADER_PARAMETERS()
-PARAM(Quality, 0.0, 30000.0, 15000.0, FF_TYPE_STANDARD, false, false)
+PARAM(Mix, 0.0, 1.0, 1.0, FF_TYPE_STANDARD, false, false)
+PARAM(Zoom, -1.0, 1.0, 0.0, FF_TYPE_STANDARD, true)
 PARAM(Scanlines, 0.0, 2000.0, 525.0, FF_TYPE_STANDARD, false)
-PARAM(BeamWidth, 0.0002, 0.04, 0.002, FF_TYPE_STANDARD, false)
+PARAM(BeamWidth, 0.0002, 0.1, 0.002, FF_TYPE_STANDARD, false)
 PARAM(Intensity, 0.0, 1.0, 0.3, FF_TYPE_STANDARD, true)
-PARAM(S_Angle, 0.0, 2 * PI, 0.0, FF_TYPE_STANDARD, false)
+PARAM(Quality, 0.0, 30000.0, 15000.0, FF_TYPE_STANDARD, false, false)
 PARAM(SineFreq, 0.0, 1000.0, 1.0, FF_TYPE_STANDARD, false)
 PARAM(CosFreq, 0.0, 1000.0, 1.0, FF_TYPE_STANDARD, false)
 PARAM(TriFreq, 0.0, 1000.0, 1.0, FF_TYPE_STANDARD, false)
 PARAM(SinePhase, -2 * PI, 2 * PI, 0.0, FF_TYPE_STANDARD, false)
 PARAM(CosPhase, -2 * PI, 2 * PI, 0.0, FF_TYPE_STANDARD, false)
 PARAM(TriPhase, -2 * PI, 2 * PI, 0.0, FF_TYPE_STANDARD, false)
-PARAM(Mix, 0.0, 1.0, 1.0, FF_TYPE_STANDARD, false, false)
 PARAM(H, -2.0, 2.0, 1.0, FF_TYPE_STANDARD, false)
 PARAM(V, -2.0, 2.0, 1.0, FF_TYPE_STANDARD, false)
-PARAM(H_SineAmp, -1.0, 1.0, 0.0, FF_TYPE_STANDARD, false)
+PARAM(S_Angle, 0.0, 2 * PI, 0.0, FF_TYPE_STANDARD, false)
+PARAM(H_SineAmp, -2.0, 2.0, 0.0, FF_TYPE_STANDARD, false)
 PARAM(H_SineFreq, -2.0, 2.0, 0.0, FF_TYPE_STANDARD, false)
-PARAM(H_CosAmp, -1.0, 1.0, 0.0, FF_TYPE_STANDARD, false)
+PARAM(H_CosAmp, -2.0, 2.0, 0.0, FF_TYPE_STANDARD, false)
 PARAM(H_CosFreq, -2.0, 2.0, 0.0, FF_TYPE_STANDARD, false)
-PARAM(H_TriAmp, -1.0, 1.0, 0.0, FF_TYPE_STANDARD, false)
+PARAM(H_TriAmp, -2.0, 2.0, 0.0, FF_TYPE_STANDARD, false)
 PARAM(H_TriFreq, -2.0, 2.0, 0.0, FF_TYPE_STANDARD, false)
 PARAM(H_Damping, 0.0, 100.0, 0.0, FF_TYPE_STANDARD, false)
-PARAM(V_SineAmp, -1.0, 1.0, 0.0, FF_TYPE_STANDARD, false)
+PARAM(V_SineAmp, -2.0, 2.0, 0.0, FF_TYPE_STANDARD, false)
 PARAM(V_SineFreq, -2.0, 2.0, 0.0, FF_TYPE_STANDARD, false)
-PARAM(V_CosAmp, -1.0, 1.0, 0.0, FF_TYPE_STANDARD, false)
+PARAM(V_CosAmp, -2.0, 2.0, 0.0, FF_TYPE_STANDARD, false)
 PARAM(V_CosFreq, -2.0, 2.0, 0.0, FF_TYPE_STANDARD, false)
-PARAM(V_TriAmp, -1.0, 1.0, 0.0, FF_TYPE_STANDARD, false)
+PARAM(V_TriAmp, -2.0, 2.0, 0.0, FF_TYPE_STANDARD, false)
 PARAM(V_TriFreq, -2.0, 2.0, 0.0, FF_TYPE_STANDARD, false)
 PARAM(V_Damping, 0.0, 100.0, 0.0, FF_TYPE_STANDARD, false)
-PARAM(S_SineAmp, -1.0, 1.0, 0.0, FF_TYPE_STANDARD, false)
+PARAM(S_SineAmp, -2.0, 2.0, 0.0, FF_TYPE_STANDARD, false)
 PARAM(S_SineFreq, -2.0, 2.0, 0.0, FF_TYPE_STANDARD, false)
 PARAM(S_CosAmp, -1.0, 1.0, 0.0, FF_TYPE_STANDARD, false)
 PARAM(S_CosFreq, -2.0, 2.0, 0.0, FF_TYPE_STANDARD, false)
-PARAM(S_TriAmp, -1.0, 1.0, 0.0, FF_TYPE_STANDARD, false)
+PARAM(S_TriAmp, -2.0, 2.0, 0.0, FF_TYPE_STANDARD, false)
 PARAM(S_TriFreq, -2.0, 2.0, 0.0, FF_TYPE_STANDARD, false)
 PARAM(S_Damping, 0.0, 100.0, 0.0, FF_TYPE_STANDARD, false)
 
@@ -132,7 +133,9 @@ public:
         
         glMatrixMode(GL_PROJECTION);
         glLoadIdentity();
-        glOrtho(-m_aspectRatio/2, m_aspectRatio/2, -0.5, 0.5, -20.0, 20.0);
+        
+        float zoom = pow(16.0, -GetScaled(Param::Zoom));
+        glOrtho(-m_aspectRatio * zoom, m_aspectRatio * zoom, -1.0 * zoom, 1.0 * zoom, -20.0, 20.0);
         
         glMatrixMode(GL_MODELVIEW);
         glLoadIdentity();
@@ -175,7 +178,7 @@ public:
         double sTriFreq = GetScaled(Param::TriFreq) * pow(2.0, GetScaled(Param::S_TriFreq));
         double sDamping = GetScaled(Param::S_Damping);
         
-        double lineWidth = GetScaled(Param::BeamWidth);
+        double lineWidth = GetScaled(Param::BeamWidth) * zoom;
         
         double t = 0;
         Point lastPoint, currentPoint, lastSourcePoint, currentSourcePoint;
