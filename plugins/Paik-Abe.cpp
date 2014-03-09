@@ -190,12 +190,12 @@ public:
             double y = (vFactor * v +
                         vSine * sin(t * vSineFreq) +
                         vCos * cos(t * vCosFreq) +
-                        vTri * sin(t * vTriFreq)) *
+                        vTri * tri(t * vTriFreq)) *
                         lerp(1.0, exp(-1.0 * vDamping * t), mix);
 
             double s = (sSine * sin(t * sSineFreq) +
                         sCos * cos(t * sCosFreq) +
-                        sTri * sin(t * sTriFreq)) *
+                        sTri * tri(t * sTriFreq)) *
                         lerp(1.0, exp(-1.0 * sDamping * t), mix);
             
             currentPoint = Point(x + s * cos(sAngle), y + s * sin(sAngle));
