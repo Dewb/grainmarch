@@ -20,6 +20,7 @@
 BEGIN_SHADER_PARAMETERS()
 PARAM(Mix, 0.0, 1.0, 1.0, FF_TYPE_STANDARD, false, false)
 PARAM(Zoom, -1.0, 1.0, 0.0, FF_TYPE_STANDARD, true)
+PARAM(Rotate, 180, -180, 0.0, FF_TYPE_STANDARD, true)
 PARAM(Scanlines, 0.0, 2000.0, 525.0, FF_TYPE_STANDARD, false)
 PARAM(BeamWidth, 0.0002, 0.1, 0.002, FF_TYPE_STANDARD, false)
 PARAM(Intensity, 0.0, 1.0, 0.3, FF_TYPE_STANDARD, true)
@@ -135,6 +136,7 @@ public:
         glLoadIdentity();
         
         float zoom = pow(16.0, -GetScaled(Param::Zoom));
+        glRotatef(GetScaled(Param::Rotate), 0, 0, 1);
         glOrtho(-m_aspectRatio * zoom, m_aspectRatio * zoom, -1.0 * zoom, 1.0 * zoom, -20.0, 20.0);
         
         glMatrixMode(GL_MODELVIEW);
