@@ -14,9 +14,7 @@
 
 // Parameter(uniform name, minimum value, maximum value, default value, optional type (default standard/float.))
 
-float g_totalTime = 0.0;
-
-auto timeAction = [](Parameter& p, float v, ParamList& l) {
+auto accumulateTimeAction = [](Parameter& p, float v, ParamList& l) {
     static float currentTime = 0.0;
     static float totalTicks = 0.0;
     
@@ -26,11 +24,11 @@ auto timeAction = [](Parameter& p, float v, ParamList& l) {
         totalTicks -= 1.0;
     }
     currentTime = v;
-    g_totalTime = totalTicks + currentTime;
+    p.Value = totalTicks + currentTime;
 };
 
 BEGIN_SHADER_PARAMETERS()
-    PARAM(Time, 0.0, 10.0, 0.0, FF_TYPE_STANDARD, false, false, timeAction)
+    PARAM(Time, 0.0, 10.0, 0.0, FF_TYPE_STANDARD, true, true, accumulateTimeAction)
     PARAM(SymmetryMode, 0.0, 1.0, 0.0)
     PARAM(FieldOfView, 0.1, 10.0, 1.0)
     PARAM(Iterations, 2, 20.0, 5)
@@ -56,16 +54,6 @@ BEGIN_SHADER_PARAMETERS()
     PARAM(NLPRotationLFO, -1.0, 1.0, 0.25)
 END_SHADER_PARAMETERS()
 
-class GrainmarchPlugin : public SourcePlugin
-{
-public:
-    GrainmarchPlugin() {}
-    
-    void Initialize() {
-        ManuallyBindUniform("Time", &g_totalTime);
-    }
-};
-
-DECLARE_PLUGIN(GrainmarchPlugin, "DBGM", "Grainmarch", "Grainy fractal raymarching", "by Michael Dewberry - dewb.org\nBased on Shadertoy shaders by Syntopia and Kali")
+DECLARE_PLUGIN(SourcePlugin, "DBGM", "Grainmarch", "Grainy fractal raymarching", "by Michael Dewberry - dewb.org\nBased on Shadertoy shaders by Syntopia and Kali")
 
 
