@@ -12,23 +12,13 @@
 #include "Grainmarch.glsl"
 #include "default_vertex_shader.glsl"
 
+
+DECLARE_PLUGIN(SourcePlugin, "DBGM", "Grainmarch", "Grainy fractal raymarching", "by Michael Dewberry - dewb.org\nBased on Shadertoy shaders by Syntopia and Kali")
+
 // Parameter(uniform name, minimum value, maximum value, default value, optional type (default standard/float.))
 
-auto accumulateTimeAction = [](Parameter& p, float v, ParamList& l) {
-    static float currentTime = 0.0;
-    static float totalTicks = 0.0;
-    
-    if (currentTime - v > 0.5) {
-        totalTicks += 1.0;
-    } else if (v - currentTime > 0.5) {
-        totalTicks -= 1.0;
-    }
-    currentTime = v;
-    p.Value = totalTicks + currentTime;
-};
-
 BEGIN_SHADER_PARAMETERS()
-    PARAM(Time, 0.0, 10.0, 0.0, FF_TYPE_STANDARD, true, true, accumulateTimeAction)
+    PARAM(Time, 0.0, 10.0, 0.0, FF_TYPE_STANDARD, true, true, AccumulateAction)
     PARAM(SymmetryMode, 0.0, 1.0, 0.0)
     PARAM(FieldOfView, 0.1, 10.0, 1.0)
     PARAM(Iterations, 2, 20.0, 5)
@@ -53,7 +43,5 @@ BEGIN_SHADER_PARAMETERS()
     PARAM(IterationRotationLFOIntensity, 0.0, 10.0, 2.0)
     PARAM(NLPRotationLFO, -1.0, 1.0, 0.25)
 END_SHADER_PARAMETERS()
-
-DECLARE_PLUGIN(SourcePlugin, "DBGM", "Grainmarch", "Grainy fractal raymarching", "by Michael Dewberry - dewb.org\nBased on Shadertoy shaders by Syntopia and Kali")
 
 

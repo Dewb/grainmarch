@@ -26,13 +26,17 @@ public:
     float Value;
     int Type;
 
-    bool IsShaderUniform;
-    bool ShouldRandomize;
-    GLint UniformLocation;
-    ParamAction Action;
-    
     float RangeMin;
     float RangeMax;
+    
+    ParamAction Action;
+    float ActionData[4];
+    
+    bool IsShaderUniform;
+    bool ShouldRandomize;
+    float LastNonRandomValue;
+    
+    GLint UniformLocation;
 };
 
 class ShaderPlugin :
@@ -126,6 +130,6 @@ extern char fragmentShaderCode[];
 
 extern float dice();
 
-void update_time(double *t, const double t0);
+extern ParamAction AccumulateAction;
 
 

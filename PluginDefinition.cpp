@@ -16,6 +16,17 @@ float dice() {
     return distribution(generator);
 }
 
+// Action to convert a cycling parameter into an accumulated linear ramp
+ParamAction AccumulateAction = [](Parameter& p, float v, ParamList& l) {
+    if (p.ActionData[0] - v > 0.5) {
+        p.ActionData[1] += 1.0;
+    } else if (v - p.ActionData[0] > 0.5) {
+        p.ActionData[1] -= 1.0;
+    }
+    p.ActionData[0] = v;
+    p.Value = p.ActionData[1] + v;
+};
+
 Parameter::Parameter(string name, float min, float max, float value, int type, bool isShader, bool shouldRandomize, ParamAction action)
 : Name(name)
 , Type(type)
@@ -94,6 +105,36 @@ void ShaderPlugin::InitParameters()
                 }
             }
         }
+    ));
+    m_parameters.push_back(Parameter("RandomHold", 0.0, 1.0, 0.0, FF_TYPE_BOOLEAN, false, false,
+         [](Parameter& randomp, float newValue, ParamList& list) {
+             static vector<float> diceRolls;
+             
+             if (newValue == 1.0 && randomp.Value != 1.0) {
+                 diceRolls.clear();
+                 for (auto& p : list) {
+                     if (p.ShouldRandomize) {
+                         float r;
+                         if (p.Type == FF_TYPE_BOOLEAN) {
+                             r = dice() >= 0.5;
+                         } else {
+                             r = dice();
+                         }
+                         diceRolls.push_back(r);
+                         p.LastNonRandomValue = p.Value;
+                         p.Value = r;
+                     }
+                 }
+             } else if (newValue == 1.0) {
+                 auto roll = diceRolls.begin();
+                 for (auto& p : list) {
+                     if (p.ShouldRandomize) {
+                         p.Value = p.Value - p.LastNonRandomValue + *roll++;
+                     }
+                 }
+             }
+             randomp.Value = newValue;
+         }
     ));
 }
 
@@ -228,10 +269,11 @@ DWORD ShaderPlugin::SetParameter(const SetParameterStruct* pParam)
     if (pParam != NULL && pParam->ParameterNumber < m_parameters.size()) {
         auto& p = m_parameters[pParam->ParameterNumber];
         float newValue = *((float *)(unsigned)&(pParam->NewParameterValue));
-        if (p.Action != nullptr)
+        if (p.Action != nullptr) {
             p.Action(p, newValue, m_parameters);
-        else
+        } else {
             p.Value = newValue;
+        }
         return FF_SUCCESS;
     } else {
         return FF_FAIL;
