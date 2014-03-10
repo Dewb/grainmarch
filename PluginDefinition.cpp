@@ -48,12 +48,6 @@ ShaderPlugin::ShaderPlugin(int nInputs)
             m_inputTextureLocationArray[ii] = -1;
         }
     }
-        
-    SetTimeSupported(true);
-    m_HostSupportsSetTime = false;
-    
-    m_time = 0;
-    m_timeLocation = -1;
     
     m_resolutionX = 0;
     m_resolutionY = 0;
@@ -130,7 +124,6 @@ DWORD ShaderPlugin::InitGL(const FFGLViewportStruct *vp)
         m_extensions.glUniform1iARB(m_inputTextureLocationArray[ii], 0);
     }
         
-    m_timeLocation = m_shader.FindUniform("iGlobalTime");
     m_resolutionXLocation = m_shader.FindUniform("iResolutionX");
     m_resolutionYLocation = m_shader.FindUniform("iResolutionY");
     m_resolutionX = vp->width;
@@ -138,6 +131,8 @@ DWORD ShaderPlugin::InitGL(const FFGLViewportStruct *vp)
     m_aspectRatio = m_resolutionX / m_resolutionY;
     
     m_shader.UnbindShader();
+    
+    Initialize();
        
     return FF_SUCCESS;
 }
@@ -179,12 +174,10 @@ DWORD ShaderPlugin::ProcessOpenGL(ProcessOpenGLStruct *pGL) {
         m_extensions.glUniform1fARB(p.UniformLocation, p.GetScaledValue());
     }
     
-    if (!m_HostSupportsSetTime)
-    {
-        update_time(&m_time, m_startTime);
+    for (auto& u : m_uniforms) {
+        m_extensions.glUniform1fARB(u.first, *u.second);
     }
     
-    m_extensions.glUniform1fARB(m_timeLocation, m_time);
     m_extensions.glUniform1fARB(m_resolutionXLocation, m_resolutionX);
     m_extensions.glUniform1fARB(m_resolutionYLocation, m_resolutionY);
     
@@ -211,6 +204,10 @@ void ShaderPlugin::EmitGeometry()
     glTexCoord2f(m_texDimensions.s, 0);
 	glVertex2f(1, -1);
 	glEnd();
+}
+
+void ShaderPlugin::Initialize()
+{
 }
 
 DWORD ShaderPlugin::GetParameter(DWORD dwIndex)
@@ -243,22 +240,11 @@ DWORD ShaderPlugin::SetParameter(const SetParameterStruct* pParam)
 
 DWORD ShaderPlugin::SetTime(double time)
 {
-    m_HostSupportsSetTime = true;
-    m_time = time;
     return FF_SUCCESS;
 }
 
-void update_time(double *t, const double t0)
+void ShaderPlugin::ManuallyBindUniform(string Name, float *pValue)
 {
-#ifdef _WIN32
-    //amount of time since plugin init, in seconds (same as SetTime):
-    *t = double(GetTickCount())/1000.0 - t0;
-#else
-    timeval time;
-    gettimeofday(&time, NULL);
-    long millis = (time.tv_sec * 1000) + (time.tv_usec / 1000);
-    *t = double(millis)/1000.0f - t0;
-#endif
-    return;
+    GLint location = m_shader.FindUniform(Name.c_str());
+    m_uniforms.push_back(make_pair(location, pValue));
 }
-

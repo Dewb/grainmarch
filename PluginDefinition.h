@@ -15,6 +15,8 @@ class Parameter;
 typedef std::vector<Parameter> ParamList;
 typedef std::function<void(Parameter&, float, ParamList&)> ParamAction;
 
+typedef std::vector<std::pair<GLint, float*>> ManualUniformList;
+
 class Parameter {
 public:
     Parameter(string name, float min, float max, float value, int type = FF_TYPE_STANDARD, bool isShader = true, bool shouldRandomize = true, ParamAction action = nullptr);
@@ -40,16 +42,19 @@ public:
     ShaderPlugin(int nInputs);
     
     virtual ~ShaderPlugin() {}
-    virtual void InitParameters();
     virtual void EmitGeometry();
+    virtual void Initialize();
     
+    void InitParameters();
+
 	DWORD SetParameter(const SetParameterStruct* pParam);
 	DWORD GetParameter(DWORD dwIndex);
 	DWORD ProcessOpenGL(ProcessOpenGLStruct* pGL);
     DWORD InitGL(const FFGLViewportStruct *vp);
     DWORD DeInitGL();
     DWORD SetTime(double time);
-	
+    
+    void ManuallyBindUniform(string Name, float* pValue);
 
 protected:	
 	int m_initResources;
@@ -57,17 +62,12 @@ protected:
     FFGLShader m_shader;
     
     ParamList m_parameters;
+    ManualUniformList m_uniforms;
 
-    double m_startTime;
-    double m_time;
-    
-    GLint m_timeLocation;
     float m_resolutionX;
     float m_resolutionY;
     GLint m_resolutionXLocation;
     GLint m_resolutionYLocation;
-    
-    bool m_HostSupportsSetTime;
     
     int m_nInputs;
     GLint* m_inputTextureLocationArray;

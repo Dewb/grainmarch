@@ -5,7 +5,7 @@ char fragmentShaderCode[] = R"(
 
 uniform float      iResolutionX;           // viewport resolution (in pixels)
 uniform float      iResolutionY;           // viewport resolution (in pixels)
-uniform float     iGlobalTime;           // shader playback time (in seconds)
+uniform float     Time;           // shader playback time (in seconds)
 //uniform float     iChannelTime[4];       // channel playback time (in seconds)
 //uniform vec3      iChannelResolution[4]; // channel resolution (in pixels)
 //uniform vec4      iMouse;                // mouse pixel coords. xy: current (if MLB down), zw: click
@@ -102,7 +102,7 @@ float DE(in vec3 z)
 
 	float d = 1000.0;
 	for (int n = 0; n < int(Iterations); n++) {
-		z.xy = rotate(z.xy, IterationRotation + IterationRotationLFOIntensity * cos(iGlobalTime * IterationRotationLFO));		
+		z.xy = rotate(z.xy, IterationRotation + IterationRotationLFOIntensity * cos(Time * IterationRotationLFO));
 		z = abs(z);
 		if (z.x<z.y){ z.xy = z.yx;}
 		if (z.x< z.z){ z.xz = z.zx;}
@@ -141,14 +141,14 @@ float rand(vec2 co){
 
 vec4 rayMarch(in vec3 from, in vec3 dir) {
 	// Add some noise to prevent banding
-	float totalDistance = Jitter*rand(gl_FragCoord.xy+vec2(iGlobalTime));
+	float totalDistance = Jitter*rand(gl_FragCoord.xy+vec2(Time));
 	vec3 dir2 = dir;
 	float distance;
 	int steps = 0;
 	vec3 pos;
 	for (int i=0; i < MaxSteps; i++) {
 		// Non-linear perspective applied here.
-		dir.zy = rotate(dir2.zy, totalDistance * cos(iGlobalTime * NLPRotationLFO) * NonLinearPerspective);
+		dir.zy = rotate(dir2.zy, totalDistance * cos(Time * NLPRotationLFO) * NonLinearPerspective);
 		
 		pos = from + totalDistance * dir;
 		distance = DE(pos)*FudgeFactor;
@@ -175,8 +175,8 @@ vec4 rayMarch(in vec3 from, in vec3 dir) {
 void main(void)
 {
 	// Camera position (eye), and camera target
-	vec3 camPos = Speed * iGlobalTime * vec3(1.0,0.0,0.0);
-	vec3 target = camPos + vec3(1.0,0.0*cos(iGlobalTime),0.0*sin(0.4*iGlobalTime));
+	vec3 camPos = Speed * Time * vec3(1.0,0.0,0.0);
+	vec3 target = camPos + vec3(1.0,0.0*cos(Time),0.0*sin(0.4*Time));
 	vec3 camUp  = vec3(0.0,1.0,0.0);
 	
 	// Calculate orthonormal camera reference system
