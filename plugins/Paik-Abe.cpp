@@ -19,8 +19,8 @@
 
 BEGIN_SHADER_PARAMETERS()
 PARAM(Mix, 0.0, 1.0, 1.0, FF_TYPE_STANDARD, false, false)
-PARAM(Zoom, -1.0, 1.0, 0.0, FF_TYPE_STANDARD, true)
-PARAM(Rotate, 180, -180, 0.0, FF_TYPE_STANDARD, true)
+PARAM(Zoom, -1.0, 1.0, 0.0, FF_TYPE_STANDARD, false)
+PARAM(Rotate, 180, -180, 0.0, FF_TYPE_STANDARD, false)
 PARAM(Scanlines, 0.0, 2000.0, 525.0, FF_TYPE_STANDARD, false)
 PARAM(BeamWidth, 0.0002, 0.1, 0.002, FF_TYPE_STANDARD, false)
 PARAM(Intensity, 0.0, 1.0, 0.3, FF_TYPE_STANDARD, true)
