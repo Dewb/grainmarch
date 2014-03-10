@@ -31,8 +31,9 @@ auto timeAction = [](Parameter& p, float v, ParamList& l) {
 
 BEGIN_SHADER_PARAMETERS()
     PARAM(Time, 0.0, 10.0, 0.0, FF_TYPE_STANDARD, false, false, timeAction)
+    PARAM(SymmetryMode, 0.0, 1.0, 0.0)
     PARAM(FieldOfView, 0.1, 10.0, 1.0)
-    PARAM(Iterations, 1, 30.0, 7)
+    PARAM(Iterations, 2, 20.0, 5)
     PARAM(Scale, 1.0, 10.0, 3.0)
     PARAM(ZoomSpeed, -2.0, 2.0, 0.5)
     PARAM(NonLinearPerspective, -10.0, 10.0, 2.0)

@@ -3,14 +3,10 @@ char fragmentShaderCode[] = R"(
 // GLSL code from Menger Journey by Syntopia
 // https://shadertoy.com/view/Mdf3z7
 
-uniform float      iResolutionX;           // viewport resolution (in pixels)
-uniform float      iResolutionY;           // viewport resolution (in pixels)
-uniform float     Time;           // shader playback time (in seconds)
-//uniform float     iChannelTime[4];       // channel playback time (in seconds)
-//uniform vec3      iChannelResolution[4]; // channel resolution (in pixels)
-//uniform vec4      iMouse;                // mouse pixel coords. xy: current (if MLB down), zw: click
-//uniform samplerXX iChannel0..3;          // input channel. XX = 2D/Cube
-//uniform vec4      iDate;                 // (year, month, day, time in seconds)
+uniform float iResolutionX;           // viewport resolution (in pixels)
+uniform float iResolutionY;           // viewport resolution (in pixels)
+uniform float Time;
+uniform float SymmetryMode;
 
 uniform float FieldOfView;
 uniform float Iterations;
@@ -39,23 +35,13 @@ uniform float Ambient;
 uniform float Diffuse;
 uniform float Jitter;
 
-//#define FieldOfView 1.0
-//#define Iterations 7
-//#define Scale 3.0
-//#define Speed 1.0
-
 #define MaxSteps 30
 #define MinimumDistance 0.0009
 #define normalDistance     0.0002
 
 #define PI 3.141592
-//#define Jitter 0.05
 #define FudgeFactor 0.7
-//#define NonLinearPerspective 2.0
-//#define DebugNonlinearPerspective true
 
-//#define Ambient 0.32184
-//#define Diffuse 0.7
 #define LightDir vec3(1.0)
 #define LightColor vec3(Color1R, Color1G, Color1B)
 #define LightDir2 vec3(1.0,-1.0,1.0)
@@ -98,16 +84,42 @@ float DE(in vec3 z)
 		return d-0.01;
 	}
 	// Folding 'tiling' of 3D space;
-	z  = abs(1.0-mod(z,2.0));
+	z = abs(1.0 - mod(z, 2.0));
 
 	float d = 1000.0;
 	for (int n = 0; n < int(Iterations); n++) {
 		z.xy = rotate(z.xy, IterationRotation + IterationRotationLFOIntensity * cos(Time * IterationRotationLFO));
-		z = abs(z);
-		if (z.x<z.y){ z.xy = z.yx;}
-		if (z.x< z.z){ z.xz = z.zx;}
-		if (z.y<z.z){ z.yz = z.zy;}
-		z = Scale*z-Offset*(Scale-1.0);
+        
+        if (SymmetryMode < 1.0/6.0) { // Menger
+            z = abs(z);
+            if (z.x < z.y) { z.xy = z.yx; }
+            if (z.x < z.z) { z.xz = z.zx; }
+            if (z.y < z.z) { z.yz = z.zy; }
+		} else if (SymmetryMode >= 1.0/6.0 && SymmetryMode < 2.0/6.0) {
+            if (z.x < -z.y) { z.xy = -z.yx; }
+            if (z.x < -z.z) { z.xz = -z.zx; }
+            if (z.y < -z.z) { z.yz = -z.zy; }
+        } else if (SymmetryMode >= 2.0/6.0 && SymmetryMode < 3.0/6.0) {
+            if (z.x < z.y) { z.xy = z.yx; }
+            if (z.x < z.z) { z.xz = z.zx; }
+            if (z.y < z.z) { z.yz = z.zy; }
+        } else if (SymmetryMode >= 3.0/6.0 && SymmetryMode < 4.0/6.0) {
+            if (z.x < -z.y) { z.xy = -z.yx; }
+            if (z.x < -z.z) { z.xz = -z.zx; }
+            if (z.y < -z.z) { z.yz = -z.zy; }
+            if (z.x < z.y) { z.xy = z.yx; }
+            if (z.x < z.z) { z.xz = z.zx; }
+            if (z.y < z.z) { z.yz = z.zy; }
+        } else if (SymmetryMode >= 4.0/6.0 && SymmetryMode < 5.0/6.0) {
+            z = abs(z);
+        } else if (SymmetryMode >= 5.0/6.0) {
+            if (z.x < z.y) { z.xy = z.yx; }
+            if (z.x < -z.y) { z.xy = -z.yx; }
+            if (z.x < z.z) { z.xz = z.zx; }
+            if (z.x < -z.z) { z.xz = -z.zx; }
+        }
+        
+        z = Scale*z-Offset*(Scale-1.0);
 		if( z.z<-0.5*Offset.z*(Scale-1.0))  z.z+=Offset.z*(Scale-1.0);
 		d = min(d, length(z) * pow(Scale, float(-n)-1.0));
 	}
@@ -131,7 +143,6 @@ vec3 getNormal(in vec3 pos) {
 vec3 getColor(vec3 normal, vec3 pos) {
 	return vec3(1.0);
 }
-
 
 // Pseudo-random number
 // From: lumina.sourceforge.net/Tutorials/Noise.html
