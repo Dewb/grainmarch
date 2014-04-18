@@ -21,10 +21,11 @@ BEGIN_SHADER_PARAMETERS()
 PARAM(Mix, 0.0, 1.0, 1.0, FF_TYPE_STANDARD, false, false)
 PARAM(Zoom, -1.0, 1.0, 0.0, FF_TYPE_STANDARD, false)
 PARAM(Rotate, 180, -180, 0.0, FF_TYPE_STANDARD, false)
-PARAM(Scanlines, 0.0, 2000.0, 525.0, FF_TYPE_STANDARD, false)
+PARAM(Scanlines, 0.0, 1000.0, 525.0, FF_TYPE_STANDARD, false)
 PARAM(BeamWidth, 0.0002, 0.1, 0.002, FF_TYPE_STANDARD, false)
 PARAM(Intensity, 0.0, 1.0, 0.3, FF_TYPE_STANDARD, true)
 PARAM(Quality, 0.0, 30000.0, 15000.0, FF_TYPE_STANDARD, false, false)
+PARAM(Noise, 0.0, 1.0, 0.0, FF_TYPE_STANDARD, false)
 PARAM(SineFreq, 0.0, 1000.0, 1.0, FF_TYPE_STANDARD, false)
 PARAM(CosFreq, 0.0, 1000.0, 1.0, FF_TYPE_STANDARD, false)
 PARAM(TriFreq, 0.0, 1000.0, 1.0, FF_TYPE_STANDARD, false)
@@ -55,6 +56,8 @@ PARAM(S_CosFreq, -2.0, 2.0, 0.0, FF_TYPE_STANDARD, false)
 PARAM(S_TriAmp, -2.0, 2.0, 0.0, FF_TYPE_STANDARD, false)
 PARAM(S_TriFreq, -2.0, 2.0, 0.0, FF_TYPE_STANDARD, false)
 PARAM(S_Damping, 0.0, 100.0, 0.0, FF_TYPE_STANDARD, false)
+PARAM(BlankingFreq, -1.0, 1.0, 0.0, FF_TYPE_STANDARD, false)
+PARAM(BlankingDuty, 0.0, 1.0, 0.02, FF_TYPE_STANDARD, false)
 
 END_SHADER_PARAMETERS()
 
@@ -104,6 +107,10 @@ public:
         return 2.0 * floor(t / linePeriod) / lines - 1.0;
     }
     
+    bool beamBlankingFunction(double t, double hBlankPeriod, double hBlankDutyCycle) {
+        return fmod(t, hBlankPeriod) / hBlankPeriod > (1.0 - hBlankDutyCycle);
+    }
+    
     double tri(double t) {
         return 2.0 * fabs(2.0 * (t - floor(t + 0.5))) - 1.0;
     }
@@ -148,6 +155,9 @@ public:
         double framePeriod = 1.0 / frameRate;
         double advance = framePeriod / GetScaled(Param::Quality); // e.g. samples per frame
         
+        double hBlankingPeriod = linePeriod * pow(2.0, GetScaled(Param::BlankingFreq));
+        double hBlankingDutyCycle = GetScaled(Param::BlankingDuty);
+        
         double mix = GetScaled(Param::Mix);
         double sinePhase = GetScaled(Param::SinePhase);
         double cosPhase = GetScaled(Param::CosPhase);
@@ -181,12 +191,12 @@ public:
         double sDamping = GetScaled(Param::S_Damping);
         
         double lineWidth = GetScaled(Param::BeamWidth) * zoom;
+        double noise = GetScaled(Param::Noise);
         
         double t = 0;
         Point lastPoint, currentPoint, lastSourcePoint, currentSourcePoint;
 
         glBegin(GL_QUADS);
-        //drawLineQuad(Point(-1,-1), Point(1,1), Point(-1,-1), Point(1,1), lineWidth);
         
         while (t < framePeriod)
         {
@@ -213,9 +223,13 @@ public:
             currentPoint = Point(x + s * cos(sAngle), y + s * sin(sAngle));
             currentSourcePoint = Point(h, v);
             
-            if (t != 0.0)
+            if (t != 0.0 &&
+                !beamBlankingFunction(t - advance, hBlankingPeriod, hBlankingDutyCycle) &&
+                (noise == 0.0 || dice() > noise))
+            {
                 drawLineQuad(lastPoint, currentPoint, lastSourcePoint, currentSourcePoint, lineWidth);
-
+            }
+            
             lastPoint = currentPoint;
             lastSourcePoint = currentSourcePoint;
 
