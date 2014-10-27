@@ -90,6 +90,20 @@
                ReferencedContainer = "container:GrainmarchFFGL.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "5BE478FC19FEF89200C3ACCB"
+               BuildableName = "Phase.bundle"
+               BlueprintName = "Phase"
+               ReferencedContainer = "container:GrainmarchFFGL.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
@@ -110,7 +124,7 @@
       debugDocumentVersioning = "YES"
       allowLocationSimulation = "YES">
       <PathRunnable
-         FilePath = "/Applications/Resolume Arena 4.1.8/Arena.app">
+         FilePath = "/Applications/Resolume Arena 4.1.9/Arena.app">
       </PathRunnable>
       <AdditionalOptions>
       </AdditionalOptions>
