@@ -85,9 +85,16 @@ vec2 f(vec2 z) {
     }
 }
 
-vec3 phasePortraitColor(float phase) {
+vec3 phasePortraitColor1(float phase) {
     float phaseScaled = phase / (2.0 * PI);
     float hue = mod(phaseScaled * HueLimit + HueOffset, 1.0);
+    float v = 1.0 - (1.0 - Saturation) * phaseScaled;
+    return hsv2rgb(vec3(hue, Saturation, v));
+}
+
+vec3 phasePortraitColor2(float phase) {
+    float phaseScaled = phase / (2.0 * PI);
+    float hue = mod((1.0 - 2.0 * abs(phaseScaled - 0.5)) * HueLimit + HueOffset, 1.0);
     float v = 1.0 - (1.0 - Saturation) * phaseScaled;
     return hsv2rgb(vec3(hue, Saturation, v));
 }
@@ -116,8 +123,10 @@ void main(void)
         fk = -fk;
     }
     
-    if (ColorMode < 0.25) {
-        gl_FragColor.rgb = phasePortraitColor(phase);
+    if (ColorMode < 0.2) {
+        gl_FragColor.rgb = phasePortraitColor1(phase);
+    } else if (ColorMode < 0.4) {
+        gl_FragColor.rgb = phasePortraitColor2(phase);
     } else {
         float c1 = fk.x;
         float c2 = fk.y;
@@ -125,9 +134,9 @@ void main(void)
         float c4 = 1.0 - min(c1, c2);
         vec3 color;
         vec3 ntscWeights = vec3(0.299, 0.587, 0.114);
-        if (ColorMode < 0.5) {
+        if (ColorMode < 0.6) {
             color = vec3(c1, c2, 0);
-        } else if (ColorMode < 0.75) {
+        } else if (ColorMode < 0.8) {
             color = vec3(c3, c1, c2);
         } else {
             color = vec3(c1, c4, c2);
