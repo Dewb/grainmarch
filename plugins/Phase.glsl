@@ -8,28 +8,29 @@ uniform sampler2D inputTexture0;
 
 uniform float Zoom;
 uniform float Direction;
-uniform float Error;
+uniform float Imprecision;
 uniform float ColorMode;
 uniform float HueLimit;
-uniform float HueOffset;
+uniform float HueShift;
 uniform float Saturation;
 uniform float Function;
 
 uniform float A; // 1
-uniform float B; // 21
+uniform float B; // -21
 uniform float C; // 35
-uniform float D; // 7
-uniform float E; // 6
+uniform float D; // -7
+uniform float E; // -6
 uniform float F; // 1
 uniform float G; // 1
 
 uniform float H; // -7
 uniform float I; // 35
 uniform float J; // 4
-uniform float K; // 21
-uniform float L; // 4
+uniform float K; // -21
+uniform float L; // -4
 uniform float M; // 1
 uniform float N; // 2
+
 
 
 // hsv<->rgb routines from http://lolengine.net/blog/2013/07/27/rgb-to-hsv-in-glsl
@@ -78,8 +79,8 @@ vec2 f(vec2 z) {
 
     if (Function < 0.5) {
         return vec2(A * x7     + B * x5 * y2 + C * x3 * y4 + D * x * y7  + E * x2 * y2 + F * y4 + G,
-                    H * x6 * y + I * x4 * y3 + J * x3 * y  + K * x2 * y5 + L * x * y3  + M * y7 + N * y) +
-         vec2(x * x + x * y, x * x - y * y);
+                    H * x6 * y + I * x4 * y3 + J * x3 * y  + K * x2 * y5 + L * x * y3  + M * y7 + N * y);
+         //vec2(x * x + x * y, x * x - y * y);
     } else {
         return vec2(x * x + x * y, x * x - y * y);
     }
@@ -87,14 +88,14 @@ vec2 f(vec2 z) {
 
 vec3 phasePortraitColor1(float phase) {
     float phaseScaled = phase / (2.0 * PI);
-    float hue = mod(phaseScaled * HueLimit + HueOffset, 1.0);
+    float hue = mod(phaseScaled * HueLimit + HueShift, 1.0);
     float v = 1.0 - (1.0 - Saturation) * phaseScaled;
     return hsv2rgb(vec3(hue, Saturation, v));
 }
 
 vec3 phasePortraitColor2(float phase) {
     float phaseScaled = phase / (2.0 * PI);
-    float hue = mod((1.0 - 2.0 * abs(phaseScaled - 0.5)) * HueLimit + HueOffset, 1.0);
+    float hue = mod((1.0 - 2.0 * abs(phaseScaled - 0.5)) * HueLimit + HueShift, 1.0);
     float v = 1.0 - (1.0 - Saturation) * phaseScaled;
     return hsv2rgb(vec3(hue, Saturation, v));
 }
@@ -106,7 +107,7 @@ void main(void)
     
     float d = mod(Direction + PI/4.0, 2.0 * PI);
     vec2 w = vec2(cos(d), sin(d));
-    float t = domain * pow(10.0, -Error * 9.0 - 2.0);
+    float t = domain * pow(10.0, -Imprecision * 9.0 - 2.0);
     
     vec2 z0 = (gl_TexCoord[0].st - 0.5) * 2.0 * domain;
 	vec2 fz0 = f(z0);
@@ -144,7 +145,7 @@ void main(void)
         }
         vec3 hsv = rgb2hsv(color);
         float h = hsv.x;
-        hsv.x = mod(h * HueLimit + HueOffset, 1.0);
+        hsv.x = mod(h * HueLimit + HueShift, 1.0);
         color = hsv2rgb(hsv);
         
         float gray = dot(color.rgb, ntscWeights);
