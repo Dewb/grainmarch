@@ -15,7 +15,7 @@ class Parameter;
 typedef std::vector<Parameter> ParamList;
 typedef std::function<void(Parameter&, float, ParamList&)> ParamAction;
 
-typedef std::vector<std::pair<GLint, float*>> ManualUniformList;
+typedef std::vector<std::tuple<GLint, float, float*>> ManualUniformList;
 
 class Parameter {
 public:
@@ -46,8 +46,9 @@ public:
     ShaderPlugin(int nInputs);
     
     virtual ~ShaderPlugin() {}
-    virtual void EmitGeometry();
     virtual void Initialize();
+    virtual void UpdateUniforms(); 
+    virtual void EmitGeometry();
     
     void InitParameters();
 
@@ -58,15 +59,17 @@ public:
     DWORD DeInitGL();
     DWORD SetTime(double time);
     
-    void ManuallyBindUniform(string Name, float* pValue);
-
+    void ManuallyBindUniformFloat(string Name, float* pValue);
+    void ManuallyBindUniformFloatArray(string Name, float count, float* pValue);
+    
 protected:	
 	int m_initResources;
 	FFGLExtensions m_extensions;
     FFGLShader m_shader;
     
     ParamList m_parameters;
-    ManualUniformList m_uniforms;
+    ManualUniformList m_floatUniforms;
+    ManualUniformList m_floatArrayUniforms;
 
     float m_resolutionX;
     float m_resolutionY;

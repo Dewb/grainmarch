@@ -1,5 +1,7 @@
 char fragmentShaderCode[] = R"(
 
+#version 120
+
 uniform vec3      iResolution;           // viewport resolution (in pixels)
 uniform float     iGlobalTime;           // shader playback time (in seconds)
 uniform sampler2D inputTexture0;
@@ -15,23 +17,7 @@ uniform float HueShift;
 uniform float Saturation;
 uniform float Function;
 
-uniform float A; // 1
-uniform float B; // -21
-uniform float C; // 35
-uniform float D; // -7
-uniform float E; // -6
-uniform float F; // 1
-uniform float G; // 1
-
-uniform float H; // -7
-uniform float I; // 35
-uniform float J; // 4
-uniform float K; // -21
-uniform float L; // -4
-uniform float M; // 1
-uniform float N; // 2
-
-
+uniform float K[32];
 
 // hsv<->rgb routines from http://lolengine.net/blog/2013/07/27/rgb-to-hsv-in-glsl
 
@@ -76,14 +62,16 @@ vec2 f(vec2 z) {
     float y5 = y * y4;
     float y6 = y * y5;
     float y7 = y * y6;
+   
+    float real =
+        K[0] * x7 + K[1] * x5 * y2 + K[2] * x3 * y4 + K[3] * x * y7 + K[4] * x2 * y2 + K[5] * y4 + K[6] +
+        K[8] * x2 + K[9] * x * y;
+    float imag =
+        K[16] * x6 * y + K[17] * x4 * y3 + K[18] * x3 * y + K[19] * x2 * y5 + K[20] * x * y3 + K[21] * y7 + K[22] * y + K[23] +
+        K[24] * x2     + K[25] * y * y;
 
-    if (Function < 0.5) {
-        return vec2(A * x7     + B * x5 * y2 + C * x3 * y4 + D * x * y7  + E * x2 * y2 + F * y4 + G,
-                    H * x6 * y + I * x4 * y3 + J * x3 * y  + K * x2 * y5 + L * x * y3  + M * y7 + N * y);
-         //vec2(x * x + x * y, x * x - y * y);
-    } else {
-        return vec2(x * x + x * y, x * x - y * y);
-    }
+    return vec2(real, imag);
+
 }
 
 vec3 phasePortraitColor1(float phase) {

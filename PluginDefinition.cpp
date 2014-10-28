@@ -171,10 +171,10 @@ DWORD ShaderPlugin::InitGL(const FFGLViewportStruct *vp)
     m_resolutionY = vp->height;
     m_aspectRatio = m_resolutionX / m_resolutionY;
     
+    Initialize();
+    
     m_shader.UnbindShader();
     
-    Initialize();
-       
     return FF_SUCCESS;
 }
 
@@ -193,6 +193,8 @@ DWORD ShaderPlugin::ProcessOpenGL(ProcessOpenGLStruct *pGL) {
         if (pGL->inputTextures[ii] == nullptr)
             return FF_FAIL;
     }
+    
+    UpdateUniforms();
         
     m_shader.BindShader();
     
@@ -215,10 +217,14 @@ DWORD ShaderPlugin::ProcessOpenGL(ProcessOpenGLStruct *pGL) {
         m_extensions.glUniform1fARB(p.UniformLocation, p.GetScaledValue());
     }
     
-    for (auto& u : m_uniforms) {
-        m_extensions.glUniform1fARB(u.first, *u.second);
+    for (auto& u : m_floatUniforms) {
+        m_extensions.glUniform1fARB(std::get<0>(u), *(std::get<2>(u)));
     }
-    
+
+    for (auto& u : m_floatArrayUniforms) {
+        m_extensions.glUniform1fvARB(std::get<0>(u), std::get<1>(u), std::get<2>(u));
+    }
+
     m_extensions.glUniform1fARB(m_resolutionXLocation, m_resolutionX);
     m_extensions.glUniform1fARB(m_resolutionYLocation, m_resolutionY);
     
@@ -231,6 +237,11 @@ DWORD ShaderPlugin::ProcessOpenGL(ProcessOpenGLStruct *pGL) {
     m_shader.UnbindShader();
         
     return FF_SUCCESS;
+}
+
+
+void ShaderPlugin::Initialize()
+{
 }
 
 void ShaderPlugin::EmitGeometry()
@@ -247,7 +258,7 @@ void ShaderPlugin::EmitGeometry()
 	glEnd();
 }
 
-void ShaderPlugin::Initialize()
+void ShaderPlugin::UpdateUniforms()
 {
 }
 
@@ -285,8 +296,14 @@ DWORD ShaderPlugin::SetTime(double time)
     return FF_SUCCESS;
 }
 
-void ShaderPlugin::ManuallyBindUniform(string Name, float *pValue)
+void ShaderPlugin::ManuallyBindUniformFloat(string Name, float *pValue)
 {
     GLint location = m_shader.FindUniform(Name.c_str());
-    m_uniforms.push_back(make_pair(location, pValue));
+    m_floatUniforms.push_back(make_tuple(location, 1.0, pValue));
+}
+
+void ShaderPlugin::ManuallyBindUniformFloatArray(string Name, float count, float *pValue)
+{
+    GLint location = m_shader.FindUniform(Name.c_str());
+    m_floatArrayUniforms.push_back(make_tuple(location, count, pValue));
 }
