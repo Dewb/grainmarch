@@ -2,9 +2,10 @@ char fragmentShaderCode[] = R"(
 
 #version 120
 
-uniform vec3      iResolution;           // viewport resolution (in pixels)
-uniform float     iGlobalTime;           // shader playback time (in seconds)
+uniform float     iGlobalTime;
 uniform sampler2D inputTexture0;
+uniform int iResolutionX;
+uniform int iResolutionY;
 
 #define PI 3.1415926535897932384626433832795
 
@@ -14,12 +15,14 @@ uniform float Imprecision;
 
 uniform float Rotation;
 uniform float Stripes;
-uniform float StripePeriod;
+uniform float LogStripePeriod;
 
 uniform float ColorMode;
 uniform float HueLimit;
 uniform float HueShift;
 uniform float Saturation;
+uniform float Overexpose;
+uniform float LogOverexpose;
 
 uniform float K[32];
 
@@ -78,19 +81,21 @@ vec2 f(vec2 z) {
 
 }
 
+float stripeRadius(float radius) {
+    return Stripes * mod(log(radius), LogStripePeriod) / LogStripePeriod;
+}
+
 vec3 phasePortraitColor1(float phase, float r) {
     float phaseScaled = phase / (2.0 * PI);
-    float sz = StripePeriod * pow(100.0, 2.0 + Zoom);
     float hue = mod(phaseScaled * HueLimit + HueShift, 1.0);
-    float v = 1.0 - (1.0 - Saturation) * phaseScaled - Stripes * mod(r, sz) / sz;
+    float v = 1.0 + Overexpose / 5.0 - (1.0 - Saturation) * phaseScaled - stripeRadius(r);
     return hsv2rgb(vec3(hue, Saturation, v));
 }
 
 vec3 phasePortraitColor2(float phase, float r) {
     float phaseScaled = phase / (2.0 * PI);
-    float sz = StripePeriod * pow(100.0, 4.0 * (Zoom - 0.5));
     float hue = mod((1.0 - 2.0 * abs(phaseScaled - 0.5)) * HueLimit + HueShift, 1.0);
-    float v = 1.0 - (1.0 - Saturation) * phaseScaled - Stripes * mod(r, sz) / sz;
+    float v = 1.0 + Overexpose / 5.0 - (1.0 - Saturation) * phaseScaled - stripeRadius(r);
     return hsv2rgb(vec3(hue, Saturation, v));
 }
 
@@ -110,7 +115,11 @@ void main(void)
     vec2 w = vec2(cos(d), sin(d));
     float t = domain * pow(10.0, -Imprecision * 9.0 - 2.0);
     
-    vec2 z0 = rotate((gl_TexCoord[0].st - 0.5) * 2.0 * domain);
+    
+    vec2 tex = gl_TexCoord[0].st;
+    //tex.t *= (iResolutionX * 1.0)/(iResolutionY * 1.0);
+    
+    vec2 z0 = rotate((tex - 0.5) * 2.0 * domain);
 	vec2 fz0 = f(z0);
     vec2 fzd = f(z0 + t * w);
     vec2 fk = (fzd - fz0) / (t * w);
@@ -148,6 +157,8 @@ void main(void)
         vec3 hsv = rgb2hsv(color);
         float h = hsv.x;
         hsv.x = mod(h * HueLimit + HueShift, 1.0);
+        if (hsv.z > LogOverexpose) { hsv.z = LogOverexpose; }
+        hsv.z *= 1.0 - stripeRadius(radius);
         color = hsv2rgb(hsv);
         
         float gray = dot(color.rgb, ntscWeights);

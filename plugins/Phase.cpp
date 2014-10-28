@@ -53,11 +53,12 @@ PARAM(FunctionX, 0, 1, 0, FF_TYPE_STANDARD, false);
 PARAM(FunctionY, 0, 1, 0, FF_TYPE_STANDARD, false);
 PARAM(Rotation, 0, 2 * PI, 0);
 PARAM(Stripes, 0, 0.5, 0);
-PARAM(StripePeriod, 1.0, 10000.0, 100.0);
+PARAM(StripePeriod, -2, 6.0, 2.0);
 PARAM(ColorMode, 0, 1, 0);
 PARAM(HueLimit, 0, 1, 1);
 PARAM(HueShift, 0, 1, 0);
 PARAM(Saturation, 0, 1, 1);
+PARAM(Overexpose, 0.0, 5.0, 0.0);
 END_SHADER_PARAMETERS()
 
 float mix(float a, float b, float s) {
@@ -68,10 +69,14 @@ class PhasePlugin : public SourcePlugin
 {
 public:
     float K[32];
+    float LogStripePeriod;
+    float LogOverexpose;
     
     PhasePlugin() {}
     virtual void Initialize() {
         ManuallyBindUniformFloatArray("K", 32, K);
+        ManuallyBindUniformFloat("LogStripePeriod", &LogStripePeriod);
+        ManuallyBindUniformFloat("LogOverexpose", &LogOverexpose);
     };
     virtual void UpdateUniforms() {
         for(int i = 0; i < 32; i++) {
@@ -79,6 +84,9 @@ public:
             float y = mix(coeffs_c[i], coeffs_d[i], GetScaled(Param::FunctionX));
             K[i] = mix(x, y, GetScaled(Param::FunctionY));
         }
+
+        LogStripePeriod = pow(10, GetScaled(Param::StripePeriod));
+        LogOverexpose = pow(2, GetScaled(Param::Overexpose));
     };
 };
 
