@@ -6,7 +6,7 @@ uniform sampler2D inputTexture0;
 
 #define PI 3.1415926535897932384626433832795
 
-uniform float Domain;
+uniform float Zoom;
 uniform float Direction;
 uniform float Error;
 uniform float ColorMode;
@@ -32,12 +32,31 @@ uniform float M; // 1
 uniform float N; // 2
 
 
-// From https://github.com/hughsk/glsl-hsv2rgb
+// hsv<->rgb routines from http://lolengine.net/blog/2013/07/27/rgb-to-hsv-in-glsl
 
 vec3 hsv2rgb(vec3 c) {
     vec4 K = vec4(1.0, 2.0 / 3.0, 1.0 / 3.0, 3.0);
     vec3 p = abs(fract(c.xxx + K.xyz) * 6.0 - K.www);
     return c.z * mix(K.xxx, clamp(p - K.xxx, 0.0, 1.0), c.y);
+}
+
+vec3 rgb2hsv(vec3 c)
+{
+    vec4 K = vec4(0.0, -1.0 / 3.0, 2.0 / 3.0, -1.0);
+    vec4 p = mix(vec4(c.bg, K.wz), vec4(c.gb, K.xy), step(c.b, c.g));
+    vec4 q = mix(vec4(p.xyw, c.r), vec4(c.r, p.yzx), step(p.x, c.r));
+    
+    float d = q.x - min(q.w, q.y);
+    float e = 1.0e-10;
+    return vec3(abs(q.z + (q.w - q.y) / (6.0 * d + e)), d / (q.x + e), q.x);
+}
+
+// sigmoid function from https://github.com/zzorn/pipedream/blob/master/assets/shaders/ShaderUtils.glsl
+
+float sigmoid(float x) {
+    if (x >= 1.0) return 1.0;
+    else if (x <= -1.0) return 0.0;
+    else return 0.5 + x * (1.0 - abs(x) * 0.5);
 }
 
 vec2 f(vec2 z) {
@@ -66,23 +85,21 @@ vec2 f(vec2 z) {
     }
 }
 
-vec4 phasePortraitColor(float phase) {
-    vec4 color;
+vec3 phasePortraitColor(float phase) {
     float phaseScaled = phase / (2.0 * PI);
     float hue = mod(phaseScaled * HueLimit + HueOffset, 1.0);
     float v = 1.0 - (1.0 - Saturation) * phaseScaled;
-    color.rgb = hsv2rgb(vec3(hue, Saturation, v));
-    color.a = 1.0;
-    return color;
+    return hsv2rgb(vec3(hue, Saturation, v));
 }
+
 
 void main(void)
 {
     float d = mod(Direction + PI/4.0, 2.0 * PI);
     vec2 w = vec2(cos(d), sin(d));
-    float t = Domain * pow(10.0, -Error * 9.0 - 2.0);
+    float t = Zoom * pow(10.0, -Error * 9.0 - 2.0);
     
-    vec2 z0 = (gl_TexCoord[0].st - 0.5) * 2.0 * Domain;
+    vec2 z0 = (gl_TexCoord[0].st - 0.5) * 2.0 * Zoom;
 	vec2 fz0 = f(z0);
     vec2 fzd = f(z0 + t * w);
     vec2 fk = (fzd - fz0) / (t * w);
@@ -98,14 +115,33 @@ void main(void)
     }
     
     if (ColorMode < 0.25) {
-        gl_FragColor = phasePortraitColor(phase);
-    } else if (ColorMode < 0.5) {
-        gl_FragColor = vec4(fk.x, fk.y, 0.0, 1.0);
-    } else if (ColorMode < 0.75) {
-        gl_FragColor = vec4(fk.x, 0, fk.y, 1.0);
+        gl_FragColor.rgb = phasePortraitColor(phase);
     } else {
-        gl_FragColor = vec4(0, fk.x, fk.y, 1.0);
+        float c1 = fk.x;
+        float c2 = fk.y;
+        float c3 = log(max(c1, c2));
+        float c4 = 1.0 - min(c1, c2);
+        vec3 color;
+        vec3 ntscWeights = vec3(0.299, 0.587, 0.114);
+        if (ColorMode < 0.5) {
+            color = vec3(c1, c2, 0);
+        } else if (ColorMode < 0.75) {
+            color = vec3(c3, c1, c2);
+        } else {
+            color = vec3(c1, c4, c2);
+            ntscWeights = vec3(0.1, 0.487, 0.0);
+        }
+        vec3 hsv = rgb2hsv(color);
+        float h = hsv.x;
+        hsv.x = mod(h * HueLimit + HueOffset, 1.0);
+        color = hsv2rgb(hsv);
+        
+        float gray = dot(color.rgb, ntscWeights);
+        vec3 grayVec = vec3(gray, gray, gray);
+        gl_FragColor.rgb = mix(grayVec, color, sigmoid(Saturation - 1.0) * 2.0);
+        
     }
+    gl_FragColor.a = 1.0;
 }
 
 
