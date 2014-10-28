@@ -1,5 +1,5 @@
 //
-//  Phase.cpp
+//  Marblephase.cpp
 //  GrainmarchFFGL
 //
 //  Created by Michael Dewberry on 10/27/14.
@@ -7,7 +7,7 @@
 //
 
 #include "PluginDefinition.h"
-#include "Phase.glsl"
+#include "Marblephase.glsl"
 #include "default_vertex_shader.glsl"
 #include <cmath>
 
@@ -65,14 +65,14 @@ float mix(float a, float b, float s) {
     return a + s * (b - a);
 }
 
-class PhasePlugin : public SourcePlugin
+class MarblephasePlugin : public SourcePlugin
 {
 public:
     float K[32];
     float LogStripePeriod;
     float LogOverexpose;
     
-    PhasePlugin() {}
+    MarblephasePlugin() {}
     virtual void Initialize() {
         ManuallyBindUniformFloatArray("K", 32, K);
         ManuallyBindUniformFloat("LogStripePeriod", &LogStripePeriod);
@@ -90,7 +90,7 @@ public:
     };
 };
 
-DECLARE_PLUGIN(PhasePlugin, "DBPH", "Phase", "Complex phase portrait experiment", "by Michael Dewberry - dewb.org")
+DECLARE_PLUGIN(MarblephasePlugin, "DBPH", "Marblephase", "Complex phase portrait experiment", "by Michael Dewberry - dewb.org")
 
 
 

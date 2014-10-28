@@ -79,8 +79,8 @@
 		5BE4790619FEF89200C3ACCB /* FFGLPluginSDK.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5B07B5EF16F2ED7800AD1A46 /* FFGLPluginSDK.cpp */; };
 		5BE4790719FEF89200C3ACCB /* PluginDefinition.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5B0FCE891793D806004E2E35 /* PluginDefinition.cpp */; };
 		5BE4790A19FEF89200C3ACCB /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B8123C01842F2E60076EB97 /* GLUT.framework */; };
-		5BE4791019FEF8DF00C3ACCB /* Phase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5BE478FB19FEF87E00C3ACCB /* Phase.cpp */; };
-		5BE4791119FEF8E300C3ACCB /* Phase.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 5BE478F919FEF81600C3ACCB /* Phase.glsl */; };
+		5BE4791019FEF8DF00C3ACCB /* Marblephase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5BE478FB19FEF87E00C3ACCB /* Marblephase.cpp */; };
+		5BE4791119FEF8E300C3ACCB /* Marblephase.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 5BE478F919FEF81600C3ACCB /* Marblephase.glsl */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -130,10 +130,10 @@
 		5BBDA502183F2B430058C89C /* Tanline.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Tanline.cpp; path = plugins/Tanline.cpp; sourceTree = "<group>"; };
 		5BBDA503183F2B430058C89C /* Tanline.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Tanline.glsl; path = plugins/Tanline.glsl; sourceTree = "<group>"; };
 		5BBDA507183F2E9C0058C89C /* TanlineFFGL.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TanlineFFGL.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
-		5BE478F919FEF81600C3ACCB /* Phase.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Phase.glsl; path = plugins/Phase.glsl; sourceTree = "<group>"; };
-		5BE478FB19FEF87E00C3ACCB /* Phase.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Phase.cpp; path = plugins/Phase.cpp; sourceTree = "<group>"; };
-		5BE4790E19FEF89200C3ACCB /* Phase.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Phase.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
-		5BE4790F19FEF89200C3ACCB /* Phase-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Phase-Info.plist"; path = "/Users/dewb/ah/grainmarch/Phase-Info.plist"; sourceTree = "<absolute>"; };
+		5BE478F919FEF81600C3ACCB /* Marblephase.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Marblephase.glsl; path = plugins/Marblephase.glsl; sourceTree = "<group>"; };
+		5BE478FB19FEF87E00C3ACCB /* Marblephase.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Marblephase.cpp; path = plugins/Marblephase.cpp; sourceTree = "<group>"; };
+		5BE4790E19FEF89200C3ACCB /* Marblephase.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Marblephase.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		5BE4790F19FEF89200C3ACCB /* Marblephase-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Marblephase-Info.plist"; path = "/Users/dewb/ah/grainmarch/Marblephase-Info.plist"; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -211,8 +211,8 @@
 				5B3022C218485D6A005C75A8 /* Average.bundle */,
 				5B1A40FC18CAB0DA004D8334 /* Paik-Abe.bundle */,
 				5B1A40FD18CAB0DA004D8334 /* Paik-Abe-Info.plist */,
-				5BE4790E19FEF89200C3ACCB /* Phase.bundle */,
-				5BE4790F19FEF89200C3ACCB /* Phase-Info.plist */,
+				5BE4790E19FEF89200C3ACCB /* Marblephase.bundle */,
+				5BE4790F19FEF89200C3ACCB /* Marblephase-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -289,8 +289,8 @@
 				5B0FCE911793DE3E004E2E35 /* Grainmarch.glsl */,
 				5B1A40FE18CAB123004D8334 /* Paik-Abe.cpp */,
 				5B1A40FF18CAB123004D8334 /* Paik-Abe.glsl */,
-				5BE478FB19FEF87E00C3ACCB /* Phase.cpp */,
-				5BE478F919FEF81600C3ACCB /* Phase.glsl */,
+				5BE478FB19FEF87E00C3ACCB /* Marblephase.cpp */,
+				5BE478F919FEF81600C3ACCB /* Marblephase.glsl */,
 			);
 			name = plugins;
 			sourceTree = "<group>";
@@ -400,9 +400,9 @@
 			productReference = 5BBDA507183F2E9C0058C89C /* TanlineFFGL.bundle */;
 			productType = "com.apple.product-type.bundle";
 		};
-		5BE478FC19FEF89200C3ACCB /* Phase */ = {
+		5BE478FC19FEF89200C3ACCB /* Marblephase */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 5BE4790B19FEF89200C3ACCB /* Build configuration list for PBXNativeTarget "Phase" */;
+			buildConfigurationList = 5BE4790B19FEF89200C3ACCB /* Build configuration list for PBXNativeTarget "Marblephase" */;
 			buildPhases = (
 				5BE478FD19FEF89200C3ACCB /* Resources */,
 				5BE478FE19FEF89200C3ACCB /* Sources */,
@@ -412,9 +412,9 @@
 			);
 			dependencies = (
 			);
-			name = Phase;
+			name = Marblephase;
 			productName = FFGLBrightness;
-			productReference = 5BE4790E19FEF89200C3ACCB /* Phase.bundle */;
+			productReference = 5BE4790E19FEF89200C3ACCB /* Marblephase.bundle */;
 			productType = "com.apple.product-type.bundle";
 		};
 /* End PBXNativeTarget section */
@@ -443,7 +443,7 @@
 				5B8123C2184459F20076EB97 /* Linecrimes */,
 				5B3022B118485D6A005C75A8 /* Average */,
 				5B1A40EB18CAB0DA004D8334 /* Paik-Abe */,
-				5BE478FC19FEF89200C3ACCB /* Phase */,
+				5BE478FC19FEF89200C3ACCB /* Marblephase */,
 			);
 		};
 /* End PBXProject section */
@@ -496,7 +496,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5BE4791119FEF8E300C3ACCB /* Phase.glsl in Resources */,
+				5BE4791119FEF8E300C3ACCB /* Marblephase.glsl in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -615,7 +615,7 @@
 				5BE4790219FEF89200C3ACCB /* FFGL.cpp in Sources */,
 				5BE4790319FEF89200C3ACCB /* FFGLPluginInfo.cpp in Sources */,
 				5BE4790419FEF89200C3ACCB /* FFGLPluginInfoData.cpp in Sources */,
-				5BE4791019FEF8DF00C3ACCB /* Phase.cpp in Sources */,
+				5BE4791019FEF8DF00C3ACCB /* Marblephase.cpp in Sources */,
 				5BE4790519FEF89200C3ACCB /* FFGLPluginManager.cpp in Sources */,
 				5BE4790619FEF89200C3ACCB /* FFGLPluginSDK.cpp in Sources */,
 				5BE4790719FEF89200C3ACCB /* PluginDefinition.cpp in Sources */,
@@ -1096,14 +1096,14 @@
 					"$(SRCROOT)/FFGLSDK_1_5/Source/FFGLPlugins",
 					"$(SRCROOT)/FFGLSDK_1_5/Include",
 				);
-				INFOPLIST_FILE = "Phase-Info.plist";
+				INFOPLIST_FILE = "Marblephase-Info.plist";
 				INSTALL_PATH = "$(HOME)/Library/Bundles";
 				MACOSX_DEPLOYMENT_TARGET = "";
 				OTHER_LDFLAGS = (
 					"-framework",
 					OpenGL,
 				);
-				PRODUCT_NAME = Phase;
+				PRODUCT_NAME = Marblephase;
 				SDKROOT = macosx10.8;
 				WRAPPER_EXTENSION = bundle;
 				ZERO_LINK = NO;
@@ -1129,14 +1129,14 @@
 					"$(SRCROOT)/FFGLSDK_1_5/Include",
 					"$(SRCROOT)/gl-matrix",
 				);
-				INFOPLIST_FILE = "Phase-Info.plist";
+				INFOPLIST_FILE = "Marblephase-Info.plist";
 				INSTALL_PATH = "$(HOME)/Library/Bundles";
 				MACOSX_DEPLOYMENT_TARGET = "";
 				OTHER_LDFLAGS = (
 					"-framework",
 					OpenGL,
 				);
-				PRODUCT_NAME = Phase;
+				PRODUCT_NAME = Marblephase;
 				SDKROOT = macosx10.8;
 				WRAPPER_EXTENSION = bundle;
 				ZERO_LINK = NO;
@@ -1209,7 +1209,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		5BE4790B19FEF89200C3ACCB /* Build configuration list for PBXNativeTarget "Phase" */ = {
+		5BE4790B19FEF89200C3ACCB /* Build configuration list for PBXNativeTarget "Marblephase" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				5BE4790C19FEF89200C3ACCB /* Debug */,

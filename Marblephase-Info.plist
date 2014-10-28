@@ -5,9 +5,9 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>English</string>
 	<key>CFBundleExecutable</key>
-	<string>PhaseFFGL</string>
+	<string>MarblephaseFFGL</string>
 	<key>CFBundleIdentifier</key>
-	<string>org.dewb.ffgl.phase</string>
+	<string>org.dewb.ffgl.marblephase</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundlePackageType</key>

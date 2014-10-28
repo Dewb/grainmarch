@@ -100,7 +100,7 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "5BE478FC19FEF89200C3ACCB"
                BuildableName = "Phase.bundle"
-               BlueprintName = "Phase"
+               BlueprintName = "Marblephase"
                ReferencedContainer = "container:GrainmarchFFGL.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
