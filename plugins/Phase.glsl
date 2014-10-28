@@ -95,11 +95,13 @@ vec3 phasePortraitColor(float phase) {
 
 void main(void)
 {
+    float domain = 0.06 + sigmoid(Zoom - 1.0) * 25.0;
+    
     float d = mod(Direction + PI/4.0, 2.0 * PI);
     vec2 w = vec2(cos(d), sin(d));
-    float t = Zoom * pow(10.0, -Error * 9.0 - 2.0);
+    float t = domain * pow(10.0, -Error * 9.0 - 2.0);
     
-    vec2 z0 = (gl_TexCoord[0].st - 0.5) * 2.0 * Zoom;
+    vec2 z0 = (gl_TexCoord[0].st - 0.5) * 2.0 * domain;
 	vec2 fz0 = f(z0);
     vec2 fzd = f(z0 + t * w);
     vec2 fk = (fzd - fz0) / (t * w);

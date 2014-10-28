@@ -18,7 +18,7 @@ DECLARE_PLUGIN(SourcePlugin, "DBPH", "Phase", "Complex phase portrait experiment
 // Parameter(uniform name, minimum value, maximum value, default value, optional type (default standard/float.))
 
 BEGIN_SHADER_PARAMETERS()
-PARAM(Zoom, 0.1, 40.0, 1.2)
+PARAM(Zoom, 0, 1, 0.5)
 PARAM(Direction, 0, 2 * PI, 0)
 PARAM(Error, 0, 1.0, 0)
 PARAM(ColorMode, 0, 1, 0);
