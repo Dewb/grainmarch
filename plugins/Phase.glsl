@@ -117,9 +117,9 @@ void main(void)
     
     
     vec2 tex = gl_TexCoord[0].st;
-    //tex.t *= (iResolutionX * 1.0)/(iResolutionY * 1.0);
+    tex.t *= 3.0/4.0;
     
-    vec2 z0 = rotate((tex - 0.5) * 2.0 * domain);
+    vec2 z0 = rotate((tex - vec2(0.5, 0.375)) * 2.0 * domain);
 	vec2 fz0 = f(z0);
     vec2 fzd = f(z0 + t * w);
     vec2 fk = (fzd - fz0) / (t * w);
