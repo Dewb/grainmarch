@@ -11,11 +11,15 @@ uniform sampler2D inputTexture0;
 uniform float Zoom;
 uniform float Direction;
 uniform float Imprecision;
+
+uniform float Rotation;
+uniform float Stripes;
+uniform float StripePeriod;
+
 uniform float ColorMode;
 uniform float HueLimit;
 uniform float HueShift;
 uniform float Saturation;
-uniform float Function;
 
 uniform float K[32];
 
@@ -74,20 +78,29 @@ vec2 f(vec2 z) {
 
 }
 
-vec3 phasePortraitColor1(float phase) {
+vec3 phasePortraitColor1(float phase, float r) {
     float phaseScaled = phase / (2.0 * PI);
+    float sz = StripePeriod * pow(100.0, 2.0 + Zoom);
     float hue = mod(phaseScaled * HueLimit + HueShift, 1.0);
-    float v = 1.0 - (1.0 - Saturation) * phaseScaled;
+    float v = 1.0 - (1.0 - Saturation) * phaseScaled - Stripes * mod(r, sz) / sz;
     return hsv2rgb(vec3(hue, Saturation, v));
 }
 
-vec3 phasePortraitColor2(float phase) {
+vec3 phasePortraitColor2(float phase, float r) {
     float phaseScaled = phase / (2.0 * PI);
+    float sz = StripePeriod * pow(100.0, 4.0 * (Zoom - 0.5));
     float hue = mod((1.0 - 2.0 * abs(phaseScaled - 0.5)) * HueLimit + HueShift, 1.0);
-    float v = 1.0 - (1.0 - Saturation) * phaseScaled;
+    float v = 1.0 - (1.0 - Saturation) * phaseScaled - Stripes * mod(r, sz) / sz;
     return hsv2rgb(vec3(hue, Saturation, v));
 }
 
+vec2 rotate(vec2 z) {
+    float s = sin(Rotation);
+    float c = cos(Rotation);
+    float xnew = z.x * c - z.y * s;
+    float ynew = z.x * s + z.y * c;
+    return vec2(xnew, ynew);
+}
 
 void main(void)
 {
@@ -97,12 +110,13 @@ void main(void)
     vec2 w = vec2(cos(d), sin(d));
     float t = domain * pow(10.0, -Imprecision * 9.0 - 2.0);
     
-    vec2 z0 = (gl_TexCoord[0].st - 0.5) * 2.0 * domain;
+    vec2 z0 = rotate((gl_TexCoord[0].st - 0.5) * 2.0 * domain);
 	vec2 fz0 = f(z0);
     vec2 fzd = f(z0 + t * w);
     vec2 fk = (fzd - fz0) / (t * w);
     
     float phase = atan(fk.y, fk.x);
+    float radius = sqrt(fk.x * fk.x + fk.y * fk.y);
     if (phase < 0.0) {
         phase += 2.0 * PI;
     }
@@ -113,9 +127,9 @@ void main(void)
     }
     
     if (ColorMode < 0.2) {
-        gl_FragColor.rgb = phasePortraitColor1(phase);
+        gl_FragColor.rgb = phasePortraitColor1(phase, radius);
     } else if (ColorMode < 0.4) {
-        gl_FragColor.rgb = phasePortraitColor2(phase);
+        gl_FragColor.rgb = phasePortraitColor2(phase, radius);
     } else {
         float c1 = fk.x;
         float c2 = fk.y;

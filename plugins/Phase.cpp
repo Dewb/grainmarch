@@ -51,6 +51,9 @@ PARAM(Direction, 0, 2 * PI, 0)
 PARAM(Imprecision, 0, 1.0, 0)
 PARAM(FunctionX, 0, 1, 0, FF_TYPE_STANDARD, false);
 PARAM(FunctionY, 0, 1, 0, FF_TYPE_STANDARD, false);
+PARAM(Rotation, 0, 2 * PI, 0);
+PARAM(Stripes, 0, 0.5, 0);
+PARAM(StripePeriod, 1.0, 10000.0, 100.0);
 PARAM(ColorMode, 0, 1, 0);
 PARAM(HueLimit, 0, 1, 1);
 PARAM(HueShift, 0, 1, 0);
