@@ -78,7 +78,8 @@ vec4 phasePortraitColor(float phase) {
 
 void main(void)
 {
-    vec2 w = vec2(cos(Direction), sin(Direction));
+    float d = mod(Direction + PI/4.0, 2.0 * PI);
+    vec2 w = vec2(cos(d), sin(d));
     float t = Domain * pow(10.0, -Error * 9.0 - 2.0);
     
     vec2 z0 = (gl_TexCoord[0].st - 0.5) * 2.0 * Domain;
@@ -91,7 +92,7 @@ void main(void)
         phase += 2.0 * PI;
     }
     
-    if ((Direction > PI/2.0 && Direction < PI)|| (Direction > 3.0*PI/2.0)) {
+    if ((d >= PI/2.0 && d < PI)|| (d >= 3.0*PI/2.0)) {
         phase = mod(phase + PI, 2.0 * PI);
         fk = -fk;
     }
