@@ -59,6 +59,7 @@ PARAM(HueLimit, 0, 1, 1);
 PARAM(HueShift, 0, 1, 0);
 PARAM(Saturation, 0, 1, 1);
 PARAM(Overexpose, 0.0, 5.0, 0.0);
+PARAM(Degree, 0.0, 7.0, 7.0, FF_TYPE_STANDARD, false);
 END_SHADER_PARAMETERS()
 
 float mix(float a, float b, float s) {
@@ -80,9 +81,14 @@ public:
     };
     virtual void UpdateUniforms() {
         for(int i = 0; i < 32; i++) {
-            float x = mix(coeffs_a[i], coeffs_b[i], GetScaled(Param::FunctionX));
-            float y = mix(coeffs_c[i], coeffs_d[i], GetScaled(Param::FunctionX));
-            K[i] = mix(x, y, GetScaled(Param::FunctionY));
+            int degree = ceil(GetScaled(Param::Degree));
+            if (8 - (i % 8) > degree + 1) {
+                K[i] = 0;
+            } else {
+                float x = mix(coeffs_a[i], coeffs_b[i], GetScaled(Param::FunctionX));
+                float y = mix(coeffs_c[i], coeffs_d[i], GetScaled(Param::FunctionX));
+                K[i] = mix(x, y, GetScaled(Param::FunctionY));
+            }
         }
 
         LogStripePeriod = pow(10, GetScaled(Param::StripePeriod));
