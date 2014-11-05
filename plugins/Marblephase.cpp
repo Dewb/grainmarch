@@ -13,19 +13,27 @@
 
 #define PI 3.1415926535897932384626433832795
 
-
-const float coeffs_a[32] = {
+/*
+const float coeffs_aold[32] = {
     1.0, -21.0, 35.0, -7.0, -6.0, 1.0, 1.0, 0.0,
     0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
     -7.0, 35.0, 4.0, -21.0, -4.0, 1.0, 2.0, 0.0,
     0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0
 };
+ */
+
+const float coeffs_a[32] = {
+    -7.0, 0.0, 1.0, -21.0, 35.0, 0.0, 0.0, 0.0,
+    -6.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0,
+    -7.0, 1.0, 35.0, -21.0, 0.0, 0.0, 0.0, 0.0,
+    4.0, -4.0, 0.0, 0.0, 0.0, 0.0, 2.0, 0.0
+};
 
 const float coeffs_b[32] = {
     0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
-    12.0, 12.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+    0.0, 0.0, 0.0, 0.0, 12.0, 0.0, 12.0, 0.0,
     0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
-    12.0, -12.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0
+    0.0, 0.0, 0.0, 0.0, 12.0, -12.0, 0.0, 0.0
 };
 
 const float coeffs_c[32] = {
@@ -49,8 +57,9 @@ BEGIN_SHADER_PARAMETERS()
 PARAM(Zoom, 0, 1, 0.5)
 PARAM(Direction, 0, 2 * PI, 0)
 PARAM(Imprecision, 0, 1.0, 0)
-PARAM(FunctionX, 0, 1, 0, FF_TYPE_STANDARD, false);
-PARAM(FunctionY, 0, 1, 0, FF_TYPE_STANDARD, false);
+PARAM(Degree, 2.0, 16.0, 16.0, FF_TYPE_STANDARD, false);
+PARAM(Morph1, 0, 1, 0, FF_TYPE_STANDARD, false);
+PARAM(Morph2, 0, 1, 0, FF_TYPE_STANDARD, false);
 PARAM(Rotation, 0, 2 * PI, 0);
 PARAM(Stripes, 0, 0.5, 0);
 PARAM(StripePeriod, -1.5, 1.5, 0, FF_TYPE_STANDARD, false);
@@ -59,7 +68,6 @@ PARAM(HueLimit, 0, 1, 1);
 PARAM(HueShift, 0, 1, 0);
 PARAM(Saturation, 0, 1, 1);
 PARAM(Overexpose, 0.0, 5.0, 0.0);
-PARAM(Degree, 0.0, 7.0, 7.0, FF_TYPE_STANDARD, false);
 END_SHADER_PARAMETERS()
 
 float mix(float a, float b, float s) {
@@ -80,14 +88,15 @@ public:
         ManuallyBindUniformFloat("LogOverexpose", &LogOverexpose);
     };
     virtual void UpdateUniforms() {
+        int degree = ceil(GetScaled(Param::Degree));
         for(int i = 0; i < 32; i++) {
-            int degree = ceil(GetScaled(Param::Degree));
-            if (8 - (i % 8) > degree + 1) {
+            if (16 -  (i % 16) > degree) {
                 K[i] = 0;
             } else {
-                float x = mix(coeffs_a[i], coeffs_b[i], GetScaled(Param::FunctionX));
-                float y = mix(coeffs_c[i], coeffs_d[i], GetScaled(Param::FunctionX));
-                K[i] = mix(x, y, GetScaled(Param::FunctionY));
+                float m1 = GetScaled(Param::Morph1);
+                float x = mix(coeffs_a[i], coeffs_b[i], m1);
+                float y = mix(coeffs_c[i], coeffs_d[i], m1);
+                K[i] = mix(x, y, GetScaled(Param::Morph2));
             }
         }
 
