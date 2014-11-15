@@ -68,6 +68,8 @@ PARAM(HueLimit, 0, 1, 1);
 PARAM(HueShift, 0, 1, 0);
 PARAM(Saturation, 0, 1, 1);
 PARAM(Overexpose, 0.0, 5.0, 0.0);
+PARAM(ShiftX, 0.0, 1.0, 0.5, FF_TYPE_STANDARD, true, false)
+PARAM(ShiftY, 0.0, 1.0, 0.5, FF_TYPE_STANDARD, true, false)
 END_SHADER_PARAMETERS()
 
 float mix(float a, float b, float s) {

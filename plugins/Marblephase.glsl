@@ -24,6 +24,9 @@ uniform float Saturation;
 uniform float Overexpose;
 uniform float LogOverexpose;
 
+uniform float ShiftX;
+uniform float ShiftY;
+
 uniform float K[32];
 
 // hsv<->rgb routines from http://lolengine.net/blog/2013/07/27/rgb-to-hsv-in-glsl
@@ -144,11 +147,9 @@ void main(void)
     vec2 w = vec2(cos(d), sin(d));
     float t = domain * pow(10.0, -Imprecision * 9.0 - 2.0);
     
-    
     vec2 tex = gl_TexCoord[0].st;
-    tex.t *= 3.0/4.0;
     
-    vec2 z0 = rotate((tex - vec2(0.5, 0.375)) * 2.0 * domain);
+    vec2 z0 = rotate(tex + vec2(2.0 * ShiftX - 1.0, 2.0 * ShiftY - 1.0) - vec2(0.5, 0.5)) * 2.0 * domain;
 	vec2 fz0 = f(z0);
     vec2 fzd = f(z0 + t * w);
     vec2 fk = (fzd - fz0) / (t * w);
