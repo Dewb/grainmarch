@@ -17,6 +17,10 @@
 
 // Parameter(uniform name, minimum value, maximum value, default value, optional type (default standard/float.))
 
+char DefaultHFunction[] = "sin(t)";
+char DefaultSFunction[] = "cos(t)";
+char DefaultVFunction[] = "0";
+
 BEGIN_SHADER_PARAMETERS()
 PARAM(Mix, 0.0, 1.0, 1.0, FF_TYPE_STANDARD, false, false)
 PARAM(Zoom, -1.0, 1.0, 0.0, FF_TYPE_STANDARD, false)
@@ -26,35 +30,12 @@ PARAM(BeamWidth, 0.0002, 0.1, 0.002, FF_TYPE_STANDARD, false)
 PARAM(Intensity, 0.0, 1.0, 0.3, FF_TYPE_STANDARD, true)
 PARAM(Quality, 0.0, 30000.0, 15000.0, FF_TYPE_STANDARD, false, false)
 PARAM(Noise, 0.0, 1.0, 0.0, FF_TYPE_STANDARD, false)
-PARAM(SineFreq, 0.0, 1000.0, 1.0, FF_TYPE_STANDARD, false)
-PARAM(CosFreq, 0.0, 1000.0, 1.0, FF_TYPE_STANDARD, false)
-PARAM(TriFreq, 0.0, 1000.0, 1.0, FF_TYPE_STANDARD, false)
-PARAM(SinePhase, -2 * PI, 2 * PI, 0.0, FF_TYPE_STANDARD, false)
-PARAM(CosPhase, -2 * PI, 2 * PI, 0.0, FF_TYPE_STANDARD, false)
-PARAM(TriPhase, -2 * PI, 2 * PI, 0.0, FF_TYPE_STANDARD, false)
-PARAM(H, -2.0, 2.0, 1.0, FF_TYPE_STANDARD, false)
-PARAM(V, -2.0, 2.0, 1.0, FF_TYPE_STANDARD, false)
+PARAM(H, 0.0, 0.0, 0.0, FF_TYPE_TEXT, false, false, nullptr, DefaultHFunction)
+PARAM(V, 0.0, 0.0, 0.0, FF_TYPE_TEXT, false, false, nullptr, DefaultVFunction)
+PARAM(S, 0.0, 0.0, 0.0, FF_TYPE_TEXT, false, false, nullptr, DefaultSFunction)
 PARAM(S_Angle, 0.0, 2 * PI, 0.0, FF_TYPE_STANDARD, false)
-PARAM(H_SineAmp, -2.0, 2.0, 0.0, FF_TYPE_STANDARD, false)
-PARAM(H_SineFreq, -2.0, 2.0, 0.0, FF_TYPE_STANDARD, false)
-PARAM(H_CosAmp, -2.0, 2.0, 0.0, FF_TYPE_STANDARD, false)
-PARAM(H_CosFreq, -2.0, 2.0, 0.0, FF_TYPE_STANDARD, false)
-PARAM(H_TriAmp, -2.0, 2.0, 0.0, FF_TYPE_STANDARD, false)
-PARAM(H_TriFreq, -2.0, 2.0, 0.0, FF_TYPE_STANDARD, false)
 PARAM(H_Damping, 0.0, 100.0, 0.0, FF_TYPE_STANDARD, false)
-PARAM(V_SineAmp, -2.0, 2.0, 0.0, FF_TYPE_STANDARD, false)
-PARAM(V_SineFreq, -2.0, 2.0, 0.0, FF_TYPE_STANDARD, false)
-PARAM(V_CosAmp, -2.0, 2.0, 0.0, FF_TYPE_STANDARD, false)
-PARAM(V_CosFreq, -2.0, 2.0, 0.0, FF_TYPE_STANDARD, false)
-PARAM(V_TriAmp, -2.0, 2.0, 0.0, FF_TYPE_STANDARD, false)
-PARAM(V_TriFreq, -2.0, 2.0, 0.0, FF_TYPE_STANDARD, false)
 PARAM(V_Damping, 0.0, 100.0, 0.0, FF_TYPE_STANDARD, false)
-PARAM(S_SineAmp, -2.0, 2.0, 0.0, FF_TYPE_STANDARD, false)
-PARAM(S_SineFreq, -2.0, 2.0, 0.0, FF_TYPE_STANDARD, false)
-PARAM(S_CosAmp, -1.0, 1.0, 0.0, FF_TYPE_STANDARD, false)
-PARAM(S_CosFreq, -2.0, 2.0, 0.0, FF_TYPE_STANDARD, false)
-PARAM(S_TriAmp, -2.0, 2.0, 0.0, FF_TYPE_STANDARD, false)
-PARAM(S_TriFreq, -2.0, 2.0, 0.0, FF_TYPE_STANDARD, false)
 PARAM(S_Damping, 0.0, 100.0, 0.0, FF_TYPE_STANDARD, false)
 PARAM(BlankingFreq, -1.0, 1.0, 0.0, FF_TYPE_STANDARD, false)
 PARAM(BlankingDuty, 0.0, 1.0, 0.02, FF_TYPE_STANDARD, false)
@@ -159,35 +140,18 @@ public:
         double hBlankingDutyCycle = GetScaled(Param::BlankingDuty);
         
         double mix = GetScaled(Param::Mix);
-        double sinePhase = GetScaled(Param::SinePhase);
-        double cosPhase = GetScaled(Param::CosPhase);
-        double triPhase = GetScaled(Param::TriPhase);
-        
-        double hFactor = lerp(1.0, GetScaled(Param::H), mix);
-        double hSine = GetScaled(Param::H_SineAmp) * mix;
-        double hCos = GetScaled(Param::H_CosAmp) * mix;
-        double hTri = GetScaled(Param::H_TriAmp) * mix;
-        double hSineFreq = GetScaled(Param::SineFreq) * pow(2.0, GetScaled(Param::H_SineFreq));
-        double hCosFreq = GetScaled(Param::CosFreq) * pow(2.0, GetScaled(Param::H_CosFreq));
-        double hTriFreq = GetScaled(Param::TriFreq) * pow(2.0, GetScaled(Param::H_TriFreq));
+
+        double hFactor = 1.0;
+        //double hFactor = lerp(1.0, GetScaled(Param::H), mix);
         double hDamping = GetScaled(Param::H_Damping);
+
+        char* foo = GetParameterDisplay(Param::H);
         
-        double vFactor = lerp(1.0, GetScaled(Param::V), mix);
-        double vSine = GetScaled(Param::V_SineAmp) * mix;
-        double vCos = GetScaled(Param::V_CosAmp) * mix;
-        double vTri = GetScaled(Param::V_TriAmp) * mix;
-        double vSineFreq = GetScaled(Param::SineFreq) * pow(2.0, GetScaled(Param::V_SineFreq));
-        double vCosFreq = GetScaled(Param::CosFreq) * pow(2.0, GetScaled(Param::V_CosFreq));
-        double vTriFreq = GetScaled(Param::TriFreq) * pow(2.0, GetScaled(Param::V_TriFreq));
+        double vFactor = 1.0;
+        //double vFactor = lerp(1.0, GetScaled(Param::V), mix);
         double vDamping = GetScaled(Param::V_Damping);
         
         double sAngle = PI/8.0 + GetScaled(Param::S_Angle);
-        double sSine = GetScaled(Param::S_SineAmp) * mix;
-        double sCos = GetScaled(Param::S_CosAmp) * mix;
-        double sTri = GetScaled(Param::S_TriAmp) * mix;
-        double sSineFreq = GetScaled(Param::SineFreq) * pow(2.0, GetScaled(Param::S_SineFreq));
-        double sCosFreq = GetScaled(Param::CosFreq) * pow(2.0, GetScaled(Param::S_CosFreq));
-        double sTriFreq = GetScaled(Param::TriFreq) * pow(2.0, GetScaled(Param::S_TriFreq));
         double sDamping = GetScaled(Param::S_Damping);
         
         double lineWidth = GetScaled(Param::BeamWidth) * zoom;
@@ -202,24 +166,15 @@ public:
         {
             double h = horizontalBeamFunction(t, linePeriod);
             double v = verticalBeamFunction(t, linePeriod, GetScaled(Param::Scanlines));
-            
-            double x = (hFactor * h +
-                        hSine * sin(t * hSineFreq + sinePhase) +
-                        hCos * cos(t * hCosFreq + cosPhase) +
-                        hTri * tri(t * hTriFreq + triPhase)) *
+
+            double x = (hFactor * h) *
                         lerp(1.0, exp(-1.0 * hDamping * t), mix);
             
-            double y = (vFactor * v +
-                        vSine * sin(t * vSineFreq + sinePhase) +
-                        vCos * cos(t * vCosFreq + cosPhase) +
-                        vTri * tri(t * vTriFreq + triPhase)) *
+            double y = (vFactor * v) *
                         lerp(1.0, exp(-1.0 * vDamping * t), mix);
 
-            double s = (sSine * sin(t * sSineFreq + sinePhase) +
-                        sCos * cos(t * sCosFreq + cosPhase) +
-                        sTri * tri(t * sTriFreq + triPhase)) *
-                        lerp(1.0, exp(-1.0 * sDamping * t), mix);
-            
+            double s = 0.0;
+
             currentPoint = Point(x + s * cos(sAngle), y + s * sin(sAngle));
             currentSourcePoint = Point(h, v);
             

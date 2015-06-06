@@ -119,13 +119,22 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       launchStyle = "0"
       useCustomWorkingDirectory = "NO"
-      buildConfiguration = "Debug"
+      buildConfiguration = "Release"
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       allowLocationSimulation = "YES">
       <PathRunnable
-         FilePath = "/Applications/Resolume Arena 4.1.9/Arena.app">
+         FilePath = "/Applications/Resolume Arena 4.1.11/Arena.app">
       </PathRunnable>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "2D2190890AF02BD1007154B7"
+            BuildableName = "GrainmarchFFGL.bundle"
+            BlueprintName = "Grainmarch"
+            ReferencedContainer = "container:GrainmarchFFGL.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>

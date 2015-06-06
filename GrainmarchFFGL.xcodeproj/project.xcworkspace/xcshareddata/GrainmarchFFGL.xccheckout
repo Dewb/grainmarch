@@ -10,29 +10,29 @@
 	<string>GrainmarchFFGL</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>674ADA89-8F80-40B8-A35D-1DEE1018957C</key>
+		<key>1043FD47D3696683EE5809375FB0372D3854C551</key>
 		<string>https://github.com/Dewb/grainmarch</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>GrainmarchFFGL.xcodeproj/project.xcworkspace</string>
+	<string>GrainmarchFFGL.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>674ADA89-8F80-40B8-A35D-1DEE1018957C</key>
+		<key>1043FD47D3696683EE5809375FB0372D3854C551</key>
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/Dewb/grainmarch</string>
 	<key>IDESourceControlProjectVersion</key>
-	<integer>110</integer>
+	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>674ADA89-8F80-40B8-A35D-1DEE1018957C</string>
+	<string>1043FD47D3696683EE5809375FB0372D3854C551</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>674ADA89-8F80-40B8-A35D-1DEE1018957C</string>
+			<string>1043FD47D3696683EE5809375FB0372D3854C551</string>
 			<key>IDESourceControlWCCName</key>
 			<string>grainmarch</string>
 		</dict>

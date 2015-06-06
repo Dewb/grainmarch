@@ -10,6 +10,8 @@
 
 #include <sys/time.h>
 
+char DefaultTextValue[] = "foo";
+
 float dice() {
     static std::default_random_engine generator;
     static std::uniform_real_distribution<float> distribution(0.0, 1.0);
@@ -27,7 +29,7 @@ ParamAction AccumulateAction = [](Parameter& p, float v, ParamList& l) {
     p.Value = p.ActionData[1] + v;
 };
 
-Parameter::Parameter(string name, float min, float max, float value, int type, bool isShader, bool shouldRandomize, ParamAction action)
+Parameter::Parameter(string name, float min, float max, float value, int type, bool isShader, bool shouldRandomize, ParamAction action, char* textValue)
 : Name(name)
 , Type(type)
 , RangeMin(min)
@@ -37,7 +39,12 @@ Parameter::Parameter(string name, float min, float max, float value, int type, b
 , UniformLocation(-1)
 , Action(action)
 {
-    Value = (value - min) / (max - min);
+    if (type == FF_TYPE_TEXT) {
+        //TextValue = (textValue != nullptr) ? textValue : DefaultTextValue;
+        TextValue = DefaultTextValue;
+    } else {
+        Value = (value - min) / (max - min);
+    }
 }
 
 float Parameter::GetScaledValue() const {
@@ -69,7 +76,11 @@ ShaderPlugin::ShaderPlugin(int nInputs)
 
     for (int ii = 0; ii < m_parameters.size(); ii++) {
         auto p = m_parameters[ii];
-        SetParamInfo(ii, p.Name.c_str(), p.Type, p.Value);
+        if (p.Type == FF_TYPE_TEXT) {
+            SetParamInfo(ii, p.Name.c_str(), p.Type, p.TextValue);
+        } else {
+            SetParamInfo(ii, p.Name.c_str(), p.Type, p.Value);
+        }
     }
 }
 
@@ -268,7 +279,11 @@ DWORD ShaderPlugin::GetParameter(DWORD dwIndex)
 
     if (dwIndex < m_parameters.size()) {
         auto p = m_parameters[dwIndex];
-        *((float *)(unsigned)&dwRet) = p.Value;
+        if (p.Type == FF_TYPE_TEXT) {
+            dwRet = (DWORD)(p.TextValue);
+        } else {
+            *((float *)(unsigned)&dwRet) = p.Value;
+        }
         return dwRet;
     } else {
         return FF_FAIL;
@@ -279,11 +294,15 @@ DWORD ShaderPlugin::SetParameter(const SetParameterStruct* pParam)
 {
     if (pParam != NULL && pParam->ParameterNumber < m_parameters.size()) {
         auto& p = m_parameters[pParam->ParameterNumber];
-        float newValue = *((float *)(unsigned)&(pParam->NewParameterValue));
-        if (p.Action != nullptr) {
-            p.Action(p, newValue, m_parameters);
+        if (p.Type == FF_TYPE_TEXT) {
+            p.TextValue = (char*)(pParam->NewParameterValue);
         } else {
-            p.Value = newValue;
+            float newValue = *((float *)(unsigned)&(pParam->NewParameterValue));
+            if (p.Action != nullptr) {
+                p.Action(p, newValue, m_parameters);
+            } else {
+                p.Value = newValue;
+            }
         }
         return FF_SUCCESS;
     } else {
