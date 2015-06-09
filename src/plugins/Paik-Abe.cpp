@@ -168,7 +168,7 @@ public:
         float x;
         float y;
     };
-    
+   
     void drawLineQuad(Point a, Point b, Point ta, Point tb, float lineWidth) {
         float length = sqrt(pow(b.x - a.x, 2) + pow(b.y - a.y, 2));
         float dx = (b.x - a.x) / length;
@@ -295,8 +295,8 @@ public:
         
         while (t < framePeriod)
         {
-            //double h = horizontalBeamFunction(t, linePeriod);
-            //double v = verticalBeamFunction(t, linePeriod, GetScaled(Param::Scanlines));
+            double hSource = horizontalBeamFunction(t, linePeriod);
+            double vSource = verticalBeamFunction(t, linePeriod, GetScaled(Param::Scanlines));
 
             expressionParamValues[0] = t / framePeriod;
             exprH.bind(expressionParams, expressionParamValues);
@@ -315,7 +315,7 @@ public:
             double s = 0.0;
 
             currentPoint = Point(x + s * cos(sAngle), y + s * sin(sAngle));
-            currentSourcePoint = Point(h, v);
+            currentSourcePoint = Point(hSource, vSource);
             
             if (t != 0.0 &&
                 !beamBlankingFunction(t - advance, hBlankingPeriod, hBlankingDutyCycle) &&
