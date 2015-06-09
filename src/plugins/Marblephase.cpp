@@ -8,7 +8,7 @@
 
 #include "PluginDefinition.h"
 #include "Marblephase.glsl"
-#include "default_vertex_shader.glsl"
+#include "../default_vertex_shader.glsl"
 #include <cmath>
 
 #define PI 3.1415926535897932384626433832795
