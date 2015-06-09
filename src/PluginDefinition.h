@@ -1,8 +1,8 @@
 #pragma once
 
-#include <FFGLPluginSDK.h>
-#include <FFGLLib.h>
-#include <FFGLShader.h>
+#include <FFGLSDK_1_5/Source/FFGLPlugins/FFGLPluginSDK.h>
+#include <FFGLSDK_1_5/Include/FFGLLib.h>
+#include <FFGLSDK_1_5/Include/FFGLShader.h>
 
 #include <string>
 #include <vector>

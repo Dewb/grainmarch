@@ -1,5 +1,4 @@
-#include <FFGL.h>
-#include <FFGLLib.h>
+#include <FFGLSDK_1_5/Include/FFGL.h>
 
 #include "PluginDefinition.h"
 
