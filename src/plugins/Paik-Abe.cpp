@@ -33,19 +33,17 @@ PARAM(Rotate, 180, -180, 0.0, FF_TYPE_STANDARD, false)
 PARAM(Scanlines, 0.0, 1000.0, 525.0, FF_TYPE_STANDARD, false)
 PARAM(BeamWidth, 0.0002, 0.1, 0.002, FF_TYPE_STANDARD, false)
 PARAM(Intensity, 0.0, 1.0, 0.3, FF_TYPE_STANDARD, true)
-PARAM(Quality, 0.0, 30000.0, 15000.0, FF_TYPE_STANDARD, false, false)
+PARAM(Quality, 0.0, 3000.0, 1000.0, FF_TYPE_STANDARD, false, false)
 PARAM(Noise, 0.0, 1.0, 0.0, FF_TYPE_STANDARD, false)
 PARAM(H, 0.0, 0.0, 0.0, FF_TYPE_TEXT, false, false, nullptr, DefaultHFunction)
 PARAM(V, 0.0, 0.0, 0.0, FF_TYPE_TEXT, false, false, nullptr, DefaultVFunction)
 PARAM(S, 0.0, 0.0, 0.0, FF_TYPE_TEXT, false, false, nullptr, DefaultSFunction)
-PARAM(S_Angle, 0.0, 2 * PI, 0.0, FF_TYPE_STANDARD, false)
-PARAM(H_Damping, 0.0, 100.0, 0.0, FF_TYPE_STANDARD, false)
-PARAM(V_Damping, 0.0, 100.0, 0.0, FF_TYPE_STANDARD, false)
-PARAM(S_Damping, 0.0, 100.0, 0.0, FF_TYPE_STANDARD, false)
 PARAM(A, 0.0, 1.0, 0.0, FF_TYPE_STANDARD, false)
 PARAM(B, 0.0, 1.0, 0.0, FF_TYPE_STANDARD, false)
 PARAM(C, 0.0, 1.0, 0.0, FF_TYPE_STANDARD, false)
 PARAM(D, 0.0, 1.0, 0.0, FF_TYPE_STANDARD, false)
+PARAM(S_Angle, 0.0, 2 * PI, 0.0, FF_TYPE_STANDARD, false)
+PARAM(Damping, 0.0, 100.0, 0.0, FF_TYPE_STANDARD, false)
 PARAM(BlankingFreq, -1.0, 1.0, 0.0, FF_TYPE_STANDARD, false)
 PARAM(BlankingDuty, 0.0, 1.0, 0.02, FF_TYPE_STANDARD, false)
 
@@ -259,7 +257,7 @@ public:
 
         double hFactor = 1.0;
         //double hFactor = lerp(1.0, GetScaled(Param::H), mix);
-        double hDamping = GetScaled(Param::H_Damping);
+        double damping = GetScaled(Param::Damping);
 
         expressionParamValues[1] = GetScaled(Param::A);
         expressionParamValues[2] = GetScaled(Param::B);
@@ -284,11 +282,9 @@ public:
 
         double vFactor = 1.0;
         //double vFactor = lerp(1.0, GetScaled(Param::V), mix);
-        double vDamping = GetScaled(Param::V_Damping);
-        
+
         double sAngle = PI/8.0 + GetScaled(Param::S_Angle);
-        double sDamping = GetScaled(Param::S_Damping);
-        
+
         double lineWidth = GetScaled(Param::BeamWidth) * zoom;
         double noise = GetScaled(Param::Noise);
         
@@ -311,10 +307,10 @@ public:
             //cout << "(" << h << "," << v << ")\n";
 
             double x = (hFactor * h) *
-                        lerp(1.0, exp(-1.0 * hDamping * t), mix);
+                        lerp(1.0, exp(-1.0 * damping * t), mix);
             
             double y = (vFactor * v) *
-                        lerp(1.0, exp(-1.0 * vDamping * t), mix);
+                        lerp(1.0, exp(-1.0 * damping * t), mix);
 
             double s = 0.0;
 
