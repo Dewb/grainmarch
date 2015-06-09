@@ -7,14 +7,14 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>B64516E9-175D-4712-BF53-B641FC6557BC</string>
 	<key>IDESourceControlProjectName</key>
-	<string>GrainmarchFFGL</string>
+	<string>project</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>1043FD47D3696683EE5809375FB0372D3854C551</key>
 		<string>https://github.com/Dewb/grainmarch</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>osx/GrainmarchFFGL.xcodeproj</string>
+	<string>osx/GrainmarchFFGL.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>1043FD47D3696683EE5809375FB0372D3854C551</key>
