@@ -25,8 +25,8 @@
 		5B1A40F418CAB0DA004D8334 /* FFGLPluginManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5B07B5EC16F2ED7800AD1A46 /* FFGLPluginManager.cpp */; };
 		5B1A40F518CAB0DA004D8334 /* FFGLPluginSDK.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5B07B5EF16F2ED7800AD1A46 /* FFGLPluginSDK.cpp */; };
 		5B1A40F618CAB0DA004D8334 /* PluginDefinition.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5B0FCE891793D806004E2E35 /* PluginDefinition.cpp */; };
-		5B1A410018CAB123004D8334 /* Paik-Abe.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5B1A40FE18CAB123004D8334 /* Paik-Abe.cpp */; };
-		5B1A410118CAB123004D8334 /* Paik-Abe.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 5B1A40FF18CAB123004D8334 /* Paik-Abe.glsl */; };
+		5B1A410018CAB123004D8334 /* Cathode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5B1A40FE18CAB123004D8334 /* Cathode.cpp */; };
+		5B1A410118CAB123004D8334 /* Cathode.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 5B1A40FF18CAB123004D8334 /* Cathode.glsl */; };
 		5B3022B418485D6A005C75A8 /* FFGLExtensions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5B07B5A516F2ED7800AD1A46 /* FFGLExtensions.cpp */; };
 		5B3022B518485D6A005C75A8 /* FFGLFBO.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5B07B5A616F2ED7800AD1A46 /* FFGLFBO.cpp */; };
 		5B3022B618485D6A005C75A8 /* FFGLShader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5B07B5A716F2ED7800AD1A46 /* FFGLShader.cpp */; };
@@ -107,9 +107,9 @@
 		5B0FCE8A1793D806004E2E35 /* PluginDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PluginDefinition.h; path = ../src/PluginDefinition.h; sourceTree = "<group>"; };
 		5B0FCE8D1793DCEC004E2E35 /* default_vertex_shader.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = default_vertex_shader.glsl; path = ../src/default_vertex_shader.glsl; sourceTree = "<group>"; };
 		5B0FCE911793DE3E004E2E35 /* Grainmarch.glsl */ = {isa = PBXFileReference; lastKnownFileType = text; name = Grainmarch.glsl; path = ../src/plugins/Grainmarch.glsl; sourceTree = "<group>"; };
-		5B1A40FC18CAB0DA004D8334 /* Paik-Abe.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Paik-Abe.bundle"; sourceTree = BUILT_PRODUCTS_DIR; };
-		5B1A40FE18CAB123004D8334 /* Paik-Abe.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = "Paik-Abe.cpp"; path = "../src/plugins/Paik-Abe.cpp"; sourceTree = "<group>"; };
-		5B1A40FF18CAB123004D8334 /* Paik-Abe.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "Paik-Abe.glsl"; path = "../src/plugins/Paik-Abe.glsl"; sourceTree = "<group>"; };
+		5B1A40FC18CAB0DA004D8334 /* Cathode.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Cathode.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		5B1A40FE18CAB123004D8334 /* Cathode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Cathode.cpp; path = ../src/plugins/Cathode.cpp; sourceTree = "<group>"; };
+		5B1A40FF18CAB123004D8334 /* Cathode.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Cathode.glsl; path = ../src/plugins/Cathode.glsl; sourceTree = "<group>"; };
 		5B3022AF18485D5E005C75A8 /* Average.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Average.cpp; path = ../src/plugins/Average.cpp; sourceTree = "<group>"; };
 		5B3022B018485D5E005C75A8 /* Average.glsl */ = {isa = PBXFileReference; lastKnownFileType = text; name = Average.glsl; path = ../src/plugins/Average.glsl; sourceTree = "<group>"; };
 		5B3022C218485D6A005C75A8 /* Average.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Average.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -196,7 +196,7 @@
 				5B8123BB1842EA9A0076EB97 /* Blockhead.bundle */,
 				5B8123D3184459F20076EB97 /* Linecrimes.bundle */,
 				5B3022C218485D6A005C75A8 /* Average.bundle */,
-				5B1A40FC18CAB0DA004D8334 /* Paik-Abe.bundle */,
+				5B1A40FC18CAB0DA004D8334 /* Cathode.bundle */,
 				5BE4790E19FEF89200C3ACCB /* Marblephase.bundle */,
 				5BFC0CE11B269062001E1746 /* Info.plist */,
 			);
@@ -273,8 +273,8 @@
 				5BBDA503183F2B430058C89C /* Tanline.glsl */,
 				5BBDA4EA183F132C0058C89C /* Grainmarch.cpp */,
 				5B0FCE911793DE3E004E2E35 /* Grainmarch.glsl */,
-				5B1A40FE18CAB123004D8334 /* Paik-Abe.cpp */,
-				5B1A40FF18CAB123004D8334 /* Paik-Abe.glsl */,
+				5B1A40FE18CAB123004D8334 /* Cathode.cpp */,
+				5B1A40FF18CAB123004D8334 /* Cathode.glsl */,
 				5BE478FB19FEF87E00C3ACCB /* Marblephase.cpp */,
 				5BE478F919FEF81600C3ACCB /* Marblephase.glsl */,
 			);
@@ -336,7 +336,7 @@
 			);
 			name = "Paik-Abe";
 			productName = FFGLBrightness;
-			productReference = 5B1A40FC18CAB0DA004D8334 /* Paik-Abe.bundle */;
+			productReference = 5B1A40FC18CAB0DA004D8334 /* Cathode.bundle */;
 			productType = "com.apple.product-type.bundle";
 		};
 		5B3022B118485D6A005C75A8 /* Average */ = {
@@ -467,7 +467,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5B1A410118CAB123004D8334 /* Paik-Abe.glsl in Resources */,
+				5B1A410118CAB123004D8334 /* Cathode.glsl in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -537,7 +537,7 @@
 				5B1A40F118CAB0DA004D8334 /* FFGL.cpp in Sources */,
 				5B1A40F218CAB0DA004D8334 /* FFGLPluginInfo.cpp in Sources */,
 				5B1A40F318CAB0DA004D8334 /* FFGLPluginInfoData.cpp in Sources */,
-				5B1A410018CAB123004D8334 /* Paik-Abe.cpp in Sources */,
+				5B1A410018CAB123004D8334 /* Cathode.cpp in Sources */,
 				5B1A40F418CAB0DA004D8334 /* FFGLPluginManager.cpp in Sources */,
 				5B1A40F518CAB0DA004D8334 /* FFGLPluginSDK.cpp in Sources */,
 				5B1A40F618CAB0DA004D8334 /* PluginDefinition.cpp in Sources */,
@@ -747,7 +747,7 @@
 					"-framework",
 					OpenGL,
 				);
-				PRODUCT_NAME = "Paik-Abe";
+				PRODUCT_NAME = Cathode;
 				SDKROOT = macosx;
 				WRAPPER_EXTENSION = bundle;
 				ZERO_LINK = NO;
@@ -775,7 +775,7 @@
 					"-framework",
 					OpenGL,
 				);
-				PRODUCT_NAME = "Paik-Abe";
+				PRODUCT_NAME = Cathode;
 				SDKROOT = macosx;
 				WRAPPER_EXTENSION = bundle;
 				ZERO_LINK = NO;
