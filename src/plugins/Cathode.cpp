@@ -1,5 +1,5 @@
 //
-//  Paik-Abe.cpp
+//  Cathode.cpp
 //  GrainmarchFFGL
 //
 //  Created by Michael Dewberry on 3/7/14.
@@ -10,7 +10,7 @@
 
 #include <GLUT/GLUT.h>
 #include <cmath>
-#include "Paik-Abe.glsl"
+#include "Cathode.glsl"
 
 #include "exprtk/exprtk.hpp"
 #include <iostream>
@@ -131,7 +131,7 @@ public:
 typedef ExpressionWrapper<float> Expression;
 
 
-class PaikAbePlugin : public EffectPlugin
+class CathodePlugin : public EffectPlugin
 {
 public:
 
@@ -146,7 +146,7 @@ public:
     vector<string> expressionParams;
     vector<float> expressionParamValues;
 
-    PaikAbePlugin() {
+    CathodePlugin() {
         expressionParams.push_back("t");
         expressionParams.push_back("A");
         expressionParams.push_back("B");
@@ -168,7 +168,7 @@ public:
         float x;
         float y;
     };
-   
+
     void drawLineQuad(Point a, Point b, Point ta, Point tb, float lineWidth) {
         float length = sqrt(pow(b.x - a.x, 2) + pow(b.y - a.y, 2));
         float dx = (b.x - a.x) / length;
@@ -337,7 +337,7 @@ public:
     }
 };
 
-DECLARE_PLUGIN(PaikAbePlugin, "DBPA", "Paik-Abe", "remix/riff/recreation of the classic Paik-Abe video synthesizer", "by Michael Dewberry - dewb.org")
+DECLARE_PLUGIN(CathodePlugin, "DBPA", "Cathode", "CRT simulator inspired by the classic Paik-Abe video synthesizer", "by Michael Dewberry - dewb.org")
 
 
 
