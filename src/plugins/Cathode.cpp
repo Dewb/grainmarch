@@ -253,11 +253,9 @@ public:
         double hBlankingPeriod = linePeriod * pow(2.0, GetScaled(Param::BlankingFreq));
         double hBlankingDutyCycle = GetScaled(Param::BlankingDuty);
         
-        double mix = GetScaled(Param::Mix);
 
-        double hFactor = 1.0;
+
         //double hFactor = lerp(1.0, GetScaled(Param::H), mix);
-        double damping = GetScaled(Param::Damping);
 
         expressionParamValues[1] = GetScaled(Param::A);
         expressionParamValues[2] = GetScaled(Param::B);
@@ -280,14 +278,15 @@ public:
             exprV.parse(lastVFunction);
         }
 
-        double vFactor = 1.0;
         //double vFactor = lerp(1.0, GetScaled(Param::V), mix);
 
         double sAngle = PI/8.0 + GetScaled(Param::S_Angle);
 
         double lineWidth = GetScaled(Param::BeamWidth) * zoom;
         double noise = GetScaled(Param::Noise);
-        
+        double damping = GetScaled(Param::Damping);
+        double mix = GetScaled(Param::Mix);
+
         double t = 0;
         Point lastPoint, currentPoint, lastSourcePoint, currentSourcePoint;
 
@@ -302,16 +301,13 @@ public:
             exprH.bind(expressionParams, expressionParamValues);
             exprV.bind(expressionParams, expressionParamValues);
 
-            double h = exprH.getValue();
-            double v = exprV.getValue();
+            double h = exprH.getValue() + lerp(0.0, hSource, mix);
+            double v = exprV.getValue() + lerp(0.0, vSource, mix);
+
             //cout << "(" << h << "," << v << ")\n";
 
-            double x = (hFactor * h) *
-                        lerp(1.0, exp(-1.0 * damping * t), mix);
-            
-            double y = (vFactor * v) *
-                        lerp(1.0, exp(-1.0 * damping * t), mix);
-
+            double x = h * lerp(1.0, exp(-1.0 * damping * t), mix);
+            double y = v * lerp(1.0, exp(-1.0 * damping * t), mix);
             double s = 0.0;
 
             currentPoint = Point(x + s * cos(sAngle), y + s * sin(sAngle));
