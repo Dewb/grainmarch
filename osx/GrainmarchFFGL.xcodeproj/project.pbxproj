@@ -25,8 +25,8 @@
 		5B1A40F418CAB0DA004D8334 /* FFGLPluginManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5B07B5EC16F2ED7800AD1A46 /* FFGLPluginManager.cpp */; };
 		5B1A40F518CAB0DA004D8334 /* FFGLPluginSDK.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5B07B5EF16F2ED7800AD1A46 /* FFGLPluginSDK.cpp */; };
 		5B1A40F618CAB0DA004D8334 /* PluginDefinition.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5B0FCE891793D806004E2E35 /* PluginDefinition.cpp */; };
-		5B1A410018CAB123004D8334 /* Paik-Abe.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5B1A40FE18CAB123004D8334 /* Paik-Abe.cpp */; };
-		5B1A410118CAB123004D8334 /* Paik-Abe.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 5B1A40FF18CAB123004D8334 /* Paik-Abe.glsl */; };
+		5B1A410018CAB123004D8334 /* Cathode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5B1A40FE18CAB123004D8334 /* Cathode.cpp */; };
+		5B1A410118CAB123004D8334 /* Cathode.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 5B1A40FF18CAB123004D8334 /* Cathode.glsl */; };
 		5B3022B418485D6A005C75A8 /* FFGLExtensions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5B07B5A516F2ED7800AD1A46 /* FFGLExtensions.cpp */; };
 		5B3022B518485D6A005C75A8 /* FFGLFBO.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5B07B5A616F2ED7800AD1A46 /* FFGLFBO.cpp */; };
 		5B3022B618485D6A005C75A8 /* FFGLShader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5B07B5A716F2ED7800AD1A46 /* FFGLShader.cpp */; };
@@ -84,7 +84,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2D2190970AF02BD1007154B7 /* GrainmarchFFGL-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GrainmarchFFGL-Info.plist"; sourceTree = "<group>"; };
 		2DA287A70AEEFE950030A4DD /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = /System/Library/Frameworks/OpenGL.framework; sourceTree = "<absolute>"; };
 		5B07B56D16F2ED7800AD1A46 /* FFGL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FFGL.h; sourceTree = "<group>"; };
 		5B07B56E16F2ED7800AD1A46 /* FFGLExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FFGLExtensions.h; sourceTree = "<group>"; };
@@ -104,36 +103,32 @@
 		5B07B5EE16F2ED7800AD1A46 /* FFGLPluginManager_inl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FFGLPluginManager_inl.h; sourceTree = "<group>"; };
 		5B07B5EF16F2ED7800AD1A46 /* FFGLPluginSDK.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FFGLPluginSDK.cpp; sourceTree = "<group>"; };
 		5B07B5F016F2ED7800AD1A46 /* FFGLPluginSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FFGLPluginSDK.h; sourceTree = "<group>"; };
-		5B0FCE891793D806004E2E35 /* PluginDefinition.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PluginDefinition.cpp; sourceTree = "<group>"; };
-		5B0FCE8A1793D806004E2E35 /* PluginDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PluginDefinition.h; sourceTree = "<group>"; };
-		5B0FCE8D1793DCEC004E2E35 /* default_vertex_shader.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = default_vertex_shader.glsl; path = plugins/default_vertex_shader.glsl; sourceTree = "<group>"; };
-		5B0FCE911793DE3E004E2E35 /* Grainmarch.glsl */ = {isa = PBXFileReference; lastKnownFileType = text; name = Grainmarch.glsl; path = plugins/Grainmarch.glsl; sourceTree = "<group>"; };
-		5B1A40FC18CAB0DA004D8334 /* Paik-Abe.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Paik-Abe.bundle"; sourceTree = BUILT_PRODUCTS_DIR; };
-		5B1A40FD18CAB0DA004D8334 /* Paik-Abe-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Paik-Abe-Info.plist"; path = "/Users/dewb/ah/grainmarch/Paik-Abe-Info.plist"; sourceTree = "<absolute>"; };
-		5B1A40FE18CAB123004D8334 /* Paik-Abe.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = "Paik-Abe.cpp"; path = "plugins/Paik-Abe.cpp"; sourceTree = "<group>"; };
-		5B1A40FF18CAB123004D8334 /* Paik-Abe.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "Paik-Abe.glsl"; path = "plugins/Paik-Abe.glsl"; sourceTree = "<group>"; };
-		5B3022AF18485D5E005C75A8 /* Average.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Average.cpp; path = plugins/Average.cpp; sourceTree = "<group>"; };
-		5B3022B018485D5E005C75A8 /* Average.glsl */ = {isa = PBXFileReference; lastKnownFileType = text; name = Average.glsl; path = plugins/Average.glsl; sourceTree = "<group>"; };
+		5B0FCE891793D806004E2E35 /* PluginDefinition.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PluginDefinition.cpp; path = ../src/PluginDefinition.cpp; sourceTree = "<group>"; };
+		5B0FCE8A1793D806004E2E35 /* PluginDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PluginDefinition.h; path = ../src/PluginDefinition.h; sourceTree = "<group>"; };
+		5B0FCE8D1793DCEC004E2E35 /* default_vertex_shader.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = default_vertex_shader.glsl; path = ../src/default_vertex_shader.glsl; sourceTree = "<group>"; };
+		5B0FCE911793DE3E004E2E35 /* Grainmarch.glsl */ = {isa = PBXFileReference; lastKnownFileType = text; name = Grainmarch.glsl; path = ../src/plugins/Grainmarch.glsl; sourceTree = "<group>"; };
+		5B1A40FC18CAB0DA004D8334 /* Cathode.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Cathode.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		5B1A40FE18CAB123004D8334 /* Cathode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Cathode.cpp; path = ../src/plugins/Cathode.cpp; sourceTree = "<group>"; };
+		5B1A40FF18CAB123004D8334 /* Cathode.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Cathode.glsl; path = ../src/plugins/Cathode.glsl; sourceTree = "<group>"; };
+		5B3022AF18485D5E005C75A8 /* Average.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Average.cpp; path = ../src/plugins/Average.cpp; sourceTree = "<group>"; };
+		5B3022B018485D5E005C75A8 /* Average.glsl */ = {isa = PBXFileReference; lastKnownFileType = text; name = Average.glsl; path = ../src/plugins/Average.glsl; sourceTree = "<group>"; };
 		5B3022C218485D6A005C75A8 /* Average.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Average.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
-		5B8123A91842AD7C0076EB97 /* GrainmarchFFGL.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GrainmarchFFGL.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
-		5B8123BB1842EA9A0076EB97 /* BlockheadFFGL.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BlockheadFFGL.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
-		5B8123BC1842EA9A0076EB97 /* Blockhead-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Blockhead-Info.plist"; path = "/Users/dewb/dev/grainmarch/Blockhead-Info.plist"; sourceTree = "<absolute>"; };
-		5B8123BD1842EAE90076EB97 /* Blockhead.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Blockhead.cpp; path = plugins/Blockhead.cpp; sourceTree = "<group>"; };
-		5B8123BE1842EAE90076EB97 /* Blockhead.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Blockhead.glsl; path = plugins/Blockhead.glsl; sourceTree = "<group>"; };
+		5B8123A91842AD7C0076EB97 /* Grainmarch.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Grainmarch.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		5B8123BB1842EA9A0076EB97 /* Blockhead.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Blockhead.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		5B8123BD1842EAE90076EB97 /* Blockhead.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Blockhead.cpp; path = ../src/plugins/Blockhead.cpp; sourceTree = "<group>"; };
+		5B8123BE1842EAE90076EB97 /* Blockhead.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Blockhead.glsl; path = ../src/plugins/Blockhead.glsl; sourceTree = "<group>"; };
 		5B8123C01842F2E60076EB97 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = /System/Library/Frameworks/GLUT.framework; sourceTree = "<absolute>"; };
-		5B8123D3184459F20076EB97 /* LinecrimesFFGL.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LinecrimesFFGL.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
-		5B8123D4184459F20076EB97 /* Linecrimes-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Linecrimes-Info.plist"; path = "/Users/dewb/dev/grainmarch/Linecrimes-Info.plist"; sourceTree = "<absolute>"; };
-		5B8123D518445AF20076EB97 /* Linecrimes.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Linecrimes.cpp; path = plugins/Linecrimes.cpp; sourceTree = "<group>"; };
-		5B8123D618445AF20076EB97 /* Linecrimes.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Linecrimes.glsl; path = plugins/Linecrimes.glsl; sourceTree = "<group>"; };
-		5BBDA4EA183F132C0058C89C /* Grainmarch.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Grainmarch.cpp; path = plugins/Grainmarch.cpp; sourceTree = "<group>"; };
-		5BBDA500183F2ACF0058C89C /* TanlineFFGL-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "TanlineFFGL-Info.plist"; path = "/Users/dewb/dev/grainmarch/TanlineFFGL-Info.plist"; sourceTree = "<absolute>"; };
-		5BBDA502183F2B430058C89C /* Tanline.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Tanline.cpp; path = plugins/Tanline.cpp; sourceTree = "<group>"; };
-		5BBDA503183F2B430058C89C /* Tanline.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Tanline.glsl; path = plugins/Tanline.glsl; sourceTree = "<group>"; };
-		5BBDA507183F2E9C0058C89C /* TanlineFFGL.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TanlineFFGL.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
-		5BE478F919FEF81600C3ACCB /* Marblephase.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Marblephase.glsl; path = plugins/Marblephase.glsl; sourceTree = "<group>"; };
-		5BE478FB19FEF87E00C3ACCB /* Marblephase.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Marblephase.cpp; path = plugins/Marblephase.cpp; sourceTree = "<group>"; };
+		5B8123D3184459F20076EB97 /* Linecrimes.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Linecrimes.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		5B8123D518445AF20076EB97 /* Linecrimes.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Linecrimes.cpp; path = ../src/plugins/Linecrimes.cpp; sourceTree = "<group>"; };
+		5B8123D618445AF20076EB97 /* Linecrimes.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Linecrimes.glsl; path = ../src/plugins/Linecrimes.glsl; sourceTree = "<group>"; };
+		5BBDA4EA183F132C0058C89C /* Grainmarch.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Grainmarch.cpp; path = ../src/plugins/Grainmarch.cpp; sourceTree = "<group>"; };
+		5BBDA502183F2B430058C89C /* Tanline.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Tanline.cpp; path = ../src/plugins/Tanline.cpp; sourceTree = "<group>"; };
+		5BBDA503183F2B430058C89C /* Tanline.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Tanline.glsl; path = ../src/plugins/Tanline.glsl; sourceTree = "<group>"; };
+		5BBDA507183F2E9C0058C89C /* Tanline.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tanline.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		5BE478F919FEF81600C3ACCB /* Marblephase.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Marblephase.glsl; path = ../src/plugins/Marblephase.glsl; sourceTree = "<group>"; };
+		5BE478FB19FEF87E00C3ACCB /* Marblephase.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Marblephase.cpp; path = ../src/plugins/Marblephase.cpp; sourceTree = "<group>"; };
 		5BE4790E19FEF89200C3ACCB /* Marblephase.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Marblephase.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
-		5BE4790F19FEF89200C3ACCB /* Marblephase-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Marblephase-Info.plist"; path = "/Users/dewb/ah/grainmarch/Marblephase-Info.plist"; sourceTree = "<absolute>"; };
+		5BFC0CE11B269062001E1746 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -194,25 +189,16 @@
 		2DA285910AEE5D640030A4DD = {
 			isa = PBXGroup;
 			children = (
-				5BBDA4ED183F13350058C89C /* plugins */,
-				5B0FCE891793D806004E2E35 /* PluginDefinition.cpp */,
-				5B0FCE8A1793D806004E2E35 /* PluginDefinition.h */,
-				5B07B55216F2ED7800AD1A46 /* FFGLSDK_1_5 */,
-				5B8123C01842F2E60076EB97 /* GLUT.framework */,
-				2DA287A70AEEFE950030A4DD /* OpenGL.framework */,
-				2D2190970AF02BD1007154B7 /* GrainmarchFFGL-Info.plist */,
-				5BBDA500183F2ACF0058C89C /* TanlineFFGL-Info.plist */,
-				5BBDA507183F2E9C0058C89C /* TanlineFFGL.bundle */,
-				5B8123A91842AD7C0076EB97 /* GrainmarchFFGL.bundle */,
-				5B8123BB1842EA9A0076EB97 /* BlockheadFFGL.bundle */,
-				5B8123BC1842EA9A0076EB97 /* Blockhead-Info.plist */,
-				5B8123D3184459F20076EB97 /* LinecrimesFFGL.bundle */,
-				5B8123D4184459F20076EB97 /* Linecrimes-Info.plist */,
+				5BFC0CE01B268F93001E1746 /* lib */,
+				5BFC0CDF1B268F6C001E1746 /* src */,
+				5BBDA507183F2E9C0058C89C /* Tanline.bundle */,
+				5B8123A91842AD7C0076EB97 /* Grainmarch.bundle */,
+				5B8123BB1842EA9A0076EB97 /* Blockhead.bundle */,
+				5B8123D3184459F20076EB97 /* Linecrimes.bundle */,
 				5B3022C218485D6A005C75A8 /* Average.bundle */,
-				5B1A40FC18CAB0DA004D8334 /* Paik-Abe.bundle */,
-				5B1A40FD18CAB0DA004D8334 /* Paik-Abe-Info.plist */,
+				5B1A40FC18CAB0DA004D8334 /* Cathode.bundle */,
 				5BE4790E19FEF89200C3ACCB /* Marblephase.bundle */,
-				5BE4790F19FEF89200C3ACCB /* Marblephase-Info.plist */,
+				5BFC0CE11B269062001E1746 /* Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -222,7 +208,8 @@
 				5B07B56C16F2ED7800AD1A46 /* Include */,
 				5B07B5A316F2ED7800AD1A46 /* Source */,
 			);
-			path = FFGLSDK_1_5;
+			name = FFGLSDK_1_5;
+			path = ../lib/FFGLSDK_1_5;
 			sourceTree = "<group>";
 		};
 		5B07B56C16F2ED7800AD1A46 /* Include */ = {
@@ -282,17 +269,37 @@
 				5B8123BE1842EAE90076EB97 /* Blockhead.glsl */,
 				5B8123D518445AF20076EB97 /* Linecrimes.cpp */,
 				5B8123D618445AF20076EB97 /* Linecrimes.glsl */,
-				5B0FCE8D1793DCEC004E2E35 /* default_vertex_shader.glsl */,
 				5BBDA502183F2B430058C89C /* Tanline.cpp */,
 				5BBDA503183F2B430058C89C /* Tanline.glsl */,
 				5BBDA4EA183F132C0058C89C /* Grainmarch.cpp */,
 				5B0FCE911793DE3E004E2E35 /* Grainmarch.glsl */,
-				5B1A40FE18CAB123004D8334 /* Paik-Abe.cpp */,
-				5B1A40FF18CAB123004D8334 /* Paik-Abe.glsl */,
+				5B1A40FE18CAB123004D8334 /* Cathode.cpp */,
+				5B1A40FF18CAB123004D8334 /* Cathode.glsl */,
 				5BE478FB19FEF87E00C3ACCB /* Marblephase.cpp */,
 				5BE478F919FEF81600C3ACCB /* Marblephase.glsl */,
 			);
 			name = plugins;
+			sourceTree = "<group>";
+		};
+		5BFC0CDF1B268F6C001E1746 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				5BBDA4ED183F13350058C89C /* plugins */,
+				5B0FCE891793D806004E2E35 /* PluginDefinition.cpp */,
+				5B0FCE8A1793D806004E2E35 /* PluginDefinition.h */,
+				5B0FCE8D1793DCEC004E2E35 /* default_vertex_shader.glsl */,
+			);
+			name = src;
+			sourceTree = "<group>";
+		};
+		5BFC0CE01B268F93001E1746 /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				2DA287A70AEEFE950030A4DD /* OpenGL.framework */,
+				5B8123C01842F2E60076EB97 /* GLUT.framework */,
+				5B07B55216F2ED7800AD1A46 /* FFGLSDK_1_5 */,
+			);
+			name = lib;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -312,7 +319,7 @@
 			);
 			name = Grainmarch;
 			productName = FFGLBrightness;
-			productReference = 5B8123A91842AD7C0076EB97 /* GrainmarchFFGL.bundle */;
+			productReference = 5B8123A91842AD7C0076EB97 /* Grainmarch.bundle */;
 			productType = "com.apple.product-type.bundle";
 		};
 		5B1A40EB18CAB0DA004D8334 /* Paik-Abe */ = {
@@ -329,7 +336,7 @@
 			);
 			name = "Paik-Abe";
 			productName = FFGLBrightness;
-			productReference = 5B1A40FC18CAB0DA004D8334 /* Paik-Abe.bundle */;
+			productReference = 5B1A40FC18CAB0DA004D8334 /* Cathode.bundle */;
 			productType = "com.apple.product-type.bundle";
 		};
 		5B3022B118485D6A005C75A8 /* Average */ = {
@@ -363,7 +370,7 @@
 			);
 			name = Blockhead;
 			productName = FFGLBrightness;
-			productReference = 5B8123BB1842EA9A0076EB97 /* BlockheadFFGL.bundle */;
+			productReference = 5B8123BB1842EA9A0076EB97 /* Blockhead.bundle */;
 			productType = "com.apple.product-type.bundle";
 		};
 		5B8123C2184459F20076EB97 /* Linecrimes */ = {
@@ -380,7 +387,7 @@
 			);
 			name = Linecrimes;
 			productName = FFGLBrightness;
-			productReference = 5B8123D3184459F20076EB97 /* LinecrimesFFGL.bundle */;
+			productReference = 5B8123D3184459F20076EB97 /* Linecrimes.bundle */;
 			productType = "com.apple.product-type.bundle";
 		};
 		5BBDA4EE183F2ACF0058C89C /* Tanline */ = {
@@ -397,7 +404,7 @@
 			);
 			name = Tanline;
 			productName = FFGLBrightness;
-			productReference = 5BBDA507183F2E9C0058C89C /* TanlineFFGL.bundle */;
+			productReference = 5BBDA507183F2E9C0058C89C /* Tanline.bundle */;
 			productType = "com.apple.product-type.bundle";
 		};
 		5BE478FC19FEF89200C3ACCB /* Marblephase */ = {
@@ -460,7 +467,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5B1A410118CAB123004D8334 /* Paik-Abe.glsl in Resources */,
+				5B1A410118CAB123004D8334 /* Cathode.glsl in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -530,7 +537,7 @@
 				5B1A40F118CAB0DA004D8334 /* FFGL.cpp in Sources */,
 				5B1A40F218CAB0DA004D8334 /* FFGLPluginInfo.cpp in Sources */,
 				5B1A40F318CAB0DA004D8334 /* FFGLPluginInfoData.cpp in Sources */,
-				5B1A410018CAB123004D8334 /* Paik-Abe.cpp in Sources */,
+				5B1A410018CAB123004D8334 /* Cathode.cpp in Sources */,
 				5B1A40F418CAB0DA004D8334 /* FFGLPluginManager.cpp in Sources */,
 				5B1A40F518CAB0DA004D8334 /* FFGLPluginSDK.cpp in Sources */,
 				5B1A40F618CAB0DA004D8334 /* PluginDefinition.cpp in Sources */,
@@ -632,7 +639,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				COMBINE_HIDPI_IMAGES = YES;
-				CONFIGURATION_BUILD_DIR = bin;
+				CONFIGURATION_BUILD_DIR = "$(SRC_ROOT)../bin";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
@@ -644,18 +651,14 @@
 					"TARGET_OS_MAC=1",
 					"_DEBUG=1",
 				);
-				HEADER_SEARCH_PATHS = (
-					"$(SRCROOT)/FFGLSDK_1_5/Source/FFGLPlugins",
-					"$(SRCROOT)/FFGLSDK_1_5/Include",
-				);
-				INFOPLIST_FILE = "GrainmarchFFGL-Info.plist";
+				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Library/Bundles";
 				MACOSX_DEPLOYMENT_TARGET = "";
 				OTHER_LDFLAGS = (
 					"-framework",
 					OpenGL,
 				);
-				PRODUCT_NAME = GrainmarchFFGL;
+				PRODUCT_NAME = Grainmarch;
 				SDKROOT = macosx;
 				WRAPPER_EXTENSION = bundle;
 				ZERO_LINK = NO;
@@ -669,26 +672,21 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				COMBINE_HIDPI_IMAGES = YES;
-				CONFIGURATION_BUILD_DIR = bin;
+				CONFIGURATION_BUILD_DIR = "$(SRC_ROOT)../bin";
 				COPY_PHASE_STRIP = YES;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "";
 				GCC_PREPROCESSOR_DEFINITIONS = "TARGET_OS_MAC=1";
-				HEADER_SEARCH_PATHS = (
-					"$(SRCROOT)/FFGLSDK_1_5/Source/FFGLPlugins",
-					"$(SRCROOT)/FFGLSDK_1_5/Include",
-					"$(SRCROOT)/gl-matrix",
-				);
-				INFOPLIST_FILE = "GrainmarchFFGL-Info.plist";
+				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Library/Bundles";
 				MACOSX_DEPLOYMENT_TARGET = "";
 				OTHER_LDFLAGS = (
 					"-framework",
 					OpenGL,
 				);
-				PRODUCT_NAME = GrainmarchFFGL;
+				PRODUCT_NAME = Grainmarch;
 				SDKROOT = macosx;
 				WRAPPER_EXTENSION = bundle;
 				ZERO_LINK = NO;
@@ -703,7 +701,7 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				COPY_PHASE_STRIP = NO;
 				GCC_PREPROCESSOR_DEFINITIONS = "";
-				HEADER_SEARCH_PATHS = "../../../../FFGLSDK_1_5/Include/**";
+				HEADER_SEARCH_PATHS = "../lib/**";
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				SDKROOT = macosx;
 			};
@@ -717,7 +715,7 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				COPY_PHASE_STRIP = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = "";
-				HEADER_SEARCH_PATHS = "../../../../FFGLSDK_1_5/Include/**";
+				HEADER_SEARCH_PATHS = "../lib/**";
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				SDKROOT = macosx;
 			};
@@ -730,7 +728,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				COMBINE_HIDPI_IMAGES = YES;
-				CONFIGURATION_BUILD_DIR = bin;
+				CONFIGURATION_BUILD_DIR = "$(SRC_ROOT)../bin";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
@@ -742,18 +740,14 @@
 					"TARGET_OS_MAC=1",
 					"_DEBUG=1",
 				);
-				HEADER_SEARCH_PATHS = (
-					"$(SRCROOT)/FFGLSDK_1_5/Source/FFGLPlugins",
-					"$(SRCROOT)/FFGLSDK_1_5/Include",
-				);
-				INFOPLIST_FILE = "Paik-Abe-Info.plist";
+				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Library/Bundles";
 				MACOSX_DEPLOYMENT_TARGET = "";
 				OTHER_LDFLAGS = (
 					"-framework",
 					OpenGL,
 				);
-				PRODUCT_NAME = "Paik-Abe";
+				PRODUCT_NAME = Cathode;
 				SDKROOT = macosx;
 				WRAPPER_EXTENSION = bundle;
 				ZERO_LINK = NO;
@@ -767,26 +761,21 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				COMBINE_HIDPI_IMAGES = YES;
-				CONFIGURATION_BUILD_DIR = bin;
+				CONFIGURATION_BUILD_DIR = "$(SRC_ROOT)../bin";
 				COPY_PHASE_STRIP = YES;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "";
 				GCC_PREPROCESSOR_DEFINITIONS = "TARGET_OS_MAC=1";
-				HEADER_SEARCH_PATHS = (
-					"$(SRCROOT)/FFGLSDK_1_5/Source/FFGLPlugins",
-					"$(SRCROOT)/FFGLSDK_1_5/Include",
-					"$(SRCROOT)/gl-matrix",
-				);
-				INFOPLIST_FILE = "Paik-Abe-Info.plist";
+				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Library/Bundles";
 				MACOSX_DEPLOYMENT_TARGET = "";
 				OTHER_LDFLAGS = (
 					"-framework",
 					OpenGL,
 				);
-				PRODUCT_NAME = "Paik-Abe";
+				PRODUCT_NAME = Cathode;
 				SDKROOT = macosx;
 				WRAPPER_EXTENSION = bundle;
 				ZERO_LINK = NO;
@@ -800,7 +789,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				COMBINE_HIDPI_IMAGES = YES;
-				CONFIGURATION_BUILD_DIR = bin;
+				CONFIGURATION_BUILD_DIR = "$(SRC_ROOT)../bin";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
@@ -812,11 +801,7 @@
 					"TARGET_OS_MAC=1",
 					"_DEBUG=1",
 				);
-				HEADER_SEARCH_PATHS = (
-					"$(SRCROOT)/FFGLSDK_1_5/Source/FFGLPlugins",
-					"$(SRCROOT)/FFGLSDK_1_5/Include",
-				);
-				INFOPLIST_FILE = "Average-Info.plist";
+				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Library/Bundles";
 				MACOSX_DEPLOYMENT_TARGET = "";
 				OTHER_LDFLAGS = (
@@ -837,19 +822,14 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				COMBINE_HIDPI_IMAGES = YES;
-				CONFIGURATION_BUILD_DIR = bin;
+				CONFIGURATION_BUILD_DIR = "$(SRC_ROOT)../bin";
 				COPY_PHASE_STRIP = YES;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "";
 				GCC_PREPROCESSOR_DEFINITIONS = "TARGET_OS_MAC=1";
-				HEADER_SEARCH_PATHS = (
-					"$(SRCROOT)/FFGLSDK_1_5/Source/FFGLPlugins",
-					"$(SRCROOT)/FFGLSDK_1_5/Include",
-					"$(SRCROOT)/gl-matrix",
-				);
-				INFOPLIST_FILE = "Average-Info.plist";
+				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Library/Bundles";
 				MACOSX_DEPLOYMENT_TARGET = "";
 				OTHER_LDFLAGS = (
@@ -870,7 +850,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				COMBINE_HIDPI_IMAGES = YES;
-				CONFIGURATION_BUILD_DIR = bin;
+				CONFIGURATION_BUILD_DIR = "$(SRC_ROOT)../bin";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
@@ -882,18 +862,14 @@
 					"TARGET_OS_MAC=1",
 					"_DEBUG=1",
 				);
-				HEADER_SEARCH_PATHS = (
-					"$(SRCROOT)/FFGLSDK_1_5/Source/FFGLPlugins",
-					"$(SRCROOT)/FFGLSDK_1_5/Include",
-				);
-				INFOPLIST_FILE = "Blockhead-Info.plist";
+				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Library/Bundles";
 				MACOSX_DEPLOYMENT_TARGET = "";
 				OTHER_LDFLAGS = (
 					"-framework",
 					OpenGL,
 				);
-				PRODUCT_NAME = BlockheadFFGL;
+				PRODUCT_NAME = Blockhead;
 				SDKROOT = macosx;
 				WRAPPER_EXTENSION = bundle;
 				ZERO_LINK = NO;
@@ -907,26 +883,21 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				COMBINE_HIDPI_IMAGES = YES;
-				CONFIGURATION_BUILD_DIR = bin;
+				CONFIGURATION_BUILD_DIR = "$(SRC_ROOT)../bin";
 				COPY_PHASE_STRIP = YES;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "";
 				GCC_PREPROCESSOR_DEFINITIONS = "TARGET_OS_MAC=1";
-				HEADER_SEARCH_PATHS = (
-					"$(SRCROOT)/FFGLSDK_1_5/Source/FFGLPlugins",
-					"$(SRCROOT)/FFGLSDK_1_5/Include",
-					"$(SRCROOT)/gl-matrix",
-				);
-				INFOPLIST_FILE = "Blockhead-Info.plist";
+				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Library/Bundles";
 				MACOSX_DEPLOYMENT_TARGET = "";
 				OTHER_LDFLAGS = (
 					"-framework",
 					OpenGL,
 				);
-				PRODUCT_NAME = BlockheadFFGL;
+				PRODUCT_NAME = Blockhead;
 				SDKROOT = macosx;
 				WRAPPER_EXTENSION = bundle;
 				ZERO_LINK = NO;
@@ -940,7 +911,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				COMBINE_HIDPI_IMAGES = YES;
-				CONFIGURATION_BUILD_DIR = bin;
+				CONFIGURATION_BUILD_DIR = "$(SRC_ROOT)../bin";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
@@ -952,18 +923,14 @@
 					"TARGET_OS_MAC=1",
 					"_DEBUG=1",
 				);
-				HEADER_SEARCH_PATHS = (
-					"$(SRCROOT)/FFGLSDK_1_5/Source/FFGLPlugins",
-					"$(SRCROOT)/FFGLSDK_1_5/Include",
-				);
-				INFOPLIST_FILE = "Linecrimes-Info.plist";
+				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Library/Bundles";
 				MACOSX_DEPLOYMENT_TARGET = "";
 				OTHER_LDFLAGS = (
 					"-framework",
 					OpenGL,
 				);
-				PRODUCT_NAME = LinecrimesFFGL;
+				PRODUCT_NAME = Linecrimes;
 				SDKROOT = macosx;
 				WRAPPER_EXTENSION = bundle;
 				ZERO_LINK = NO;
@@ -977,26 +944,21 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				COMBINE_HIDPI_IMAGES = YES;
-				CONFIGURATION_BUILD_DIR = bin;
+				CONFIGURATION_BUILD_DIR = "$(SRC_ROOT)../bin";
 				COPY_PHASE_STRIP = YES;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "";
 				GCC_PREPROCESSOR_DEFINITIONS = "TARGET_OS_MAC=1";
-				HEADER_SEARCH_PATHS = (
-					"$(SRCROOT)/FFGLSDK_1_5/Source/FFGLPlugins",
-					"$(SRCROOT)/FFGLSDK_1_5/Include",
-					"$(SRCROOT)/gl-matrix",
-				);
-				INFOPLIST_FILE = "Linecrimes-Info.plist";
+				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Library/Bundles";
 				MACOSX_DEPLOYMENT_TARGET = "";
 				OTHER_LDFLAGS = (
 					"-framework",
 					OpenGL,
 				);
-				PRODUCT_NAME = LinecrimesFFGL;
+				PRODUCT_NAME = Linecrimes;
 				SDKROOT = macosx;
 				WRAPPER_EXTENSION = bundle;
 				ZERO_LINK = NO;
@@ -1010,7 +972,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				COMBINE_HIDPI_IMAGES = YES;
-				CONFIGURATION_BUILD_DIR = bin;
+				CONFIGURATION_BUILD_DIR = "$(SRC_ROOT)../bin";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
@@ -1022,18 +984,14 @@
 					"TARGET_OS_MAC=1",
 					"_DEBUG=1",
 				);
-				HEADER_SEARCH_PATHS = (
-					"$(SRCROOT)/FFGLSDK_1_5/Source/FFGLPlugins",
-					"$(SRCROOT)/FFGLSDK_1_5/Include",
-				);
-				INFOPLIST_FILE = "TanlineFFGL-Info.plist";
+				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Library/Bundles";
 				MACOSX_DEPLOYMENT_TARGET = "";
 				OTHER_LDFLAGS = (
 					"-framework",
 					OpenGL,
 				);
-				PRODUCT_NAME = TanlineFFGL;
+				PRODUCT_NAME = Tanline;
 				SDKROOT = macosx;
 				WRAPPER_EXTENSION = bundle;
 				ZERO_LINK = NO;
@@ -1047,26 +1005,21 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				COMBINE_HIDPI_IMAGES = YES;
-				CONFIGURATION_BUILD_DIR = bin;
+				CONFIGURATION_BUILD_DIR = "$(SRC_ROOT)../bin";
 				COPY_PHASE_STRIP = YES;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "";
 				GCC_PREPROCESSOR_DEFINITIONS = "TARGET_OS_MAC=1";
-				HEADER_SEARCH_PATHS = (
-					"$(SRCROOT)/FFGLSDK_1_5/Source/FFGLPlugins",
-					"$(SRCROOT)/FFGLSDK_1_5/Include",
-					"$(SRCROOT)/gl-matrix",
-				);
-				INFOPLIST_FILE = "TanlineFFGL-Info.plist";
+				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Library/Bundles";
 				MACOSX_DEPLOYMENT_TARGET = "";
 				OTHER_LDFLAGS = (
 					"-framework",
 					OpenGL,
 				);
-				PRODUCT_NAME = TanlineFFGL;
+				PRODUCT_NAME = Tanline;
 				SDKROOT = macosx;
 				WRAPPER_EXTENSION = bundle;
 				ZERO_LINK = NO;
@@ -1080,7 +1033,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				COMBINE_HIDPI_IMAGES = YES;
-				CONFIGURATION_BUILD_DIR = bin;
+				CONFIGURATION_BUILD_DIR = "$(SRC_ROOT)../bin";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
@@ -1092,11 +1045,7 @@
 					"TARGET_OS_MAC=1",
 					"_DEBUG=1",
 				);
-				HEADER_SEARCH_PATHS = (
-					"$(SRCROOT)/FFGLSDK_1_5/Source/FFGLPlugins",
-					"$(SRCROOT)/FFGLSDK_1_5/Include",
-				);
-				INFOPLIST_FILE = "Marblephase-Info.plist";
+				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Library/Bundles";
 				MACOSX_DEPLOYMENT_TARGET = "";
 				OTHER_LDFLAGS = (
@@ -1117,19 +1066,14 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				COMBINE_HIDPI_IMAGES = YES;
-				CONFIGURATION_BUILD_DIR = bin;
+				CONFIGURATION_BUILD_DIR = "$(SRC_ROOT)../bin";
 				COPY_PHASE_STRIP = YES;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "";
 				GCC_PREPROCESSOR_DEFINITIONS = "TARGET_OS_MAC=1";
-				HEADER_SEARCH_PATHS = (
-					"$(SRCROOT)/FFGLSDK_1_5/Source/FFGLPlugins",
-					"$(SRCROOT)/FFGLSDK_1_5/Include",
-					"$(SRCROOT)/gl-matrix",
-				);
-				INFOPLIST_FILE = "Marblephase-Info.plist";
+				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Library/Bundles";
 				MACOSX_DEPLOYMENT_TARGET = "";
 				OTHER_LDFLAGS = (

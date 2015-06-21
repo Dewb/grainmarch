@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2D2190890AF02BD1007154B7"
-               BuildableName = "GrainmarchFFGL.bundle"
+               BuildableName = "Grainmarch.bundle"
                BlueprintName = "Grainmarch"
                ReferencedContainer = "container:GrainmarchFFGL.xcodeproj">
             </BuildableReference>
@@ -29,7 +29,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "5BBDA4EE183F2ACF0058C89C"
-               BuildableName = "TanlineFFGL.bundle"
+               BuildableName = "Tanline.bundle"
                BlueprintName = "Tanline"
                ReferencedContainer = "container:GrainmarchFFGL.xcodeproj">
             </BuildableReference>
@@ -43,7 +43,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "5B8123AA1842EA9A0076EB97"
-               BuildableName = "BlockheadFFGL.bundle"
+               BuildableName = "Blockhead.bundle"
                BlueprintName = "Blockhead"
                ReferencedContainer = "container:GrainmarchFFGL.xcodeproj">
             </BuildableReference>
@@ -57,7 +57,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "5B8123C2184459F20076EB97"
-               BuildableName = "LinecrimesFFGL.bundle"
+               BuildableName = "Linecrimes.bundle"
                BlueprintName = "Linecrimes"
                ReferencedContainer = "container:GrainmarchFFGL.xcodeproj">
             </BuildableReference>
@@ -85,7 +85,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "5B1A40EB18CAB0DA004D8334"
-               BuildableName = "Paik-Abe.bundle"
+               BuildableName = "Cathode.bundle"
                BlueprintName = "Paik-Abe"
                ReferencedContainer = "container:GrainmarchFFGL.xcodeproj">
             </BuildableReference>
@@ -124,8 +124,19 @@
       debugDocumentVersioning = "YES"
       allowLocationSimulation = "YES">
       <PathRunnable
-         FilePath = "/Applications/Resolume Arena 4.1.9/Arena.app">
+         runnableDebuggingMode = "0"
+         BundleIdentifier = "com.resolume.avenue"
+         FilePath = "/Applications/Resolume Arena 4.1.11/Arena.app">
       </PathRunnable>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "2D2190890AF02BD1007154B7"
+            BuildableName = "Grainmarch.bundle"
+            BlueprintName = "Grainmarch"
+            ReferencedContainer = "container:GrainmarchFFGL.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -136,6 +147,7 @@
       buildConfiguration = "Release"
       debugDocumentVersioning = "YES">
       <PathRunnable
+         runnableDebuggingMode = "0"
          FilePath = "/Applications/Resolume Arena 4.1.3/Arena.app">
       </PathRunnable>
    </ProfileAction>

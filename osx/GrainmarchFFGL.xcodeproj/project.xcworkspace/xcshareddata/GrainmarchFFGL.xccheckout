@@ -14,11 +14,11 @@
 		<string>https://github.com/Dewb/grainmarch</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>GrainmarchFFGL.xcodeproj</string>
+	<string>osx/GrainmarchFFGL.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>1043FD47D3696683EE5809375FB0372D3854C551</key>
-		<string>../..</string>
+		<string>../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/Dewb/grainmarch</string>

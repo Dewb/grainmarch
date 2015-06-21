@@ -3,7 +3,8 @@ grainmarch
 
 FFGL plugin based on Shadertoy shaders by Syntopia and Kali.
 
-[![ScreenShot](https://raw.github.com/Dewb/grainmarch/master/sample.png)](https://vimeo.com/72425094)
+[![ScreenShot](https://raw.github.com/Dewb/grainmarch/masteri/doc/sample.png)](https://vimeo.com/72425094)
+
 
 
 More about Video Bleep:  

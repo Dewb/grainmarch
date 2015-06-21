@@ -1,8 +1,8 @@
 #pragma once
 
-#include <FFGLPluginSDK.h>
-#include <FFGLLib.h>
-#include <FFGLShader.h>
+#include <FFGLSDK_1_5/Source/FFGLPlugins/FFGLPluginSDK.h>
+#include <FFGLSDK_1_5/Include/FFGLLib.h>
+#include <FFGLSDK_1_5/Include/FFGLShader.h>
 
 #include <string>
 #include <vector>
@@ -19,12 +19,15 @@ typedef std::vector<std::tuple<GLint, float, float*>> ManualUniformList;
 
 class Parameter {
 public:
-    Parameter(string name, float min, float max, float value, int type = FF_TYPE_STANDARD, bool isShader = true, bool shouldRandomize = true, ParamAction action = nullptr);
+    Parameter(string name, float min, float max, float value, int type = FF_TYPE_STANDARD, bool isShader = true, bool shouldRandomize = true, ParamAction action = nullptr, char* textValue = nullptr);
     float GetScaledValue() const;
-    
+    string GetTextValue() const;
+    string SetTextValue(string value);
+
     string Name;
-    float Value;
     int Type;
+    float Value;
+    char* TextValue;
 
     float RangeMin;
     float RangeMax;

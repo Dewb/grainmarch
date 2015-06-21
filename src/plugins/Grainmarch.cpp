@@ -10,7 +10,7 @@
 #include <cmath>
 
 #include "Grainmarch.glsl"
-#include "default_vertex_shader.glsl"
+#include "../default_vertex_shader.glsl"
 
 
 DECLARE_PLUGIN(SourcePlugin, "DBGM", "Grainmarch", "Grainy fractal raymarching", "by Michael Dewberry - dewb.org\nBased on Shadertoy shaders by Syntopia and Kali")
