@@ -299,7 +299,7 @@ typedef void (APIENTRY *glRenderbufferStorageEXTPROC) (GLenum target, GLenum int
 
 /* GL types for handling shader object handles and characters */
 typedef char GLcharARB;		/* native character */
-typedef void* GLhandleARB;	/* shader object handle */
+typedef unsigned int GLhandleARB;	/* shader object handle */
 
 typedef void (APIENTRY * glDeleteObjectARBPROC) (GLhandleARB);
 typedef GLhandleARB (APIENTRY * glGetHandleARBPROC) (GLenum);
@@ -350,22 +350,6 @@ typedef BOOL (APIENTRY *wglSwapIntervalEXTPROC) (int interval);
 typedef int (APIENTRY *wglGetSwapIntervalEXTPROC) (void);
 
 #endif
-
-//////////////////
-// Vertex buffer objects -MPD
-//////////////////
-
-/*
-typedef void (APIENTRY * glGenBuffersARBPROC) (GLsizei, GLuint *);
-typedef void (APIENTRY * glBindBufferARBPROC) (GLenum, GLuint);
-typedef void (APIENTRY * glBufferDataARBPROC) (GLenum, GLsizeiptr, const GLvoid *, GLenum);
-typedef void (APIENTRY * glVertexAttribPointerARBPROC) (GLuint, GLint, GLenum, GLboolean, GLsizei, const GLvoid *);
-typedef void (APIENTRY * glEnableVertexAttribArrayARBPROC) (GLuint);
-typedef void (APIENTRY * glDisableVertexAttribArrayARBPROC) (GLuint);
-*/
-
-
-
 
 /////////////////////////////////////////////////////
 ///////////////
@@ -486,7 +470,7 @@ public:
 #endif
 
 private:
-  void *GetProcAddress(char *);
+  void *GetProcAddress(const char *);
   
   void InitMultitexture();
   void InitARBShaderObjects();

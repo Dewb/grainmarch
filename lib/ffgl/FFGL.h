@@ -56,15 +56,12 @@
 #ifdef _WIN32
 
 #include <windows.h>
+#include "../glee/GLee.h"
 #include <gl/gl.h>
 
 #else
 
 #ifdef TARGET_OS_MAC
-//on osx, <OpenGl/gl.h> auto-includes gl_ext.h for OpenGL extensions, which will interfere
-//with the FFGL SDK's own FFGLExtensions headers (included below). this #define disables
-//the auto-inclusion of gl_ext.h in OpenGl.h on OSX
-#define GL_GLEXT_LEGACY
 #include <OpenGL/gl.h>
 
 #else
@@ -80,6 +77,10 @@
 #endif
 #endif
 
+
+#define FFGL_EXT
+
+
 /////////////////////////////////////////////////////////////////////////////
 //FreeFrameGL defines numerically extend FreeFrame defines (see FreeFrame.h)
 /////////////////////////////////////////////////////////////////////////////
@@ -90,6 +91,30 @@
 #define FF_INSTANTIATEGL       18
 #define FF_DEINSTANTIATEGL     19
 #define FF_SETTIME             20
+
+// new function codes
+#define FF_CONNECT			   21
+#define FF_DISCONNECT		   22
+#define FF_RESIZE			   23
+
+#ifdef FFGL_EXT
+
+// extra functions
+#define FF_GETNUMPARAMETERELEMENTS	31
+#define FF_GETPARAMETERUSAGE		32
+#define FF_GETPLUGINSHORTNAME		33
+
+// Parameter usages
+#define FF_USAGE_STANDARD			0
+#define FF_USAGE_FFT				1
+
+// extra param types
+#define FF_TYPE_OPTION				11
+#define FF_TYPE_BUFFER				12
+
+
+#endif
+
 
 // new plugin capabilities for FFGL
 #define FF_CAP_PROCESSOPENGL    4
@@ -104,14 +129,14 @@ typedef struct FFGLViewportStructTag
 //FFGLTextureStruct (for ProcessOpenGLStruct)
 typedef struct FFGLTextureStructTag
 {
-  DWORD Width, Height;
-  DWORD HardwareWidth, HardwareHeight;
+  FFUInt32 Width, Height;
+  FFUInt32 HardwareWidth, HardwareHeight;
   GLuint Handle; //the actual texture handle, from glGenTextures()
 } FFGLTextureStruct;
 
 // ProcessOpenGLStruct
 typedef struct ProcessOpenGLStructTag {
-  DWORD numInputTextures;
+  FFUInt32 numInputTextures;
   FFGLTextureStruct **inputTextures;
   
   //if the host calls ProcessOpenGL with a framebuffer object actively bound

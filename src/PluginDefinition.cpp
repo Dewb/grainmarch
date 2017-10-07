@@ -1,4 +1,4 @@
-#include <FFGLSDK_1_5/Include/FFGL.h>
+#include <FFGL.h>
 
 #include "PluginDefinition.h"
 
@@ -7,7 +7,9 @@
 #include <cmath>
 #include <random>
 
+#ifndef WIN32
 #include <sys/time.h>
+#endif
 
 char DefaultTextValue[] = "foo";
 
@@ -148,13 +150,8 @@ void ShaderPlugin::InitParameters()
     ));
 }
 
-DWORD ShaderPlugin::InitGL(const FFGLViewportStruct *vp)
+FFResult ShaderPlugin::InitGL(const FFGLViewportStruct *vp)
 {
-    m_extensions.Initialize();
-    if (m_extensions.multitexture==0 || m_extensions.ARB_shader_objects==0)
-        return FF_FAIL;
-    
-    m_shader.SetExtensions(&m_extensions);
     m_shader.Compile(vertexShaderCode, fragmentShaderCode);
  
     m_shader.BindShader();
@@ -172,7 +169,7 @@ DWORD ShaderPlugin::InitGL(const FFGLViewportStruct *vp)
         stringstream uniformName;
         uniformName << "inputTexture" << ii;
         m_inputTextureLocationArray[ii] = m_shader.FindUniform(uniformName.str().c_str());
-        m_extensions.glUniform1iARB(m_inputTextureLocationArray[ii], 0);
+        glUniform1i(m_inputTextureLocationArray[ii], ii);
     }
         
     m_resolutionXLocation = m_shader.FindUniform("iResolutionX");
@@ -188,14 +185,14 @@ DWORD ShaderPlugin::InitGL(const FFGLViewportStruct *vp)
     return FF_SUCCESS;
 }
 
-DWORD ShaderPlugin::DeInitGL()
+FFResult ShaderPlugin::DeInitGL()
 {
   m_shader.FreeGLResources();
 
   return FF_SUCCESS;
 }
 
-DWORD ShaderPlugin::ProcessOpenGL(ProcessOpenGLStruct *pGL) {
+FFResult ShaderPlugin::ProcessOpenGL(ProcessOpenGLStruct *pGL) {
     
     if (pGL->numInputTextures < m_nInputs)
         return FF_FAIL;
@@ -213,7 +210,7 @@ DWORD ShaderPlugin::ProcessOpenGL(ProcessOpenGLStruct *pGL) {
     
     for (int ii = 0; ii < m_nInputs; ii++) {
         FFGLTextureStruct &Texture = *(pGL->inputTextures[ii]);
-        m_extensions.glActiveTexture(GL_TEXTURE0 + ii);
+        glActiveTexture(GL_TEXTURE0 + ii);
         glBindTexture(GL_TEXTURE_2D, Texture.Handle);
         m_texDimensions = GetMaxGLTexCoords(Texture);
         m_aspectRatio = Texture.Width / Texture.Height;
@@ -224,24 +221,24 @@ DWORD ShaderPlugin::ProcessOpenGL(ProcessOpenGLStruct *pGL) {
     for (auto& p : m_parameters) {
         if (!p.IsShaderUniform)
             continue;
-        m_extensions.glUniform1fARB(p.UniformLocation, p.GetScaledValue());
+        glUniform1f(p.UniformLocation, p.GetScaledValue());
     }
     
     for (auto& u : m_floatUniforms) {
-        m_extensions.glUniform1fARB(std::get<0>(u), *(std::get<2>(u)));
+        glUniform1f(std::get<0>(u), *(std::get<2>(u)));
     }
 
     for (auto& u : m_floatArrayUniforms) {
-        m_extensions.glUniform1fvARB(std::get<0>(u), std::get<1>(u), std::get<2>(u));
+        glUniform1fv(std::get<0>(u), std::get<1>(u), std::get<2>(u));
     }
 
-    m_extensions.glUniform1fARB(m_resolutionXLocation, m_resolutionX);
-    m_extensions.glUniform1fARB(m_resolutionYLocation, m_resolutionY);
+    glUniform1f(m_resolutionXLocation, m_resolutionX);
+    glUniform1f(m_resolutionYLocation, m_resolutionY);
     
     EmitGeometry();
   
     for (int ii = 0; ii < m_nInputs; ii++) {
-        m_extensions.glActiveTexture(GL_TEXTURE0 + ii);
+        glActiveTexture(GL_TEXTURE0 + ii);
         glBindTexture(GL_TEXTURE_2D, 0);
     }
     m_shader.UnbindShader();
@@ -257,13 +254,13 @@ void ShaderPlugin::Initialize()
 void ShaderPlugin::EmitGeometry()
 {
     glBegin(GL_QUADS);
-    glTexCoord2f(0, 0);
+	glMultiTexCoord2f(GL_TEXTURE0, 0, 0);
 	glVertex2f(-1, -1);
-    glTexCoord2f(0, m_texDimensions.t);
+	glMultiTexCoord2f(GL_TEXTURE0, 0, m_texDimensions.t);
 	glVertex2f(-1, 1);
-    glTexCoord2f(m_texDimensions.s, m_texDimensions.t);
+	glMultiTexCoord2f(GL_TEXTURE0, m_texDimensions.s, m_texDimensions.t);
 	glVertex2f(1, 1);
-    glTexCoord2f(m_texDimensions.s, 0);
+	glMultiTexCoord2f(GL_TEXTURE0, m_texDimensions.s, 0);
 	glVertex2f(1, -1);
 	glEnd();
 }
@@ -272,36 +269,26 @@ void ShaderPlugin::UpdateUniforms()
 {
 }
 
-DWORD ShaderPlugin::GetParameter(DWORD dwIndex)
+float ShaderPlugin::GetFloatParameter(unsigned int index)
 {
 	DWORD dwRet;
 
-    if (dwIndex < m_parameters.size()) {
-        auto p = m_parameters[dwIndex];
-        if (p.Type == FF_TYPE_TEXT) {
-            dwRet = (DWORD)(p.TextValue);
-        } else {
-            *((float *)(unsigned)&dwRet) = p.Value;
-        }
-        return dwRet;
+    if (index < m_parameters.size()) {
+        auto p = m_parameters[index];
+		return p.Value;
     } else {
         return FF_FAIL;
 	}
 }
 
-DWORD ShaderPlugin::SetParameter(const SetParameterStruct* pParam)
+FFResult ShaderPlugin::SetFloatParameter(unsigned int index, float value)
 {
-    if (pParam != NULL && pParam->ParameterNumber < m_parameters.size()) {
-        auto& p = m_parameters[pParam->ParameterNumber];
-        if (p.Type == FF_TYPE_TEXT) {
-            p.TextValue = (char*)(pParam->NewParameterValue);
+    if (index < m_parameters.size()) {
+        auto& p = m_parameters[index];
+        if (p.Action != nullptr) {
+            p.Action(p, value, m_parameters);
         } else {
-            float newValue = *((float *)(unsigned)&(pParam->NewParameterValue));
-            if (p.Action != nullptr) {
-                p.Action(p, newValue, m_parameters);
-            } else {
-                p.Value = newValue;
-            }
+            p.Value = value;
         }
         return FF_SUCCESS;
     } else {
@@ -309,7 +296,7 @@ DWORD ShaderPlugin::SetParameter(const SetParameterStruct* pParam)
     }
 }
 
-DWORD ShaderPlugin::SetTime(double time)
+FFResult ShaderPlugin::SetTime(double time)
 {
     return FF_SUCCESS;
 }

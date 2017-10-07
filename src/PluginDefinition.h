@@ -1,8 +1,13 @@
 #pragma once
 
-#include <FFGLSDK_1_5/Source/FFGLPlugins/FFGLPluginSDK.h>
-#include <FFGLSDK_1_5/Include/FFGLLib.h>
-#include <FFGLSDK_1_5/Include/FFGLShader.h>
+#ifdef WIN32
+#include <windows.h>
+#include <wingdi.h>
+#endif
+
+#include <FFGLPluginSDK.h>
+#include <FFGLLib.h>
+#include <FFGLShader.h>
 
 #include <string>
 #include <vector>
@@ -55,19 +60,21 @@ public:
     
     void InitParameters();
 
-	DWORD SetParameter(const SetParameterStruct* pParam);
-	DWORD GetParameter(DWORD dwIndex);
-	DWORD ProcessOpenGL(ProcessOpenGLStruct* pGL);
-    DWORD InitGL(const FFGLViewportStruct *vp);
-    DWORD DeInitGL();
-    DWORD SetTime(double time);
+	virtual FFResult SetFloatParameter(unsigned int index, float value);
+	//virtual FFResult SetTextParameter(unsigned int index, const char *value);
+	virtual float GetFloatParameter(unsigned int index);
+	//virtual char* GetTextParameter(unsigned int index);
+
+	virtual FFResult ProcessOpenGL(ProcessOpenGLStruct* pGL);
+    virtual FFResult InitGL(const FFGLViewportStruct *vp);
+    virtual FFResult DeInitGL();
+    virtual FFResult SetTime(double time);
     
     void ManuallyBindUniformFloat(string Name, float* pValue);
     void ManuallyBindUniformFloatArray(string Name, float count, float* pValue);
     
 protected:	
 	int m_initResources;
-	FFGLExtensions m_extensions;
     FFGLShader m_shader;
     
     ParamList m_parameters;
@@ -100,7 +107,7 @@ public:
 };
 
 template <class PluginType>
-DWORD __stdcall CreateInstance(CFreeFrameGLPlugin **ppOutInstance)
+FFResult __stdcall CreateInstance(CFreeFrameGLPlugin **ppOutInstance)
 {
     *ppOutInstance = new PluginType();
     if (*ppOutInstance != NULL)
@@ -110,7 +117,7 @@ DWORD __stdcall CreateInstance(CFreeFrameGLPlugin **ppOutInstance)
 
 #define DECLARE_PLUGIN(class, id, name, description, about) \
 static CFFGLPluginInfo PluginInfo ( \
-CreateInstance<class>, id, name, 1, 500, 1, 100, class::Type, description, about);
+CreateInstance<class>, id, name, 1, 6, 1, 100, class::Type, description, about);
 
 class ParameterListAdder {
 public:
