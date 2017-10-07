@@ -5,3 +5,4 @@ xcuserdata/
 binaries
 *.VC.db
 *.VC.opendb
+build/windows/.vs/DewbFFGL/v14/.suo

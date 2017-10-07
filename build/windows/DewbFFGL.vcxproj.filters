@@ -17,9 +17,6 @@
     <Filter Include="lib\glee">
       <UniqueIdentifier>{a006fba1-a334-4c52-bb54-66be65736c6f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\plugins">
-      <UniqueIdentifier>{8bff14ad-7019-4bb5-a08c-86104064dacc}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\lib\ffgl\FFGL.cpp">
@@ -51,9 +48,6 @@
     </ClCompile>
     <ClCompile Include="..\..\src\PluginDefinition.cpp">
       <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\plugins\Marblephase.cpp">
-      <Filter>Source Files\plugins</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -97,9 +91,6 @@
   <ItemGroup>
     <None Include="..\..\src\default_vertex_shader.glsl">
       <Filter>Source Files</Filter>
-    </None>
-    <None Include="..\..\src\plugins\Marblephase.glsl">
-      <Filter>Source Files\plugins</Filter>
     </None>
   </ItemGroup>
 </Project>
