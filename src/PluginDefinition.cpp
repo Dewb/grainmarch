@@ -200,17 +200,23 @@ FFResult ShaderPlugin::ProcessOpenGL(ProcessOpenGLStruct *pGL) {
         if (pGL->inputTextures[ii] == nullptr)
             return FF_FAIL;
     }
-    
+
+	float viewportParams[4];
+	glGetFloatv(GL_VIEWPORT, viewportParams);
+	m_resolutionX = viewportParams[2];
+	m_resolutionY = viewportParams[3];
+	
     UpdateUniforms();
         
     m_shader.BindShader();
     
     m_texDimensions.s = 1;
     m_texDimensions.t = 1;
-    
+
     for (int ii = 0; ii < m_nInputs; ii++) {
         FFGLTextureStruct &Texture = *(pGL->inputTextures[ii]);
-        glActiveTexture(GL_TEXTURE0 + ii);
+
+		glActiveTexture(GL_TEXTURE0 + ii);
         glBindTexture(GL_TEXTURE_2D, Texture.Handle);
         m_texDimensions = GetMaxGLTexCoords(Texture);
         m_aspectRatio = Texture.Width / Texture.Height;

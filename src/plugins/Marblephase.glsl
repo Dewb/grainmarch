@@ -4,8 +4,8 @@ char fragmentShaderCode[] = R"(
 
 uniform float     iGlobalTime;
 uniform sampler2D inputTexture0;
-uniform int iResolutionX;
-uniform int iResolutionY;
+uniform float iResolutionX;
+uniform float iResolutionY;
 
 #define PI 3.1415926535897932384626433832795
 
@@ -139,6 +139,18 @@ vec2 rotate(vec2 z) {
     return vec2(xnew, ynew);
 }
 
+
+vec2 aspect(vec2 coord) 
+{
+	coord += vec2(2.0 * ShiftX - 1.0, 2.0 * ShiftY - 1.0) - vec2(0.5, 0.5);
+	if (iResolutionX > iResolutionY) {
+		return vec2(coord.s * iResolutionX / iResolutionY, coord.t);
+	} else {
+		return vec2(coord.s, coord.t * iResolutionY / iResolutionX);
+	}
+
+}
+
 void main(void)
 {
     float domain = 0.06 + sigmoid(Zoom - 1.0) * 25.0;
@@ -147,9 +159,9 @@ void main(void)
     vec2 w = vec2(cos(d), sin(d));
     float t = domain * pow(10.0, -Imprecision * 9.0 - 2.0);
     
-    vec2 tex = gl_TexCoord[0].st;
+    vec2 tex = aspect(gl_TexCoord[0].st);
     
-    vec2 z0 = rotate(tex + vec2(2.0 * ShiftX - 1.0, 2.0 * ShiftY - 1.0) - vec2(0.5, 0.5)) * 2.0 * domain;
+    vec2 z0 = rotate(tex) * 2.0 * domain;
 	vec2 fz0 = f(z0);
     vec2 fzd = f(z0 + t * w);
     vec2 fk = (fzd - fz0) / (t * w);
