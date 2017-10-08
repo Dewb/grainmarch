@@ -11,7 +11,7 @@
 #include <sys/time.h>
 #endif
 
-char DefaultTextValue[] = "foo";
+char DefaultTextValue[] = "";
 
 float dice() {
     static std::default_random_engine generator;
@@ -41,8 +41,7 @@ Parameter::Parameter(string name, float min, float max, float value, int type, b
 , Action(action)
 {
     if (type == FF_TYPE_TEXT) {
-        //TextValue = (textValue != nullptr) ? textValue : DefaultTextValue;
-        TextValue = DefaultTextValue;
+        TextValue = (textValue != nullptr) ? textValue : DefaultTextValue;
     } else {
         Value = (value - min) / (max - min);
     }
@@ -50,6 +49,14 @@ Parameter::Parameter(string name, float min, float max, float value, int type, b
 
 float Parameter::GetScaledValue() const {
     return RangeMin + Value * (RangeMax - RangeMin);
+}
+
+const char* Parameter::GetTextValue() const {
+	return TextValue.c_str();
+}
+
+void Parameter::SetTextValue(const char* value) {
+	TextValue = value;
 }
 
 ShaderPlugin::ShaderPlugin(int nInputs)
@@ -78,7 +85,7 @@ ShaderPlugin::ShaderPlugin(int nInputs)
     for (int ii = 0; ii < m_parameters.size(); ii++) {
         auto p = m_parameters[ii];
         if (p.Type == FF_TYPE_TEXT) {
-            SetParamInfo(ii, p.Name.c_str(), p.Type, p.TextValue);
+            SetParamInfo(ii, p.Name.c_str(), p.Type, p.GetTextValue());
         } else {
             SetParamInfo(ii, p.Name.c_str(), p.Type, p.Value);
         }
@@ -97,6 +104,7 @@ EffectPlugin::EffectPlugin()
 {
 }
 int EffectPlugin::Type = FF_EFFECT;
+
 
 void ShaderPlugin::InitParameters()
 {
@@ -277,8 +285,6 @@ void ShaderPlugin::UpdateUniforms()
 
 float ShaderPlugin::GetFloatParameter(unsigned int index)
 {
-	DWORD dwRet;
-
     if (index < m_parameters.size()) {
         auto p = m_parameters[index];
 		return p.Value;
@@ -300,6 +306,26 @@ FFResult ShaderPlugin::SetFloatParameter(unsigned int index, float value)
     } else {
         return FF_FAIL;
     }
+}
+
+FFResult ShaderPlugin::SetTextParameter(unsigned int index, const char *value)
+{
+	if (index < m_parameters.size()) {
+		auto& p = m_parameters[index];
+		p.SetTextValue(value);
+	} else {
+		return FF_FAIL;
+	}
+}
+
+char* ShaderPlugin::GetTextParameter(unsigned int index)
+{
+	if (index < m_parameters.size()) {
+		auto& p = m_parameters[index];
+		return const_cast<char*>(p.GetTextValue());
+	} else {
+		return nullptr;
+	}
 }
 
 FFResult ShaderPlugin::SetTime(double time)

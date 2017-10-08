@@ -8,7 +8,6 @@
 
 #include "PluginDefinition.h"
 
-#include <GLUT/GLUT.h>
 #include <cmath>
 
 #include "Blockhead.glsl"

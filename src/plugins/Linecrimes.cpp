@@ -1,5 +1,5 @@
 //
-//  Blockhead.cpp
+//  Linecrimes.cpp
 //  GrainmarchFFGL
 //
 //  Created by Michael Dewberry on 11/24/13.
@@ -8,7 +8,12 @@
 
 #include "PluginDefinition.h"
 
+#ifdef WIN32
+#include "freeglut/include/GL/glut.h"
+#else
 #include <GLUT/GLUT.h>
+#endif
+
 #include <cmath>
 
 #include "Linecrimes.glsl"

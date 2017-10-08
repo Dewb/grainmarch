@@ -3,6 +3,8 @@
 #ifdef WIN32
 #include <windows.h>
 #include <wingdi.h>
+#undef max
+#undef min
 #endif
 
 #include <FFGLPluginSDK.h>
@@ -12,7 +14,6 @@
 #include <string>
 #include <vector>
 #include <functional>
-
 
 using namespace std;
 
@@ -26,13 +27,13 @@ class Parameter {
 public:
     Parameter(string name, float min, float max, float value, int type = FF_TYPE_STANDARD, bool isShader = true, bool shouldRandomize = true, ParamAction action = nullptr, char* textValue = nullptr);
     float GetScaledValue() const;
-    string GetTextValue() const;
-    string SetTextValue(string value);
+    const char* GetTextValue() const;
+    void SetTextValue(const char* value);
 
     string Name;
     int Type;
     float Value;
-    char* TextValue;
+    string TextValue;
 
     float RangeMin;
     float RangeMax;
@@ -61,9 +62,9 @@ public:
     void InitParameters();
 
 	virtual FFResult SetFloatParameter(unsigned int index, float value);
-	//virtual FFResult SetTextParameter(unsigned int index, const char *value);
 	virtual float GetFloatParameter(unsigned int index);
-	//virtual char* GetTextParameter(unsigned int index);
+	virtual FFResult SetTextParameter(unsigned int index, const char *value);
+	virtual char* GetTextParameter(unsigned int index);
 
 	virtual FFResult ProcessOpenGL(ProcessOpenGLStruct* pGL);
     virtual FFResult InitGL(const FFGLViewportStruct *vp);

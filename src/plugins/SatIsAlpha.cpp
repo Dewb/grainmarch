@@ -6,9 +6,9 @@
 //
 
 #include "PluginDefinition.h"
-#include "Average.glsl"
+#include "SatIsAlpha.glsl"
 
-DECLARE_PLUGIN(EffectPlugin, "DBAV", "Average", "Average hue using hardware mipmap", "by Michael Dewberry - dewb.org")
+DECLARE_PLUGIN(EffectPlugin, "DBSA", "Sat Is Alpha", "Saturation-based blending", "by Michael Dewberry - dewb.org")
 
 // Parameter(uniform name, minimum value, maximum value, default value, optional type (default standard/float.))
 
