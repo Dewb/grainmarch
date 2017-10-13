@@ -19,20 +19,20 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\src\plugins\Menger.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="..\..\..\src\plugins\Menger.glsl" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\DewbFFGL.vcxproj">
       <Project>{8ee99351-6226-415e-b2e9-2dcb2985f371}</Project>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\src\plugins\Tanline.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\..\src\plugins\Tanline.glsl" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{2B168C6E-670A-49E5-AC94-715824C26392}</ProjectGuid>
+    <ProjectGuid>{A3AFBA13-4742-48A4-AD97-7DDA2F4C9360}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <ProjectName>Menger</ProjectName>
+    <ProjectName>Tanline</ProjectName>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />

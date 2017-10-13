@@ -24,11 +24,11 @@ uniform float OffsetX;
 uniform float OffsetY;
 uniform float OffsetZ;
 
-uniform float Color1R;
-uniform float Color1G;
+uniform float Color1;
+uniform float Color1S;
 uniform float Color1B;
-uniform float Color2R;
-uniform float Color2G;
+uniform float Color2;
+uniform float Color2S;
 uniform float Color2B;
 
 uniform float Ambient;
@@ -43,9 +43,17 @@ uniform float Jitter;
 #define FudgeFactor 0.7
 
 #define LightDir vec3(1.0)
-#define LightColor vec3(Color1R, Color1G, Color1B)
+#define LightColor vec3(Color1, Color1S, Color1B)
 #define LightDir2 vec3(1.0,-1.0,1.0)
-#define LightColor2 vec3(Color2R, Color2G, Color2B)
+#define LightColor2 vec3(Color2, Color2S, Color2B)
+
+// hsv<->rgb routine from http://lolengine.net/blog/2013/07/27/rgb-to-hsv-in-glsl
+
+vec3 hsv2rgb(vec3 c) {
+    vec4 K = vec4(1.0, 2.0 / 3.0, 1.0 / 3.0, 3.0);
+    vec3 p = abs(fract(c.xxx + K.xyz) * 6.0 - K.www);
+    return c.z * mix(K.xxx, clamp(p - K.xxx, 0.0, 1.0), c.y);
+}
 
 vec3 Offset = vec3(0.92858 + (OffsetX - 0.5) * 1.0,
 				   0.92858 + (OffsetY - 0.5) * 1.0,
@@ -64,8 +72,8 @@ vec3 getLight(in vec3 color, in vec3 normal, in vec3 dir) {
 	float diffuse2 = max(0.0,dot(-normal, lightDir2)); // Lambertian
 	
 	return
-	(diffuse*Diffuse)*(LightColor*color) +
-	(diffuse2*Diffuse)*(LightColor2*color);
+	(diffuse*Diffuse)*(hsv2rgb(LightColor)*color) +
+	(diffuse2*Diffuse)*(hsv2rgb(LightColor2)*color);
 }
 
 
