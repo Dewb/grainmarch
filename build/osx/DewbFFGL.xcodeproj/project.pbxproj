@@ -1,0 +1,925 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		5BCA2B861F9113EF00E44551 /* ffgl in Resources */ = {isa = PBXBuildFile; fileRef = 5BCA2B821F9113EF00E44551 /* ffgl */; };
+		5BCA2B871F9113EF00E44551 /* exprtk in Resources */ = {isa = PBXBuildFile; fileRef = 5BCA2B831F9113EF00E44551 /* exprtk */; };
+		5BCA2B881F9113EF00E44551 /* freeglut in Resources */ = {isa = PBXBuildFile; fileRef = 5BCA2B841F9113EF00E44551 /* freeglut */; };
+		5BCA2B891F9113EF00E44551 /* glee in Resources */ = {isa = PBXBuildFile; fileRef = 5BCA2B851F9113EF00E44551 /* glee */; };
+		5BCA2B8B1F91147F00E44551 /* src in Resources */ = {isa = PBXBuildFile; fileRef = 5BCA2B8A1F91147F00E44551 /* src */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		2DA287A70AEEFE950030A4DD /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = /System/Library/Frameworks/OpenGL.framework; sourceTree = "<absolute>"; };
+		5B1A40FC18CAB0DA004D8334 /* Cathode.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Cathode.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		5B3022C218485D6A005C75A8 /* Average.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Average.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		5B8123A91842AD7C0076EB97 /* Grainmarch.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Grainmarch.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		5B8123BB1842EA9A0076EB97 /* Blockhead.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Blockhead.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		5B8123D3184459F20076EB97 /* Linecrimes.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Linecrimes.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		5BBDA507183F2E9C0058C89C /* Tanline.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tanline.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		5BCA2B821F9113EF00E44551 /* ffgl */ = {isa = PBXFileReference; lastKnownFileType = folder; name = ffgl; path = ../../lib/ffgl; sourceTree = "<group>"; };
+		5BCA2B831F9113EF00E44551 /* exprtk */ = {isa = PBXFileReference; lastKnownFileType = folder; name = exprtk; path = ../../lib/exprtk; sourceTree = "<group>"; };
+		5BCA2B841F9113EF00E44551 /* freeglut */ = {isa = PBXFileReference; lastKnownFileType = folder; name = freeglut; path = ../../lib/freeglut; sourceTree = "<group>"; };
+		5BCA2B851F9113EF00E44551 /* glee */ = {isa = PBXFileReference; lastKnownFileType = folder; name = glee; path = ../../lib/glee; sourceTree = "<group>"; };
+		5BCA2B8A1F91147F00E44551 /* src */ = {isa = PBXFileReference; lastKnownFileType = folder; name = src; path = ../../src; sourceTree = "<group>"; };
+		5BE4790E19FEF89200C3ACCB /* Marblephase.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Marblephase.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		5BFC0CE11B269062001E1746 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		2D2190920AF02BD1007154B7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5B1A40F818CAB0DA004D8334 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5B3022BE18485D6A005C75A8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5B8123B71842EA9A0076EB97 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5B8123CF184459F20076EB97 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5BBDA4FB183F2ACF0058C89C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5BE4790919FEF89200C3ACCB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2DA285910AEE5D640030A4DD = {
+			isa = PBXGroup;
+			children = (
+				5BFC0CE01B268F93001E1746 /* lib */,
+				5BCA2B8A1F91147F00E44551 /* src */,
+				5BBDA507183F2E9C0058C89C /* Tanline.bundle */,
+				5B8123A91842AD7C0076EB97 /* Grainmarch.bundle */,
+				5B8123BB1842EA9A0076EB97 /* Blockhead.bundle */,
+				5B8123D3184459F20076EB97 /* Linecrimes.bundle */,
+				5B3022C218485D6A005C75A8 /* Average.bundle */,
+				5B1A40FC18CAB0DA004D8334 /* Cathode.bundle */,
+				5BE4790E19FEF89200C3ACCB /* Marblephase.bundle */,
+				5BFC0CE11B269062001E1746 /* Info.plist */,
+			);
+			sourceTree = "<group>";
+		};
+		5BFC0CE01B268F93001E1746 /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				5BCA2B831F9113EF00E44551 /* exprtk */,
+				5BCA2B821F9113EF00E44551 /* ffgl */,
+				5BCA2B841F9113EF00E44551 /* freeglut */,
+				5BCA2B851F9113EF00E44551 /* glee */,
+				2DA287A70AEEFE950030A4DD /* OpenGL.framework */,
+			);
+			name = lib;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		2D2190890AF02BD1007154B7 /* Menger */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2D2190930AF02BD1007154B7 /* Build configuration list for PBXNativeTarget "Menger" */;
+			buildPhases = (
+				2D21908A0AF02BD1007154B7 /* Resources */,
+				2D21908B0AF02BD1007154B7 /* Sources */,
+				2D2190920AF02BD1007154B7 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Menger;
+			productName = FFGLBrightness;
+			productReference = 5B8123A91842AD7C0076EB97 /* Grainmarch.bundle */;
+			productType = "com.apple.product-type.bundle";
+		};
+		5B1A40EB18CAB0DA004D8334 /* Cathode */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5B1A40F918CAB0DA004D8334 /* Build configuration list for PBXNativeTarget "Cathode" */;
+			buildPhases = (
+				5B1A40EC18CAB0DA004D8334 /* Resources */,
+				5B1A40ED18CAB0DA004D8334 /* Sources */,
+				5B1A40F818CAB0DA004D8334 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Cathode;
+			productName = FFGLBrightness;
+			productReference = 5B1A40FC18CAB0DA004D8334 /* Cathode.bundle */;
+			productType = "com.apple.product-type.bundle";
+		};
+		5B3022B118485D6A005C75A8 /* SaturationFilter */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5B3022BF18485D6A005C75A8 /* Build configuration list for PBXNativeTarget "SaturationFilter" */;
+			buildPhases = (
+				5B3022B218485D6A005C75A8 /* Resources */,
+				5B3022B318485D6A005C75A8 /* Sources */,
+				5B3022BE18485D6A005C75A8 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SaturationFilter;
+			productName = FFGLBrightness;
+			productReference = 5B3022C218485D6A005C75A8 /* Average.bundle */;
+			productType = "com.apple.product-type.bundle";
+		};
+		5B8123AA1842EA9A0076EB97 /* Blockhead */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5B8123B81842EA9A0076EB97 /* Build configuration list for PBXNativeTarget "Blockhead" */;
+			buildPhases = (
+				5B8123AB1842EA9A0076EB97 /* Resources */,
+				5B8123AC1842EA9A0076EB97 /* Sources */,
+				5B8123B71842EA9A0076EB97 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Blockhead;
+			productName = FFGLBrightness;
+			productReference = 5B8123BB1842EA9A0076EB97 /* Blockhead.bundle */;
+			productType = "com.apple.product-type.bundle";
+		};
+		5B8123C2184459F20076EB97 /* Linecrimes */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5B8123D0184459F20076EB97 /* Build configuration list for PBXNativeTarget "Linecrimes" */;
+			buildPhases = (
+				5B8123C3184459F20076EB97 /* Resources */,
+				5B8123C4184459F20076EB97 /* Sources */,
+				5B8123CF184459F20076EB97 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Linecrimes;
+			productName = FFGLBrightness;
+			productReference = 5B8123D3184459F20076EB97 /* Linecrimes.bundle */;
+			productType = "com.apple.product-type.bundle";
+		};
+		5BBDA4EE183F2ACF0058C89C /* Tanline */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5BBDA4FC183F2ACF0058C89C /* Build configuration list for PBXNativeTarget "Tanline" */;
+			buildPhases = (
+				5BBDA4EF183F2ACF0058C89C /* Resources */,
+				5BBDA4F0183F2ACF0058C89C /* Sources */,
+				5BBDA4FB183F2ACF0058C89C /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Tanline;
+			productName = FFGLBrightness;
+			productReference = 5BBDA507183F2E9C0058C89C /* Tanline.bundle */;
+			productType = "com.apple.product-type.bundle";
+		};
+		5BE478FC19FEF89200C3ACCB /* Marblephase */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5BE4790B19FEF89200C3ACCB /* Build configuration list for PBXNativeTarget "Marblephase" */;
+			buildPhases = (
+				5BE478FD19FEF89200C3ACCB /* Resources */,
+				5BE478FE19FEF89200C3ACCB /* Sources */,
+				5BE4790919FEF89200C3ACCB /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Marblephase;
+			productName = FFGLBrightness;
+			productReference = 5BE4790E19FEF89200C3ACCB /* Marblephase.bundle */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		2DA285930AEE5D640030A4DD /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0450;
+			};
+			buildConfigurationList = 2DA285940AEE5D640030A4DD /* Build configuration list for PBXProject "DewbFFGL" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 2DA285910AEE5D640030A4DD;
+			productRefGroup = 2DA285910AEE5D640030A4DD;
+			projectDirPath = "";
+			projectRoot = ../../..;
+			targets = (
+				2D2190890AF02BD1007154B7 /* Menger */,
+				5BBDA4EE183F2ACF0058C89C /* Tanline */,
+				5B8123AA1842EA9A0076EB97 /* Blockhead */,
+				5B8123C2184459F20076EB97 /* Linecrimes */,
+				5B3022B118485D6A005C75A8 /* SaturationFilter */,
+				5B1A40EB18CAB0DA004D8334 /* Cathode */,
+				5BE478FC19FEF89200C3ACCB /* Marblephase */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		2D21908A0AF02BD1007154B7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5BCA2B881F9113EF00E44551 /* freeglut in Resources */,
+				5BCA2B891F9113EF00E44551 /* glee in Resources */,
+				5BCA2B871F9113EF00E44551 /* exprtk in Resources */,
+				5BCA2B861F9113EF00E44551 /* ffgl in Resources */,
+				5BCA2B8B1F91147F00E44551 /* src in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5B1A40EC18CAB0DA004D8334 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5B3022B218485D6A005C75A8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5B8123AB1842EA9A0076EB97 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5B8123C3184459F20076EB97 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5BBDA4EF183F2ACF0058C89C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5BE478FD19FEF89200C3ACCB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		2D21908B0AF02BD1007154B7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5B1A40ED18CAB0DA004D8334 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5B3022B318485D6A005C75A8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5B8123AC1842EA9A0076EB97 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5B8123C4184459F20076EB97 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5BBDA4F0183F2ACF0058C89C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5BE478FE19FEF89200C3ACCB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		2D2190940AF02BD1007154B7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				COMBINE_HIDPI_IMAGES = YES;
+				CONFIGURATION_BUILD_DIR = "$(SRC_ROOT)../bin";
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"TARGET_OS_MAC=1",
+					"_DEBUG=1",
+				);
+				INFOPLIST_FILE = Info.plist;
+				INSTALL_PATH = "$(HOME)/Library/Bundles";
+				MACOSX_DEPLOYMENT_TARGET = "";
+				OTHER_LDFLAGS = (
+					"-framework",
+					OpenGL,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = org.dewb.ffgl.Menger;
+				PRODUCT_NAME = Grainmarch;
+				SDKROOT = macosx;
+				WRAPPER_EXTENSION = bundle;
+				ZERO_LINK = NO;
+			};
+			name = Debug;
+		};
+		2D2190950AF02BD1007154B7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				COMBINE_HIDPI_IMAGES = YES;
+				CONFIGURATION_BUILD_DIR = "$(SRC_ROOT)../bin";
+				COPY_PHASE_STRIP = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "";
+				GCC_PREPROCESSOR_DEFINITIONS = "TARGET_OS_MAC=1";
+				INFOPLIST_FILE = Info.plist;
+				INSTALL_PATH = "$(HOME)/Library/Bundles";
+				MACOSX_DEPLOYMENT_TARGET = "";
+				OTHER_LDFLAGS = (
+					"-framework",
+					OpenGL,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = org.dewb.ffgl.Menger;
+				PRODUCT_NAME = Grainmarch;
+				SDKROOT = macosx;
+				WRAPPER_EXTENSION = bundle;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
+		2DA285950AEE5D640030A4DD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				COPY_PHASE_STRIP = NO;
+				GCC_PREPROCESSOR_DEFINITIONS = "";
+				HEADER_SEARCH_PATHS = "../../../lib/**";
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		2DA285960AEE5D640030A4DD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				COPY_PHASE_STRIP = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = "";
+				HEADER_SEARCH_PATHS = "../../../lib/**";
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		5B1A40FA18CAB0DA004D8334 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				COMBINE_HIDPI_IMAGES = YES;
+				CONFIGURATION_BUILD_DIR = "$(SRC_ROOT)../bin";
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"TARGET_OS_MAC=1",
+					"_DEBUG=1",
+				);
+				INFOPLIST_FILE = Info.plist;
+				INSTALL_PATH = "$(HOME)/Library/Bundles";
+				MACOSX_DEPLOYMENT_TARGET = "";
+				OTHER_LDFLAGS = (
+					"-framework",
+					OpenGL,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = org.dewb.ffgl.Cathode;
+				PRODUCT_NAME = Cathode;
+				SDKROOT = macosx;
+				WRAPPER_EXTENSION = bundle;
+				ZERO_LINK = NO;
+			};
+			name = Debug;
+		};
+		5B1A40FB18CAB0DA004D8334 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				COMBINE_HIDPI_IMAGES = YES;
+				CONFIGURATION_BUILD_DIR = "$(SRC_ROOT)../bin";
+				COPY_PHASE_STRIP = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "";
+				GCC_PREPROCESSOR_DEFINITIONS = "TARGET_OS_MAC=1";
+				INFOPLIST_FILE = Info.plist;
+				INSTALL_PATH = "$(HOME)/Library/Bundles";
+				MACOSX_DEPLOYMENT_TARGET = "";
+				OTHER_LDFLAGS = (
+					"-framework",
+					OpenGL,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = org.dewb.ffgl.Cathode;
+				PRODUCT_NAME = Cathode;
+				SDKROOT = macosx;
+				WRAPPER_EXTENSION = bundle;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
+		5B3022C018485D6A005C75A8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				COMBINE_HIDPI_IMAGES = YES;
+				CONFIGURATION_BUILD_DIR = "$(SRC_ROOT)../bin";
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"TARGET_OS_MAC=1",
+					"_DEBUG=1",
+				);
+				INFOPLIST_FILE = Info.plist;
+				INSTALL_PATH = "$(HOME)/Library/Bundles";
+				MACOSX_DEPLOYMENT_TARGET = "";
+				OTHER_LDFLAGS = (
+					"-framework",
+					OpenGL,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = org.dewb.ffgl.SaturationFilter;
+				PRODUCT_NAME = Average;
+				SDKROOT = macosx;
+				WRAPPER_EXTENSION = bundle;
+				ZERO_LINK = NO;
+			};
+			name = Debug;
+		};
+		5B3022C118485D6A005C75A8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				COMBINE_HIDPI_IMAGES = YES;
+				CONFIGURATION_BUILD_DIR = "$(SRC_ROOT)../bin";
+				COPY_PHASE_STRIP = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "";
+				GCC_PREPROCESSOR_DEFINITIONS = "TARGET_OS_MAC=1";
+				INFOPLIST_FILE = Info.plist;
+				INSTALL_PATH = "$(HOME)/Library/Bundles";
+				MACOSX_DEPLOYMENT_TARGET = "";
+				OTHER_LDFLAGS = (
+					"-framework",
+					OpenGL,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = org.dewb.ffgl.SaturationFilter;
+				PRODUCT_NAME = Average;
+				SDKROOT = macosx;
+				WRAPPER_EXTENSION = bundle;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
+		5B8123B91842EA9A0076EB97 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				COMBINE_HIDPI_IMAGES = YES;
+				CONFIGURATION_BUILD_DIR = "$(SRC_ROOT)../bin";
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"TARGET_OS_MAC=1",
+					"_DEBUG=1",
+				);
+				INFOPLIST_FILE = Info.plist;
+				INSTALL_PATH = "$(HOME)/Library/Bundles";
+				MACOSX_DEPLOYMENT_TARGET = "";
+				OTHER_LDFLAGS = (
+					"-framework",
+					OpenGL,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = org.dewb.ffgl.Blockhead;
+				PRODUCT_NAME = Blockhead;
+				SDKROOT = macosx;
+				WRAPPER_EXTENSION = bundle;
+				ZERO_LINK = NO;
+			};
+			name = Debug;
+		};
+		5B8123BA1842EA9A0076EB97 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				COMBINE_HIDPI_IMAGES = YES;
+				CONFIGURATION_BUILD_DIR = "$(SRC_ROOT)../bin";
+				COPY_PHASE_STRIP = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "";
+				GCC_PREPROCESSOR_DEFINITIONS = "TARGET_OS_MAC=1";
+				INFOPLIST_FILE = Info.plist;
+				INSTALL_PATH = "$(HOME)/Library/Bundles";
+				MACOSX_DEPLOYMENT_TARGET = "";
+				OTHER_LDFLAGS = (
+					"-framework",
+					OpenGL,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = org.dewb.ffgl.Blockhead;
+				PRODUCT_NAME = Blockhead;
+				SDKROOT = macosx;
+				WRAPPER_EXTENSION = bundle;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
+		5B8123D1184459F20076EB97 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				COMBINE_HIDPI_IMAGES = YES;
+				CONFIGURATION_BUILD_DIR = "$(SRC_ROOT)../bin";
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"TARGET_OS_MAC=1",
+					"_DEBUG=1",
+				);
+				INFOPLIST_FILE = Info.plist;
+				INSTALL_PATH = "$(HOME)/Library/Bundles";
+				MACOSX_DEPLOYMENT_TARGET = "";
+				OTHER_LDFLAGS = (
+					"-framework",
+					OpenGL,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = org.dewb.ffgl.Linecrimes;
+				PRODUCT_NAME = Linecrimes;
+				SDKROOT = macosx;
+				WRAPPER_EXTENSION = bundle;
+				ZERO_LINK = NO;
+			};
+			name = Debug;
+		};
+		5B8123D2184459F20076EB97 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				COMBINE_HIDPI_IMAGES = YES;
+				CONFIGURATION_BUILD_DIR = "$(SRC_ROOT)../bin";
+				COPY_PHASE_STRIP = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "";
+				GCC_PREPROCESSOR_DEFINITIONS = "TARGET_OS_MAC=1";
+				INFOPLIST_FILE = Info.plist;
+				INSTALL_PATH = "$(HOME)/Library/Bundles";
+				MACOSX_DEPLOYMENT_TARGET = "";
+				OTHER_LDFLAGS = (
+					"-framework",
+					OpenGL,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = org.dewb.ffgl.Linecrimes;
+				PRODUCT_NAME = Linecrimes;
+				SDKROOT = macosx;
+				WRAPPER_EXTENSION = bundle;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
+		5BBDA4FD183F2ACF0058C89C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				COMBINE_HIDPI_IMAGES = YES;
+				CONFIGURATION_BUILD_DIR = "$(SRC_ROOT)../bin";
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"TARGET_OS_MAC=1",
+					"_DEBUG=1",
+				);
+				INFOPLIST_FILE = Info.plist;
+				INSTALL_PATH = "$(HOME)/Library/Bundles";
+				MACOSX_DEPLOYMENT_TARGET = "";
+				OTHER_LDFLAGS = (
+					"-framework",
+					OpenGL,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = org.dewb.ffgl.Tanline;
+				PRODUCT_NAME = Tanline;
+				SDKROOT = macosx;
+				WRAPPER_EXTENSION = bundle;
+				ZERO_LINK = NO;
+			};
+			name = Debug;
+		};
+		5BBDA4FE183F2ACF0058C89C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				COMBINE_HIDPI_IMAGES = YES;
+				CONFIGURATION_BUILD_DIR = "$(SRC_ROOT)../bin";
+				COPY_PHASE_STRIP = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "";
+				GCC_PREPROCESSOR_DEFINITIONS = "TARGET_OS_MAC=1";
+				INFOPLIST_FILE = Info.plist;
+				INSTALL_PATH = "$(HOME)/Library/Bundles";
+				MACOSX_DEPLOYMENT_TARGET = "";
+				OTHER_LDFLAGS = (
+					"-framework",
+					OpenGL,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = org.dewb.ffgl.Tanline;
+				PRODUCT_NAME = Tanline;
+				SDKROOT = macosx;
+				WRAPPER_EXTENSION = bundle;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
+		5BE4790C19FEF89200C3ACCB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				COMBINE_HIDPI_IMAGES = YES;
+				CONFIGURATION_BUILD_DIR = "$(SRC_ROOT)../bin";
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"TARGET_OS_MAC=1",
+					"_DEBUG=1",
+				);
+				INFOPLIST_FILE = Info.plist;
+				INSTALL_PATH = "$(HOME)/Library/Bundles";
+				MACOSX_DEPLOYMENT_TARGET = "";
+				OTHER_LDFLAGS = (
+					"-framework",
+					OpenGL,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = org.dewb.ffgl.Marblephase;
+				PRODUCT_NAME = Marblephase;
+				SDKROOT = macosx;
+				WRAPPER_EXTENSION = bundle;
+				ZERO_LINK = NO;
+			};
+			name = Debug;
+		};
+		5BE4790D19FEF89200C3ACCB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				COMBINE_HIDPI_IMAGES = YES;
+				CONFIGURATION_BUILD_DIR = "$(SRC_ROOT)../bin";
+				COPY_PHASE_STRIP = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "";
+				GCC_PREPROCESSOR_DEFINITIONS = "TARGET_OS_MAC=1";
+				INFOPLIST_FILE = Info.plist;
+				INSTALL_PATH = "$(HOME)/Library/Bundles";
+				MACOSX_DEPLOYMENT_TARGET = "";
+				OTHER_LDFLAGS = (
+					"-framework",
+					OpenGL,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = org.dewb.ffgl.Marblephase;
+				PRODUCT_NAME = Marblephase;
+				SDKROOT = macosx;
+				WRAPPER_EXTENSION = bundle;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2D2190930AF02BD1007154B7 /* Build configuration list for PBXNativeTarget "Menger" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2D2190940AF02BD1007154B7 /* Debug */,
+				2D2190950AF02BD1007154B7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2DA285940AEE5D640030A4DD /* Build configuration list for PBXProject "DewbFFGL" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2DA285950AEE5D640030A4DD /* Debug */,
+				2DA285960AEE5D640030A4DD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5B1A40F918CAB0DA004D8334 /* Build configuration list for PBXNativeTarget "Cathode" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5B1A40FA18CAB0DA004D8334 /* Debug */,
+				5B1A40FB18CAB0DA004D8334 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5B3022BF18485D6A005C75A8 /* Build configuration list for PBXNativeTarget "SaturationFilter" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5B3022C018485D6A005C75A8 /* Debug */,
+				5B3022C118485D6A005C75A8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5B8123B81842EA9A0076EB97 /* Build configuration list for PBXNativeTarget "Blockhead" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5B8123B91842EA9A0076EB97 /* Debug */,
+				5B8123BA1842EA9A0076EB97 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5B8123D0184459F20076EB97 /* Build configuration list for PBXNativeTarget "Linecrimes" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5B8123D1184459F20076EB97 /* Debug */,
+				5B8123D2184459F20076EB97 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5BBDA4FC183F2ACF0058C89C /* Build configuration list for PBXNativeTarget "Tanline" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5BBDA4FD183F2ACF0058C89C /* Debug */,
+				5BBDA4FE183F2ACF0058C89C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5BE4790B19FEF89200C3ACCB /* Build configuration list for PBXNativeTarget "Marblephase" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5BE4790C19FEF89200C3ACCB /* Debug */,
+				5BE4790D19FEF89200C3ACCB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 2DA285930AEE5D640030A4DD /* Project object */;
+}
