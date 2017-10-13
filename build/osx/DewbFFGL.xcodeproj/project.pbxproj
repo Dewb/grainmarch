@@ -3,30 +3,136 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 47;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5BCA2B861F9113EF00E44551 /* ffgl in Resources */ = {isa = PBXBuildFile; fileRef = 5BCA2B821F9113EF00E44551 /* ffgl */; };
-		5BCA2B871F9113EF00E44551 /* exprtk in Resources */ = {isa = PBXBuildFile; fileRef = 5BCA2B831F9113EF00E44551 /* exprtk */; };
-		5BCA2B881F9113EF00E44551 /* freeglut in Resources */ = {isa = PBXBuildFile; fileRef = 5BCA2B841F9113EF00E44551 /* freeglut */; };
-		5BCA2B891F9113EF00E44551 /* glee in Resources */ = {isa = PBXBuildFile; fileRef = 5BCA2B851F9113EF00E44551 /* glee */; };
-		5BCA2B8B1F91147F00E44551 /* src in Resources */ = {isa = PBXBuildFile; fileRef = 5BCA2B8A1F91147F00E44551 /* src */; };
+		5BCA2B8D1F91160600E44551 /* PluginDefinition.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5BCA2B8C1F91160600E44551 /* PluginDefinition.cpp */; };
+		5BCA2B8F1F91160B00E44551 /* Menger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5BCA2B8E1F91160B00E44551 /* Menger.cpp */; };
+		5BCA2B901F91161E00E44551 /* PluginDefinition.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5BCA2B8C1F91160600E44551 /* PluginDefinition.cpp */; };
+		5BCA2B911F91161E00E44551 /* PluginDefinition.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5BCA2B8C1F91160600E44551 /* PluginDefinition.cpp */; };
+		5BCA2B921F91161F00E44551 /* PluginDefinition.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5BCA2B8C1F91160600E44551 /* PluginDefinition.cpp */; };
+		5BCA2B931F91161F00E44551 /* PluginDefinition.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5BCA2B8C1F91160600E44551 /* PluginDefinition.cpp */; };
+		5BCA2B941F91162000E44551 /* PluginDefinition.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5BCA2B8C1F91160600E44551 /* PluginDefinition.cpp */; };
+		5BCA2B951F91162000E44551 /* PluginDefinition.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5BCA2B8C1F91160600E44551 /* PluginDefinition.cpp */; };
+		5BCA2B9C1F91165D00E44551 /* Menger.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 5BCA2B9B1F91165D00E44551 /* Menger.glsl */; };
+		5BCA2BA11F91167000E44551 /* Blockhead.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5BCA2B9F1F91166600E44551 /* Blockhead.cpp */; };
+		5BCA2BAD1F91167E00E44551 /* Cathode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5BCA2BAC1F91167B00E44551 /* Cathode.cpp */; };
+		5BCA2BAE1F91168000E44551 /* Linecrimes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5BCA2BA51F91167B00E44551 /* Linecrimes.cpp */; };
+		5BCA2BAF1F91168300E44551 /* Marblephase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5BCA2BAB1F91167B00E44551 /* Marblephase.cpp */; };
+		5BCA2BB01F91168600E44551 /* SaturationFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5BCA2BA71F91167B00E44551 /* SaturationFilter.cpp */; };
+		5BCA2BB11F91168800E44551 /* Tanline.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5BCA2BA31F91167B00E44551 /* Tanline.cpp */; };
+		5BCA2BB41F9118A600E44551 /* FFGL.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5BCA2BB31F9118A600E44551 /* FFGL.cpp */; };
+		5BCA2BB61F9118AD00E44551 /* FFGLFBO.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5BCA2BB51F9118AC00E44551 /* FFGLFBO.cpp */; };
+		5BCA2BC81F9118BE00E44551 /* FFGLPluginSDK.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5BCA2BBA1F9118BC00E44551 /* FFGLPluginSDK.cpp */; };
+		5BCA2BC91F9118BE00E44551 /* FFGLShader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5BCA2BBE1F9118BD00E44551 /* FFGLShader.cpp */; };
+		5BCA2BCA1F9118BE00E44551 /* FFGLPluginInfo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5BCA2BC11F9118BD00E44551 /* FFGLPluginInfo.cpp */; };
+		5BCA2BCB1F9118BE00E44551 /* FFGLPluginManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5BCA2BC21F9118BD00E44551 /* FFGLPluginManager.cpp */; };
+		5BCA2BCC1F9118BE00E44551 /* FFGLPluginInfoData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5BCA2BC51F9118BE00E44551 /* FFGLPluginInfoData.cpp */; };
+		5BCA2BD81F91195500E44551 /* FFGLPluginInfo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5BCA2BC11F9118BD00E44551 /* FFGLPluginInfo.cpp */; };
+		5BCA2BD91F91195500E44551 /* FFGLPluginInfoData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5BCA2BC51F9118BE00E44551 /* FFGLPluginInfoData.cpp */; };
+		5BCA2BDA1F91195500E44551 /* FFGLPluginManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5BCA2BC21F9118BD00E44551 /* FFGLPluginManager.cpp */; };
+		5BCA2BDB1F91195500E44551 /* FFGLPluginSDK.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5BCA2BBA1F9118BC00E44551 /* FFGLPluginSDK.cpp */; };
+		5BCA2BDC1F91195500E44551 /* FFGLShader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5BCA2BBE1F9118BD00E44551 /* FFGLShader.cpp */; };
+		5BCA2BDD1F91195500E44551 /* FFGLFBO.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5BCA2BB51F9118AC00E44551 /* FFGLFBO.cpp */; };
+		5BCA2BDF1F91195500E44551 /* FFGL.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5BCA2BB31F9118A600E44551 /* FFGL.cpp */; };
+		5BCA2BE01F91195500E44551 /* FFGLPluginInfo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5BCA2BC11F9118BD00E44551 /* FFGLPluginInfo.cpp */; };
+		5BCA2BE11F91195500E44551 /* FFGLPluginInfoData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5BCA2BC51F9118BE00E44551 /* FFGLPluginInfoData.cpp */; };
+		5BCA2BE21F91195500E44551 /* FFGLPluginManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5BCA2BC21F9118BD00E44551 /* FFGLPluginManager.cpp */; };
+		5BCA2BE31F91195500E44551 /* FFGLPluginSDK.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5BCA2BBA1F9118BC00E44551 /* FFGLPluginSDK.cpp */; };
+		5BCA2BE41F91195500E44551 /* FFGLShader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5BCA2BBE1F9118BD00E44551 /* FFGLShader.cpp */; };
+		5BCA2BE51F91195500E44551 /* FFGLFBO.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5BCA2BB51F9118AC00E44551 /* FFGLFBO.cpp */; };
+		5BCA2BE71F91195500E44551 /* FFGL.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5BCA2BB31F9118A600E44551 /* FFGL.cpp */; };
+		5BCA2BE81F91195600E44551 /* FFGLPluginInfo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5BCA2BC11F9118BD00E44551 /* FFGLPluginInfo.cpp */; };
+		5BCA2BE91F91195600E44551 /* FFGLPluginInfoData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5BCA2BC51F9118BE00E44551 /* FFGLPluginInfoData.cpp */; };
+		5BCA2BEA1F91195600E44551 /* FFGLPluginManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5BCA2BC21F9118BD00E44551 /* FFGLPluginManager.cpp */; };
+		5BCA2BEB1F91195600E44551 /* FFGLPluginSDK.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5BCA2BBA1F9118BC00E44551 /* FFGLPluginSDK.cpp */; };
+		5BCA2BEC1F91195600E44551 /* FFGLShader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5BCA2BBE1F9118BD00E44551 /* FFGLShader.cpp */; };
+		5BCA2BED1F91195600E44551 /* FFGLFBO.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5BCA2BB51F9118AC00E44551 /* FFGLFBO.cpp */; };
+		5BCA2BEF1F91195600E44551 /* FFGL.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5BCA2BB31F9118A600E44551 /* FFGL.cpp */; };
+		5BCA2BF01F91195600E44551 /* FFGLPluginInfo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5BCA2BC11F9118BD00E44551 /* FFGLPluginInfo.cpp */; };
+		5BCA2BF11F91195600E44551 /* FFGLPluginInfoData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5BCA2BC51F9118BE00E44551 /* FFGLPluginInfoData.cpp */; };
+		5BCA2BF21F91195600E44551 /* FFGLPluginManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5BCA2BC21F9118BD00E44551 /* FFGLPluginManager.cpp */; };
+		5BCA2BF31F91195600E44551 /* FFGLPluginSDK.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5BCA2BBA1F9118BC00E44551 /* FFGLPluginSDK.cpp */; };
+		5BCA2BF41F91195600E44551 /* FFGLShader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5BCA2BBE1F9118BD00E44551 /* FFGLShader.cpp */; };
+		5BCA2BF51F91195600E44551 /* FFGLFBO.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5BCA2BB51F9118AC00E44551 /* FFGLFBO.cpp */; };
+		5BCA2BF71F91195600E44551 /* FFGL.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5BCA2BB31F9118A600E44551 /* FFGL.cpp */; };
+		5BCA2BF81F91195600E44551 /* FFGLPluginInfo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5BCA2BC11F9118BD00E44551 /* FFGLPluginInfo.cpp */; };
+		5BCA2BF91F91195600E44551 /* FFGLPluginInfoData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5BCA2BC51F9118BE00E44551 /* FFGLPluginInfoData.cpp */; };
+		5BCA2BFA1F91195600E44551 /* FFGLPluginManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5BCA2BC21F9118BD00E44551 /* FFGLPluginManager.cpp */; };
+		5BCA2BFB1F91195600E44551 /* FFGLPluginSDK.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5BCA2BBA1F9118BC00E44551 /* FFGLPluginSDK.cpp */; };
+		5BCA2BFC1F91195600E44551 /* FFGLShader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5BCA2BBE1F9118BD00E44551 /* FFGLShader.cpp */; };
+		5BCA2BFD1F91195700E44551 /* FFGLFBO.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5BCA2BB51F9118AC00E44551 /* FFGLFBO.cpp */; };
+		5BCA2BFF1F91195700E44551 /* FFGL.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5BCA2BB31F9118A600E44551 /* FFGL.cpp */; };
+		5BCA2C001F91195700E44551 /* FFGLPluginInfo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5BCA2BC11F9118BD00E44551 /* FFGLPluginInfo.cpp */; };
+		5BCA2C011F91195700E44551 /* FFGLPluginInfoData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5BCA2BC51F9118BE00E44551 /* FFGLPluginInfoData.cpp */; };
+		5BCA2C021F91195700E44551 /* FFGLPluginManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5BCA2BC21F9118BD00E44551 /* FFGLPluginManager.cpp */; };
+		5BCA2C031F91195700E44551 /* FFGLPluginSDK.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5BCA2BBA1F9118BC00E44551 /* FFGLPluginSDK.cpp */; };
+		5BCA2C041F91195700E44551 /* FFGLShader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5BCA2BBE1F9118BD00E44551 /* FFGLShader.cpp */; };
+		5BCA2C051F91195700E44551 /* FFGLFBO.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5BCA2BB51F9118AC00E44551 /* FFGLFBO.cpp */; };
+		5BCA2C071F91195700E44551 /* FFGL.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5BCA2BB31F9118A600E44551 /* FFGL.cpp */; };
+		5BCA2C0C1F9119FD00E44551 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BCA2C0B1F9119FD00E44551 /* OpenGL.framework */; };
+		5BCA2C0E1F911A0300E44551 /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BCA2C0D1F911A0300E44551 /* GLUT.framework */; };
+		5BCA2C0F1F911A0B00E44551 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BCA2C0B1F9119FD00E44551 /* OpenGL.framework */; };
+		5BCA2C101F911A1100E44551 /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BCA2C0D1F911A0300E44551 /* GLUT.framework */; };
+		5BCA2C111F911A1E00E44551 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BCA2C0B1F9119FD00E44551 /* OpenGL.framework */; };
+		5BCA2C121F911A2400E44551 /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BCA2C0D1F911A0300E44551 /* GLUT.framework */; };
+		5BCA2C131F911A2C00E44551 /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BCA2C0D1F911A0300E44551 /* GLUT.framework */; };
+		5BCA2C141F911A2C00E44551 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BCA2C0B1F9119FD00E44551 /* OpenGL.framework */; };
+		5BCA2C151F911A3300E44551 /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BCA2C0D1F911A0300E44551 /* GLUT.framework */; };
+		5BCA2C161F911A3300E44551 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BCA2C0B1F9119FD00E44551 /* OpenGL.framework */; };
+		5BCA2C171F911A4100E44551 /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BCA2C0D1F911A0300E44551 /* GLUT.framework */; };
+		5BCA2C181F911A4100E44551 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BCA2C0B1F9119FD00E44551 /* OpenGL.framework */; };
+		5BCA2C191F911A4B00E44551 /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BCA2C0D1F911A0300E44551 /* GLUT.framework */; };
+		5BCA2C1A1F911A4B00E44551 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BCA2C0B1F9119FD00E44551 /* OpenGL.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2DA287A70AEEFE950030A4DD /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = /System/Library/Frameworks/OpenGL.framework; sourceTree = "<absolute>"; };
 		5B1A40FC18CAB0DA004D8334 /* Cathode.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Cathode.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B3022C218485D6A005C75A8 /* Average.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Average.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B8123A91842AD7C0076EB97 /* Grainmarch.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Grainmarch.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B8123BB1842EA9A0076EB97 /* Blockhead.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Blockhead.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B8123D3184459F20076EB97 /* Linecrimes.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Linecrimes.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BBDA507183F2E9C0058C89C /* Tanline.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tanline.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
-		5BCA2B821F9113EF00E44551 /* ffgl */ = {isa = PBXFileReference; lastKnownFileType = folder; name = ffgl; path = ../../lib/ffgl; sourceTree = "<group>"; };
-		5BCA2B831F9113EF00E44551 /* exprtk */ = {isa = PBXFileReference; lastKnownFileType = folder; name = exprtk; path = ../../lib/exprtk; sourceTree = "<group>"; };
-		5BCA2B841F9113EF00E44551 /* freeglut */ = {isa = PBXFileReference; lastKnownFileType = folder; name = freeglut; path = ../../lib/freeglut; sourceTree = "<group>"; };
-		5BCA2B851F9113EF00E44551 /* glee */ = {isa = PBXFileReference; lastKnownFileType = folder; name = glee; path = ../../lib/glee; sourceTree = "<group>"; };
-		5BCA2B8A1F91147F00E44551 /* src */ = {isa = PBXFileReference; lastKnownFileType = folder; name = src; path = ../../src; sourceTree = "<group>"; };
+		5BCA2B8C1F91160600E44551 /* PluginDefinition.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = PluginDefinition.cpp; path = ../../src/PluginDefinition.cpp; sourceTree = SOURCE_ROOT; };
+		5BCA2B8E1F91160B00E44551 /* Menger.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Menger.cpp; path = ../../src/plugins/Menger.cpp; sourceTree = SOURCE_ROOT; };
+		5BCA2B961F91162F00E44551 /* default_vertex_shader.glsl */ = {isa = PBXFileReference; lastKnownFileType = text; name = default_vertex_shader.glsl; path = ../../src/default_vertex_shader.glsl; sourceTree = SOURCE_ROOT; };
+		5BCA2B9B1F91165D00E44551 /* Menger.glsl */ = {isa = PBXFileReference; lastKnownFileType = text; name = Menger.glsl; path = ../../src/plugins/Menger.glsl; sourceTree = SOURCE_ROOT; };
+		5BCA2B9F1F91166600E44551 /* Blockhead.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Blockhead.cpp; path = ../../src/plugins/Blockhead.cpp; sourceTree = SOURCE_ROOT; };
+		5BCA2BA21F91167A00E44551 /* Marblephase.glsl */ = {isa = PBXFileReference; lastKnownFileType = text; name = Marblephase.glsl; path = ../../src/plugins/Marblephase.glsl; sourceTree = SOURCE_ROOT; };
+		5BCA2BA31F91167B00E44551 /* Tanline.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Tanline.cpp; path = ../../src/plugins/Tanline.cpp; sourceTree = SOURCE_ROOT; };
+		5BCA2BA41F91167B00E44551 /* Tanline.glsl */ = {isa = PBXFileReference; lastKnownFileType = text; name = Tanline.glsl; path = ../../src/plugins/Tanline.glsl; sourceTree = SOURCE_ROOT; };
+		5BCA2BA51F91167B00E44551 /* Linecrimes.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Linecrimes.cpp; path = ../../src/plugins/Linecrimes.cpp; sourceTree = SOURCE_ROOT; };
+		5BCA2BA61F91167B00E44551 /* Linecrimes.glsl */ = {isa = PBXFileReference; lastKnownFileType = text; name = Linecrimes.glsl; path = ../../src/plugins/Linecrimes.glsl; sourceTree = SOURCE_ROOT; };
+		5BCA2BA71F91167B00E44551 /* SaturationFilter.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = SaturationFilter.cpp; path = ../../src/plugins/SaturationFilter.cpp; sourceTree = SOURCE_ROOT; };
+		5BCA2BA81F91167B00E44551 /* SaturationFilter.glsl */ = {isa = PBXFileReference; lastKnownFileType = text; name = SaturationFilter.glsl; path = ../../src/plugins/SaturationFilter.glsl; sourceTree = SOURCE_ROOT; };
+		5BCA2BA91F91167B00E44551 /* Cathode.glsl */ = {isa = PBXFileReference; lastKnownFileType = text; name = Cathode.glsl; path = ../../src/plugins/Cathode.glsl; sourceTree = SOURCE_ROOT; };
+		5BCA2BAA1F91167B00E44551 /* Blockhead.glsl */ = {isa = PBXFileReference; lastKnownFileType = text; name = Blockhead.glsl; path = ../../src/plugins/Blockhead.glsl; sourceTree = SOURCE_ROOT; };
+		5BCA2BAB1F91167B00E44551 /* Marblephase.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Marblephase.cpp; path = ../../src/plugins/Marblephase.cpp; sourceTree = SOURCE_ROOT; };
+		5BCA2BAC1F91167B00E44551 /* Cathode.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Cathode.cpp; path = ../../src/plugins/Cathode.cpp; sourceTree = SOURCE_ROOT; };
+		5BCA2BB21F91169600E44551 /* PluginDefinition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PluginDefinition.h; path = ../../src/PluginDefinition.h; sourceTree = SOURCE_ROOT; };
+		5BCA2BB31F9118A600E44551 /* FFGL.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = FFGL.cpp; sourceTree = "<group>"; };
+		5BCA2BB51F9118AC00E44551 /* FFGLFBO.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = FFGLFBO.cpp; sourceTree = "<group>"; };
+		5BCA2BB71F9118B000E44551 /* FFGLExtensions.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = FFGLExtensions.cpp; sourceTree = "<group>"; };
+		5BCA2BB91F9118BB00E44551 /* FFGLLib.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FFGLLib.h; sourceTree = "<group>"; };
+		5BCA2BBA1F9118BC00E44551 /* FFGLPluginSDK.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = FFGLPluginSDK.cpp; sourceTree = "<group>"; };
+		5BCA2BBB1F9118BC00E44551 /* FFGLPluginInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FFGLPluginInfo.h; sourceTree = "<group>"; };
+		5BCA2BBC1F9118BC00E44551 /* FFGLPluginSDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FFGLPluginSDK.h; sourceTree = "<group>"; };
+		5BCA2BBD1F9118BD00E44551 /* FFGLPluginManager_inl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FFGLPluginManager_inl.h; sourceTree = "<group>"; };
+		5BCA2BBE1F9118BD00E44551 /* FFGLShader.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = FFGLShader.cpp; sourceTree = "<group>"; };
+		5BCA2BBF1F9118BD00E44551 /* FFGLPluginManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FFGLPluginManager.h; sourceTree = "<group>"; };
+		5BCA2BC01F9118BD00E44551 /* FreeFrame.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FreeFrame.h; sourceTree = "<group>"; };
+		5BCA2BC11F9118BD00E44551 /* FFGLPluginInfo.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = FFGLPluginInfo.cpp; sourceTree = "<group>"; };
+		5BCA2BC21F9118BD00E44551 /* FFGLPluginManager.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = FFGLPluginManager.cpp; sourceTree = "<group>"; };
+		5BCA2BC31F9118BD00E44551 /* FFGLExtensions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FFGLExtensions.h; sourceTree = "<group>"; };
+		5BCA2BC41F9118BE00E44551 /* FFGL.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FFGL.h; sourceTree = "<group>"; };
+		5BCA2BC51F9118BE00E44551 /* FFGLPluginInfoData.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = FFGLPluginInfoData.cpp; sourceTree = "<group>"; };
+		5BCA2BC61F9118BE00E44551 /* FFGLFBO.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FFGLFBO.h; sourceTree = "<group>"; };
+		5BCA2BC71F9118BE00E44551 /* FFGLShader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FFGLShader.h; sourceTree = "<group>"; };
+		5BCA2BCE1F9118DA00E44551 /* utilities.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = utilities.cpp; sourceTree = "<group>"; };
+		5BCA2BCF1F9118DA00E44551 /* utilities.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = utilities.h; sourceTree = "<group>"; };
+		5BCA2C0B1F9119FD00E44551 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
+		5BCA2C0D1F911A0300E44551 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = System/Library/Frameworks/GLUT.framework; sourceTree = SDKROOT; };
 		5BE4790E19FEF89200C3ACCB /* Marblephase.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Marblephase.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BFC0CE11B269062001E1746 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -36,6 +142,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5BCA2C0E1F911A0300E44551 /* GLUT.framework in Frameworks */,
+				5BCA2C0C1F9119FD00E44551 /* OpenGL.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -43,6 +151,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5BCA2C171F911A4100E44551 /* GLUT.framework in Frameworks */,
+				5BCA2C181F911A4100E44551 /* OpenGL.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -50,6 +160,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5BCA2C151F911A3300E44551 /* GLUT.framework in Frameworks */,
+				5BCA2C161F911A3300E44551 /* OpenGL.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -57,6 +169,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5BCA2C121F911A2400E44551 /* GLUT.framework in Frameworks */,
+				5BCA2C111F911A1E00E44551 /* OpenGL.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -64,6 +178,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5BCA2C131F911A2C00E44551 /* GLUT.framework in Frameworks */,
+				5BCA2C141F911A2C00E44551 /* OpenGL.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -71,6 +187,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5BCA2C101F911A1100E44551 /* GLUT.framework in Frameworks */,
+				5BCA2C0F1F911A0B00E44551 /* OpenGL.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +196,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5BCA2C191F911A4B00E44551 /* GLUT.framework in Frameworks */,
+				5BCA2C1A1F911A4B00E44551 /* OpenGL.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -87,8 +207,8 @@
 		2DA285910AEE5D640030A4DD = {
 			isa = PBXGroup;
 			children = (
+				5BCA2B991F91164500E44551 /* src */,
 				5BFC0CE01B268F93001E1746 /* lib */,
-				5BCA2B8A1F91147F00E44551 /* src */,
 				5BBDA507183F2E9C0058C89C /* Tanline.bundle */,
 				5B8123A91842AD7C0076EB97 /* Grainmarch.bundle */,
 				5B8123BB1842EA9A0076EB97 /* Blockhead.bundle */,
@@ -97,20 +217,94 @@
 				5B1A40FC18CAB0DA004D8334 /* Cathode.bundle */,
 				5BE4790E19FEF89200C3ACCB /* Marblephase.bundle */,
 				5BFC0CE11B269062001E1746 /* Info.plist */,
+				5BCA2C0A1F9119FD00E44551 /* Frameworks */,
 			);
+			sourceTree = "<group>";
+		};
+		5BCA2B991F91164500E44551 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				5BCA2BB21F91169600E44551 /* PluginDefinition.h */,
+				5BCA2B8C1F91160600E44551 /* PluginDefinition.cpp */,
+				5BCA2B961F91162F00E44551 /* default_vertex_shader.glsl */,
+				5BCA2B9A1F91165400E44551 /* plugins */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		5BCA2B9A1F91165400E44551 /* plugins */ = {
+			isa = PBXGroup;
+			children = (
+				5BCA2B9F1F91166600E44551 /* Blockhead.cpp */,
+				5BCA2BAA1F91167B00E44551 /* Blockhead.glsl */,
+				5BCA2BAC1F91167B00E44551 /* Cathode.cpp */,
+				5BCA2BA91F91167B00E44551 /* Cathode.glsl */,
+				5BCA2BA51F91167B00E44551 /* Linecrimes.cpp */,
+				5BCA2BA61F91167B00E44551 /* Linecrimes.glsl */,
+				5BCA2BAB1F91167B00E44551 /* Marblephase.cpp */,
+				5BCA2BA21F91167A00E44551 /* Marblephase.glsl */,
+				5BCA2BA71F91167B00E44551 /* SaturationFilter.cpp */,
+				5BCA2BA81F91167B00E44551 /* SaturationFilter.glsl */,
+				5BCA2BA31F91167B00E44551 /* Tanline.cpp */,
+				5BCA2BA41F91167B00E44551 /* Tanline.glsl */,
+				5BCA2B8E1F91160B00E44551 /* Menger.cpp */,
+				5BCA2B9B1F91165D00E44551 /* Menger.glsl */,
+			);
+			path = plugins;
+			sourceTree = "<group>";
+		};
+		5BCA2BCD1F9118C200E44551 /* ffgl */ = {
+			isa = PBXGroup;
+			children = (
+				5BCA2BD11F9118DD00E44551 /* utilities */,
+				5BCA2BC41F9118BE00E44551 /* FFGL.h */,
+				5BCA2BC31F9118BD00E44551 /* FFGLExtensions.h */,
+				5BCA2BC61F9118BE00E44551 /* FFGLFBO.h */,
+				5BCA2BB91F9118BB00E44551 /* FFGLLib.h */,
+				5BCA2BC11F9118BD00E44551 /* FFGLPluginInfo.cpp */,
+				5BCA2BBB1F9118BC00E44551 /* FFGLPluginInfo.h */,
+				5BCA2BC51F9118BE00E44551 /* FFGLPluginInfoData.cpp */,
+				5BCA2BBD1F9118BD00E44551 /* FFGLPluginManager_inl.h */,
+				5BCA2BC21F9118BD00E44551 /* FFGLPluginManager.cpp */,
+				5BCA2BBF1F9118BD00E44551 /* FFGLPluginManager.h */,
+				5BCA2BBA1F9118BC00E44551 /* FFGLPluginSDK.cpp */,
+				5BCA2BBC1F9118BC00E44551 /* FFGLPluginSDK.h */,
+				5BCA2BBE1F9118BD00E44551 /* FFGLShader.cpp */,
+				5BCA2BC71F9118BE00E44551 /* FFGLShader.h */,
+				5BCA2BC01F9118BD00E44551 /* FreeFrame.h */,
+				5BCA2BB51F9118AC00E44551 /* FFGLFBO.cpp */,
+				5BCA2BB71F9118B000E44551 /* FFGLExtensions.cpp */,
+				5BCA2BB31F9118A600E44551 /* FFGL.cpp */,
+			);
+			path = ffgl;
+			sourceTree = "<group>";
+		};
+		5BCA2BD11F9118DD00E44551 /* utilities */ = {
+			isa = PBXGroup;
+			children = (
+				5BCA2BCE1F9118DA00E44551 /* utilities.cpp */,
+				5BCA2BCF1F9118DA00E44551 /* utilities.h */,
+			);
+			path = utilities;
+			sourceTree = "<group>";
+		};
+		5BCA2C0A1F9119FD00E44551 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5BCA2C0D1F911A0300E44551 /* GLUT.framework */,
+				5BCA2C0B1F9119FD00E44551 /* OpenGL.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		5BFC0CE01B268F93001E1746 /* lib */ = {
 			isa = PBXGroup;
 			children = (
-				5BCA2B831F9113EF00E44551 /* exprtk */,
-				5BCA2B821F9113EF00E44551 /* ffgl */,
-				5BCA2B841F9113EF00E44551 /* freeglut */,
-				5BCA2B851F9113EF00E44551 /* glee */,
-				2DA287A70AEEFE950030A4DD /* OpenGL.framework */,
+				5BCA2BCD1F9118C200E44551 /* ffgl */,
 			);
 			name = lib;
-			sourceTree = "<group>";
+			path = ../../lib;
+			sourceTree = SOURCE_ROOT;
 		};
 /* End PBXGroup section */
 
@@ -240,10 +434,10 @@
 		2DA285930AEE5D640030A4DD /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0450;
+				LastUpgradeCheck = 0900;
 			};
 			buildConfigurationList = 2DA285940AEE5D640030A4DD /* Build configuration list for PBXProject "DewbFFGL" */;
-			compatibilityVersion = "Xcode 3.2";
+			compatibilityVersion = "Xcode 6.3";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -270,11 +464,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5BCA2B881F9113EF00E44551 /* freeglut in Resources */,
-				5BCA2B891F9113EF00E44551 /* glee in Resources */,
-				5BCA2B871F9113EF00E44551 /* exprtk in Resources */,
-				5BCA2B861F9113EF00E44551 /* ffgl in Resources */,
-				5BCA2B8B1F91147F00E44551 /* src in Resources */,
+				5BCA2B9C1F91165D00E44551 /* Menger.glsl in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -327,6 +517,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5BCA2BB41F9118A600E44551 /* FFGL.cpp in Sources */,
+				5BCA2B8F1F91160B00E44551 /* Menger.cpp in Sources */,
+				5BCA2BC91F9118BE00E44551 /* FFGLShader.cpp in Sources */,
+				5BCA2BCB1F9118BE00E44551 /* FFGLPluginManager.cpp in Sources */,
+				5BCA2BB61F9118AD00E44551 /* FFGLFBO.cpp in Sources */,
+				5BCA2BCA1F9118BE00E44551 /* FFGLPluginInfo.cpp in Sources */,
+				5BCA2BCC1F9118BE00E44551 /* FFGLPluginInfoData.cpp in Sources */,
+				5BCA2BC81F9118BE00E44551 /* FFGLPluginSDK.cpp in Sources */,
+				5BCA2B8D1F91160600E44551 /* PluginDefinition.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -334,6 +533,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5BCA2BFB1F91195600E44551 /* FFGLPluginSDK.cpp in Sources */,
+				5BCA2BF81F91195600E44551 /* FFGLPluginInfo.cpp in Sources */,
+				5BCA2BF91F91195600E44551 /* FFGLPluginInfoData.cpp in Sources */,
+				5BCA2BFF1F91195700E44551 /* FFGL.cpp in Sources */,
+				5BCA2BFA1F91195600E44551 /* FFGLPluginManager.cpp in Sources */,
+				5BCA2BFC1F91195600E44551 /* FFGLShader.cpp in Sources */,
+				5BCA2BAD1F91167E00E44551 /* Cathode.cpp in Sources */,
+				5BCA2B941F91162000E44551 /* PluginDefinition.cpp in Sources */,
+				5BCA2BFD1F91195700E44551 /* FFGLFBO.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -341,6 +549,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5BCA2BF31F91195600E44551 /* FFGLPluginSDK.cpp in Sources */,
+				5BCA2BF01F91195600E44551 /* FFGLPluginInfo.cpp in Sources */,
+				5BCA2BF11F91195600E44551 /* FFGLPluginInfoData.cpp in Sources */,
+				5BCA2BF71F91195600E44551 /* FFGL.cpp in Sources */,
+				5BCA2BF21F91195600E44551 /* FFGLPluginManager.cpp in Sources */,
+				5BCA2BF41F91195600E44551 /* FFGLShader.cpp in Sources */,
+				5BCA2BB01F91168600E44551 /* SaturationFilter.cpp in Sources */,
+				5BCA2B931F91161F00E44551 /* PluginDefinition.cpp in Sources */,
+				5BCA2BF51F91195600E44551 /* FFGLFBO.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -348,6 +565,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5BCA2BE31F91195500E44551 /* FFGLPluginSDK.cpp in Sources */,
+				5BCA2BE01F91195500E44551 /* FFGLPluginInfo.cpp in Sources */,
+				5BCA2BE11F91195500E44551 /* FFGLPluginInfoData.cpp in Sources */,
+				5BCA2BE71F91195500E44551 /* FFGL.cpp in Sources */,
+				5BCA2BE21F91195500E44551 /* FFGLPluginManager.cpp in Sources */,
+				5BCA2BE41F91195500E44551 /* FFGLShader.cpp in Sources */,
+				5BCA2BA11F91167000E44551 /* Blockhead.cpp in Sources */,
+				5BCA2B911F91161E00E44551 /* PluginDefinition.cpp in Sources */,
+				5BCA2BE51F91195500E44551 /* FFGLFBO.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -355,6 +581,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5BCA2BEB1F91195600E44551 /* FFGLPluginSDK.cpp in Sources */,
+				5BCA2BE81F91195600E44551 /* FFGLPluginInfo.cpp in Sources */,
+				5BCA2BE91F91195600E44551 /* FFGLPluginInfoData.cpp in Sources */,
+				5BCA2BEF1F91195600E44551 /* FFGL.cpp in Sources */,
+				5BCA2BEA1F91195600E44551 /* FFGLPluginManager.cpp in Sources */,
+				5BCA2BEC1F91195600E44551 /* FFGLShader.cpp in Sources */,
+				5BCA2BAE1F91168000E44551 /* Linecrimes.cpp in Sources */,
+				5BCA2B921F91161F00E44551 /* PluginDefinition.cpp in Sources */,
+				5BCA2BED1F91195600E44551 /* FFGLFBO.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -362,6 +597,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5BCA2BDB1F91195500E44551 /* FFGLPluginSDK.cpp in Sources */,
+				5BCA2BD81F91195500E44551 /* FFGLPluginInfo.cpp in Sources */,
+				5BCA2BD91F91195500E44551 /* FFGLPluginInfoData.cpp in Sources */,
+				5BCA2BDF1F91195500E44551 /* FFGL.cpp in Sources */,
+				5BCA2BDA1F91195500E44551 /* FFGLPluginManager.cpp in Sources */,
+				5BCA2BDC1F91195500E44551 /* FFGLShader.cpp in Sources */,
+				5BCA2BB11F91168800E44551 /* Tanline.cpp in Sources */,
+				5BCA2B901F91161E00E44551 /* PluginDefinition.cpp in Sources */,
+				5BCA2BDD1F91195500E44551 /* FFGLFBO.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -369,6 +613,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5BCA2C031F91195700E44551 /* FFGLPluginSDK.cpp in Sources */,
+				5BCA2C001F91195700E44551 /* FFGLPluginInfo.cpp in Sources */,
+				5BCA2C011F91195700E44551 /* FFGLPluginInfoData.cpp in Sources */,
+				5BCA2C071F91195700E44551 /* FFGL.cpp in Sources */,
+				5BCA2C021F91195700E44551 /* FFGLPluginManager.cpp in Sources */,
+				5BCA2C041F91195700E44551 /* FFGLShader.cpp in Sources */,
+				5BCA2BAF1F91168300E44551 /* Marblephase.cpp in Sources */,
+				5BCA2B951F91162000E44551 /* PluginDefinition.cpp in Sources */,
+				5BCA2C051F91195700E44551 /* FFGLFBO.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -378,7 +631,6 @@
 		2D2190940AF02BD1007154B7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				COMBINE_HIDPI_IMAGES = YES;
@@ -412,7 +664,6 @@
 		2D2190950AF02BD1007154B7 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				COMBINE_HIDPI_IMAGES = YES;
@@ -441,13 +692,41 @@
 		2DA285950AEE5D640030A4DD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = "";
-				HEADER_SEARCH_PATHS = "../../../lib/**";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(SRCROOT)/../../lib/**",
+					"$(SRCROOT)/../../src",
+					"$(SRCROOT)/../../lib/ffgl",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
 			};
 			name = Debug;
@@ -455,12 +734,38 @@
 		2DA285960AEE5D640030A4DD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = "";
-				HEADER_SEARCH_PATHS = "../../../lib/**";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(SRCROOT)/../../lib/**",
+					"$(SRCROOT)/../../src",
+					"$(SRCROOT)/../../lib/ffgl",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				SDKROOT = macosx;
 			};
@@ -469,7 +774,6 @@
 		5B1A40FA18CAB0DA004D8334 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				COMBINE_HIDPI_IMAGES = YES;
@@ -503,7 +807,6 @@
 		5B1A40FB18CAB0DA004D8334 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				COMBINE_HIDPI_IMAGES = YES;
@@ -532,7 +835,6 @@
 		5B3022C018485D6A005C75A8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				COMBINE_HIDPI_IMAGES = YES;
@@ -566,7 +868,6 @@
 		5B3022C118485D6A005C75A8 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				COMBINE_HIDPI_IMAGES = YES;
@@ -595,7 +896,6 @@
 		5B8123B91842EA9A0076EB97 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				COMBINE_HIDPI_IMAGES = YES;
@@ -629,7 +929,6 @@
 		5B8123BA1842EA9A0076EB97 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				COMBINE_HIDPI_IMAGES = YES;
@@ -658,7 +957,6 @@
 		5B8123D1184459F20076EB97 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				COMBINE_HIDPI_IMAGES = YES;
@@ -692,7 +990,6 @@
 		5B8123D2184459F20076EB97 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				COMBINE_HIDPI_IMAGES = YES;
@@ -721,7 +1018,6 @@
 		5BBDA4FD183F2ACF0058C89C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				COMBINE_HIDPI_IMAGES = YES;
@@ -755,7 +1051,6 @@
 		5BBDA4FE183F2ACF0058C89C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				COMBINE_HIDPI_IMAGES = YES;
@@ -784,7 +1079,6 @@
 		5BE4790C19FEF89200C3ACCB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				COMBINE_HIDPI_IMAGES = YES;
@@ -818,7 +1112,6 @@
 		5BE4790D19FEF89200C3ACCB /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				COMBINE_HIDPI_IMAGES = YES;
